@@ -19,28 +19,42 @@
   --psychic-main-color: rgb(168, 61, 145);
 }
 
-body{
+body {
   background-color: black;
   color: white;
   text-align: center;
 }
-ul{
+
+ul {
   padding: 0;
 }
 
-.pokemon{
+.search {
+  width: 80%;
+  border: 2px white solid;
+  border-radius: 20px;
+  padding-left: 10px;
+  font-size: large;
+}
+
+.search:focus {
+  border: 2px white solid;
+}
+
+.pokemon {
   border: 2px white solid;
   border-radius: 100px;
   background-color: darkgrey;
   padding: 5px;
 }
 
-.flex-container{
+.flex-container {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
 }
-.detalhePokemon{
+
+.detalhePokemon {
   border: 2px solid white;
   background-color: grey;
   transition: 0.3s;
@@ -51,68 +65,88 @@ ul{
   padding: 10px;
   margin: 20px auto;
 }
-.detalhePokemon:hover{
+
+.detalhePokemon:hover {
   background-color: darkgrey;
 }
 
-.tipos{
+.tipos {
   border: 2px rgb(255, 255, 255) solid;
   border-radius: 100px;
 }
-.tipos:hover{
+
+.tipos:hover {
   cursor: pointer;
 }
-.Fire{
+
+.Fire {
   color: var(--fire-main-color);
 }
-.Flying{
+
+.Flying {
   color: var(--flying-main-color);
 }
-.Steel{
+
+.Steel {
   color: var(--steel-main-color);
 }
-.Ground{
+
+.Ground {
   color: var(--ground-main-color);
 }
-.Rock{
+
+.Rock {
   color: var(--rock-main-color);
 }
-.Ice{
+
+.Ice {
   color: var(--ice-main-color);
 }
-.Water{
+
+.Water {
   color: var(--water-main-color);
 }
-.Bug{
+
+.Bug {
   color: var(--bug-main-color);
 }
-.Figthing{
+
+.Figthing {
   color: var(--figthing-main-color);
 }
-.Ghost{
+
+.Ghost {
   color: var(--ghost-main-color);
 }
-.Dark{
+
+.Dark {
   color: var(--dark-main-color);
 }
-.Psychic{
+
+.Psychic {
   color: var(--psychic-main-color);
 }
-.Normal{
+
+.Normal {
   color: var(--normal-main-color);
 }
-.Electric{
+
+.Electric {
   color: var(--electric-main-color);
 }
-.Dragon{
+
+.Dragon {
   color: var(--dragon-main-color);
 }
-.Fairy{
+
+.Fairy {
   color: var(--fairy-main-color);
 }
-.Poison{
+
+.Poison {
   color: var(--poison-main-color);
 }
-.Grass{
+
+.Grass {
   color: var(--grass-main-color);
 }

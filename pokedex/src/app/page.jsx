@@ -2,10 +2,10 @@
 
 import Lista from "@/components/Lista";
 import api from "@/lib/api";
-// import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export default function Home() {
+  const [search, setSearch] = useState('');
   const [pokemon, setPokemon] = useState({});
   
   async function getPokedex() {
@@ -21,9 +21,9 @@ export default function Home() {
     <>
       <h1>Pokédex</h1>
 
-      {/* <Image src="https://archives.bulbagarden.net/media/upload/thumb/f/fb/0001Bulbasaur.png/800px-0001Bulbasaur.png" width={100} height={100} alt="XXX"></Image> */}
-
-      <Lista lista={pokemon}/>
+      <input className="search" type="text" onChange={(e)=>setSearch(e.target.value)} value={search} placeholder="Pesquisar"/>
+      <br />
+      <Lista lista={pokemon} search={search}/>
     </>
   );
 }

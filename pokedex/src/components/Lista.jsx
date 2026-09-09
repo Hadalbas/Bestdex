@@ -1,8 +1,10 @@
 import { useState } from "react";
 import Pokemon from "./Pokemon";
 
-export default function Lista({ lista, filtro }) {
+export default function Lista({ lista, search }) {
 
+    var pokedex = [];
+    
     const typesNumbers = {
         "Normal": 1,
         "Fighting": 2,
@@ -24,12 +26,13 @@ export default function Lista({ lista, filtro }) {
         "Fairy": 18,
     }
 
-    var pokedex = [];
 
     if(lista) {
-        pokedex = Object.values(lista)
+        pokedex = Object.values(lista).filter((pokemon) => pokemon.baseSpecies == undefined)
+        if(search.trim()) {
+          pokedex = pokedex.filter((pokemon)=>pokemon.name.toLowerCase().includes(search.toLowerCase()))  
+        } 
     }
-
 
     return (
         <div className="flex-container">
