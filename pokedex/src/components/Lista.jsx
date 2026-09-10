@@ -8,7 +8,7 @@ export default function Lista({ lista, search, tipo }) {
     var pokedex = [];
     var showing = [];
     const elementsPerPage = 12;
-
+    
     function mostrarMais(){
         setDepth(depth + 1)
     }
