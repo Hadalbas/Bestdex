@@ -1,10 +1,15 @@
 import { useState } from "react";
 import Pokemon from "./Pokemon";
+import Link from "next/link";
 
-export default function Lista({ lista, search }) {
+export default function Lista({ lista, search, tipo }) {
+
+    const [depth, setDepth] = useState(1);
 
     var pokedex = [];
-    
+    var showing = [];
+    const elementsPerPage = 99;
+
     const typesNumbers = {
         "Normal": 1,
         "Fighting": 2,
@@ -27,20 +32,40 @@ export default function Lista({ lista, search }) {
     }
 
 
-    if(lista) {
+    if (lista) {
         pokedex = Object.values(lista).filter((pokemon) => pokemon.baseSpecies == undefined)
-        if(search.trim()) {
-          pokedex = pokedex.filter((pokemon)=>pokemon.name.toLowerCase().includes(search.toLowerCase()))  
-        } 
+        if (search.trim()) {
+            pokedex = pokedex.filter((pokemon) => pokemon.name.toLowerCase().includes(search.toLowerCase()))
+        }
+        if(tipo.trim()){
+                pokedex = pokedex.filter((pokemon) => pokemon.types[0] == tipo || pokemon.types[1] == tipo)
+        }
+        if (pokedex?.length > 0) {
+            for (let i = 0; i < depth * elementsPerPage; i++) {
+                pokedex[i] && showing.push(pokedex[i])
+            }
+        }
     }
 
     return (
+        <>
         <div className="flex-container">
-                {
-                    pokedex?.length > 0 
-                        ? pokedex.map((pkm) => pkm.num > 0 && <Pokemon key={pkm.name} pokemon={pkm} typesNumbers={typesNumbers}/>)
-                        : <p>Carregando...</p>
-                }
+            {
+                showing?.length > 0
+                    ? showing.map((pkm) => pkm.num > 0 && <Pokemon key={pkm.name} pokemon={pkm} typesNumbers={typesNumbers} />)
+                    : <p>No Pokémon was found</p>
+            }            
         </div>
+
+        {
+            (pokedex.length > depth * elementsPerPage) && 
+            <button className="exibir" onClick={() => setDepth(depth + 1)}>Mostrar mais</button>
+        }
+        {
+            (depth > 1 && pokedex.length > depth * elementsPerPage) && 
+            <button className="exibir" onClick={() => setDepth(depth - 1)}>Mostrar menos</button>
+        }
+        </>
+        
     )
 }

@@ -1,34 +1,12 @@
-:root {
-  --fire-main-color: red;
-  --figthing-main-color: rgb(141, 20, 20);
-  --fairy-main-color: pink;
-  --grass-main-color: green;
-  --normal-main-color: rgb(117, 117, 117);
-  --bug-main-color: lime;
-  --water-main-color: rgb(44, 44, 255);
-  --flying-main-color: rgb(120, 120, 255);
-  --dragon-main-color: rgb(26, 26, 104);
-  --ice-main-color: cyan;
-  --rock-main-color: rgb(146, 78, 38);
-  --ground-main-color: rgb(129, 97, 36);
-  --steel-main-color: rgb(87, 83, 83);
-  --electric-main-color: yellow;
-  --poison-main-color: purple;
-  --ghost-main-color: rgb(109, 37, 151);
-  --dark-main-color: rgb(48, 43, 43);
-  --psychic-main-color: rgb(168, 61, 145);
-}
-
 body {
   background-color: black;
   color: white;
   text-align: center;
 }
 
-ul {
-  padding: 0;
+.exibir{
+  font-size: x-large;
 }
-
 .search {
   width: 80%;
   border: 2px white solid;
@@ -77,76 +55,4 @@ ul {
 
 .tipos:hover {
   cursor: pointer;
-}
-
-.Fire {
-  color: var(--fire-main-color);
-}
-
-.Flying {
-  color: var(--flying-main-color);
-}
-
-.Steel {
-  color: var(--steel-main-color);
-}
-
-.Ground {
-  color: var(--ground-main-color);
-}
-
-.Rock {
-  color: var(--rock-main-color);
-}
-
-.Ice {
-  color: var(--ice-main-color);
-}
-
-.Water {
-  color: var(--water-main-color);
-}
-
-.Bug {
-  color: var(--bug-main-color);
-}
-
-.Figthing {
-  color: var(--figthing-main-color);
-}
-
-.Ghost {
-  color: var(--ghost-main-color);
-}
-
-.Dark {
-  color: var(--dark-main-color);
-}
-
-.Psychic {
-  color: var(--psychic-main-color);
-}
-
-.Normal {
-  color: var(--normal-main-color);
-}
-
-.Electric {
-  color: var(--electric-main-color);
-}
-
-.Dragon {
-  color: var(--dragon-main-color);
-}
-
-.Fairy {
-  color: var(--fairy-main-color);
-}
-
-.Poison {
-  color: var(--poison-main-color);
-}
-
-.Grass {
-  color: var(--grass-main-color);
 }
