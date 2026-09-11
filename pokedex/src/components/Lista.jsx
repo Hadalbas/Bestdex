@@ -7,7 +7,7 @@ export default function Lista({ lista, search, tipo }) {
 
     var pokedex = [];
     var showing = [];
-    const elementsPerPage = 12;
+    const elementsPerPage = 99;
     
     function mostrarMais(){
         setDepth(depth + 1)
@@ -40,6 +40,9 @@ export default function Lista({ lista, search, tipo }) {
         if (search.trim()) {
             pokedex = pokedex.filter((pokemon) => pokemon.name.toLowerCase().includes(search.toLowerCase()))
         }
+        if(tipo.trim()){
+                pokedex = pokedex.filter((pokemon) => pokemon.types[0] == tipo || pokemon.types[1] == tipo)
+        }
         if (pokedex?.length > 0) {
             for (let i = 0; i < depth * elementsPerPage; i++) {
                 pokedex[i] && showing.push(pokedex[i])
@@ -59,7 +62,11 @@ export default function Lista({ lista, search, tipo }) {
 
         {
             (pokedex.length > depth * elementsPerPage) && 
-            <button className="exibir" onClick={mostrarMais}>Mostrar mais</button>
+            <button className="exibir" onClick={() => setDepth(depth + 1)}>Mostrar mais</button>
+        }
+        {
+            (depth > 1 && pokedex.length > depth * elementsPerPage) && 
+            <button className="exibir" onClick={() => setDepth(depth - 1)}>Mostrar menos</button>
         }
 
         </>
