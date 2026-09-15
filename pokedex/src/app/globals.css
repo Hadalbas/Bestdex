@@ -114,11 +114,13 @@ hr {
 }
 
 .exibir {
-  width: 10%;
   height: 5%;
   font-size: x-large;
   border: 2px white solid;
   border-radius: 20px;
+  margin: 50px 0 50px 0;
+  padding: 10px;
+  margin: 10px;
 }
 
 .search-filter {
@@ -156,9 +158,8 @@ hr {
 }
 
 .detalhePokemon {
-  background-image: url(../../public/pokemon-bg.png);
-  background-repeat: no-repeat;
-  background-size: 450px;
+  position: relative;
+  isolation: isolate;
   border: 2px white solid;
   background-color: #000000;
   transition: 0.3s;
@@ -173,8 +174,40 @@ hr {
   padding: 15px 0 0 0;
 }
 
+.detalhePokemon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url(../../public/pokemon-bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  transform: rotate(0deg);
+  transform-origin: center center;
+  opacity: 0.9;
+  z-index: 0;
+}
+
+.detalhePokemon a,
+.detalhePokemon-data {
+  position: relative;
+  z-index: 1;
+}
+
+.detalhePokemon a {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .detalhePokemon:hover {
-  background-color: darkgrey;
+  transform: scale(1.05);
+}
+
+.detalhePokemon:hover::before {
+  transform: rotate(0deg);
 }
 
 .detalhePokemon-data {
