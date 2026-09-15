@@ -31,12 +31,12 @@ export default function Pokemon({ params }) {
             <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${numero}.png`} width={300} height={300} alt="XXX"></Image>
 
             <div className="stats">
-                <p>Health: </p>
-                <p>Attack: </p>
-                <p>Defense: </p>
-                <p>Special Attack: </p>
-                <p>Special Defense: </p>
-                <p>Speed: </p>
+                <p>Health: {pokemon?.baseStats.hp}</p>
+                <p>Attack: {pokemon?.baseStats.atk}</p>
+                <p>Defense: {pokemon?.baseStats.def}</p>
+                <p>Special Attack: {pokemon?.baseStats.spa}</p>
+                <p>Special Defense: {pokemon?.baseStats.spd}</p>
+                <p>Speed: {pokemon?.baseStats.spe}</p>
             </div>
         </>
     )
