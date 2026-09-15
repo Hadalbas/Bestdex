@@ -34,20 +34,25 @@ export default function Pokemon({ params }) {
             <div className="stats">
                 <h2>Base stats</h2>
                 <h4><label htmlFor="hp">Health: {pokemon?.baseStats?.hp} </label>
-                <meter id="hp" min={0} max={1} low={0.4} high={0.8} value={pokemon?.baseStats?.hp / 255}/></h4>
+                <meter id="hp" min={0} max={1} low={0.4} high={0.8} value={(pokemon?.baseStats?.hp / 255).toString()}/></h4>
                 <h4><label htmlFor="atk">Attack: {pokemon?.baseStats?.atk} </label>
-                <meter id="atk" min={0} max={1} low={0.4} high={0.8} value={pokemon?.baseStats?.atk / 255} /></h4>
+                <meter id="atk" min={0} max={1} low={0.4} high={0.8} value={(pokemon?.baseStats?.atk / 255).toString()} /></h4>
                 <h4><label htmlFor="def">Defense: {pokemon?.baseStats?.def} </label>
-                <meter id="def" min={0} max={1} low={0.4} high={0.8} value={pokemon?.baseStats?.def / 255} /></h4>
+                <meter id="def" min={0} max={1} low={0.4} high={0.8} value={(pokemon?.baseStats?.def / 255).toString()} /></h4>
                 <h4><label htmlFor="spa">Special Attack: {pokemon?.baseStats?.spa} </label>
-                <meter id="spa" min={0} max={1} low={0.4} high={0.8} value={pokemon?.baseStats?.spa / 255} /></h4>
+                <meter id="spa" min={0} max={1} low={0.4} high={0.8} value={(pokemon?.baseStats?.spa / 255).toString()} /></h4>
                 <h4><label htmlFor="spd">Special Defense: {pokemon?.baseStats?.spd} </label>
-                <meter id="spd" min={0} max={1} low={0.4} high={0.8} value={pokemon?.baseStats?.spd / 255} /></h4>
+                <meter id="spd" min={0} max={1} low={0.4} high={0.8} value={(pokemon?.baseStats?.spd / 255).toString()} /></h4>
                 <h4><label htmlFor="spe">Speed: {pokemon?.baseStats?.spe} </label>
-                <meter id="spe" min={0} max={1} low={0.4} high={0.8} value={pokemon?.baseStats?.spe / 255} /></h4>
+                <meter id="spe" min={0} max={1} low={0.4} high={0.8} value={(pokemon?.baseStats?.spe / 255).toString()} /></h4>
             </div>
 
             <h2>Abilities</h2>
+            <h4>Normal: {pokemon?.abilities ? pokemon?.abilities["0"] : "carregando"}  {pokemon?.abilities && pokemon?.abilities["1"]}</h4>
+
+            {
+                pokemon?.abilities?.H && <h4>Hidden: {pokemon?.abilities?.H}</h4>
+            }
 
             <br />
 

@@ -7,11 +7,7 @@ export default function Lista({ lista, search, tipo }) {
 
     var pokedex = [];
     var showing = [];
-    const elementsPerPage = 99;
-    
-    function mostrarMais(){
-        setDepth(depth + 1)
-    }
+    const elementsPerPage = 102;
 
     const typesNumbers = {
         "Normal": 1,
