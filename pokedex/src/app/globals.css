@@ -104,6 +104,10 @@ a {
   margin-top: 20px;
 }
 
+.stat{
+  background-color: red;
+}
+
 .search {
   width: 30%;
   border: 2px white solid;
