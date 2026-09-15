@@ -1,11 +1,13 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Pokemon({ pokemon, typesNumbers }) {
 
-    var numero = pokemon.num.toString().padStart(3,"0");
-    
-        return (
+    var numero = pokemon.num.toString().padStart(3, "0");
+
+    return (
         <>
+
             <div className={`detalhePokemon`}>
                 <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${numero}.png`} width={150} height={150} alt="XXX"></Image>
 
