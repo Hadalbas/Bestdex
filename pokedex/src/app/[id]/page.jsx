@@ -10,19 +10,29 @@ export default function Pokemon({ params }) {
     const { id } = use(params);
     const name = id.toLowerCase().replace("-", "");
     const [pokemon, setPokemon] = useState({});
-    const [numero, setNumero] = useState(0)
-    const [evoNumero, setEvoNumero] = useState(0)
-    const [prevoNumero, setPrevoNumero] = useState(0)
+    const [evolution, setEvolution] = useState({});
+    const [prevolution, setPrevolution] = useState({});
+    const [number, setNumber] = useState(0)
+    const [evoNumber, setEvoNumber] = useState(0)
+    const [prevoNumber, setPrevoNumber] = useState(0)
 
     async function getPokemon() {
         const { data } = await api.get('/pokedex.json');
         setPokemon(data[name]);
-        //data[name]?.evos.length > 0 && setEvo(data[pokemon?.evos[0]])
-        setNumero(data[name].num.toString().padStart(3, "0"))
-        setEvoNumero((data[name].num + 1).toString().padStart(3, "0"))
-        setPrevoNumero((data[name].num - 1).toString().padStart(3, "0"))
+        setNumber(data[name].num.toString().padStart(3, "0"))
+
+        if (data[name]?.evos != undefined) {
+            setEvolution(data[data[name]?.evos[0].toLowerCase()]);
+            setEvoNumber((data[data[name]?.evos[0].toLowerCase()].num).toString().padStart(3, "0"))
+        }
+        if (data[name]?.prevo != undefined) {
+            setPrevolution(data[data[name]?.prevo.toLowerCase()]);
+            setPrevoNumber((data[data[name]?.prevo.toLowerCase()].num).toString().padStart(3, "0"))
+        }
     }
 
+    console.log(evolution);
+    console.log(prevolution);
     console.log(pokemon);
 
     useEffect(() => {
@@ -34,7 +44,7 @@ export default function Pokemon({ params }) {
             <h2>#{pokemon?.num}</h2>
             <h1>{pokemon.name}</h1>
 
-            <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${numero}.png`} width={300} height={300} alt="XXX"></Image>
+            <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${number}.png`} width={300} height={300} alt="XXX"></Image>
 
             <div className="stats">
                 <h2>Base stats</h2>
@@ -63,30 +73,32 @@ export default function Pokemon({ params }) {
 
             <br />
 
+            <h2>Evolution Line:</h2>
+
             {
                 pokemon?.prevo
                     ? <div className={`detalhePokemon`}>
                         <Link href={pokemon?.prevo}>
-                            <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${prevoNumero}.png`} width={150} height={150} alt="XXX"></Image>
+                            <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${prevoNumber}.png`} width={150} height={150} alt="XXX"></Image>
 
                             <div className="detalhePokemon-data">
-                                <h2>#{pokemon.num - 1}</h2>
+                                <h2>#{prevolution.num}</h2>
                                 <h2>{pokemon?.prevo}</h2>
                             </div>
                         </Link>
                     </div>
 
-                    : <p>No evolution</p>
+                    : <p>No prevolution</p>
             }
-            
+
             {
                 pokemon?.evos
                     ? <div className={`detalhePokemon`}>
                         <Link href={pokemon?.evos[0]}>
-                            <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${evoNumero}.png`} width={150} height={150} alt="XXX"></Image>
+                            <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${evoNumber}.png`} width={150} height={150} alt="XXX"></Image>
 
                             <div className="detalhePokemon-data">
-                                <h2>#{pokemon.num + 1}</h2>
+                                <h2>#{evolution.num}</h2>
                                 <h2>{pokemon?.evos[0]}</h2>
                             </div>
                         </Link>
@@ -97,7 +109,7 @@ export default function Pokemon({ params }) {
 
             <br />
 
-            <Link href="/"><button className="exibir">Voltar</button></Link>
+            <Link href="/"><button className="exibir">Back</button></Link>
         </>
     )
 }
