@@ -36,7 +36,8 @@ export default function Home() {
         <div className="banner-container">
           <div className="banner-text">
           <h1>Welcome to your Deck Creator and Pokedex!</h1>
-          <h3>Discover and collect all your favorite Pokémon, and create the ultimate deck! Trade with other trainers and improve your strategy!</h3>
+          <hr />
+          <h3>Discover and collect all your favorite Pokémon <br /> and create the ultimate deck! <br /> Trade with other trainers and improve your strategy!</h3>
           </div>
           <Image src="/c/3.svg" height={500} width={500} alt="pikachu image"/>
         </div>
@@ -48,7 +49,7 @@ export default function Home() {
       
       <br />
       <label htmlFor="tipos">Select types: </label>
-      <select name="tipos" value={tipo} onChange={e => setTipo(e.target.value)}>
+      <select name="tipos" className="dropdown" value={tipo} onChange={e => setTipo(e.target.value)}>
         <option value="">All</option>
         <option value="Fire">Fire</option>
         <option value="Grass">Grass</option>

@@ -7,12 +7,14 @@ export default function Pokemon({ pokemon, typesNumbers }) {
         return (
         <>
             <div className={`detalhePokemon`}>
-                <h2>#{pokemon.num}</h2>
-                <h2>{pokemon.name}</h2>
-
                 <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${numero}.png`} width={150} height={150} alt="XXX"></Image>
 
-                <p><span><Image className={"tipos " + pokemon.types[0]} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-ix/scarlet-violet/${typesNumbers[pokemon.types[0]]}.png`} width={150} height={30} alt="XXX"></Image></span> {pokemon.types[1] && <span><Image className={"tipos " + pokemon.types[0]} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-ix/scarlet-violet/${typesNumbers[pokemon.types[1]]}.png`} width={150} height={30} alt="XXX"></Image></span>} </p>
+                <div className="detalhePokemon-data">
+                    <h2>#{pokemon.num}</h2>
+                    <h2>{pokemon.name}</h2>
+
+                    <p><span><Image className={"tipos " + pokemon.types[0]} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-ix/scarlet-violet/${typesNumbers[pokemon.types[0]]}.png`} width={150} height={30} alt="XXX"></Image><br /></span> {pokemon.types[1] && <span><Image className={"tipos " + pokemon.types[0]} src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-ix/scarlet-violet/${typesNumbers[pokemon.types[1]]}.png`} width={150} height={30} alt="XXX"></Image></span>} </p>
+                </div>
             </div>
 
         </>
