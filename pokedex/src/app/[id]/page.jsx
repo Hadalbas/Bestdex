@@ -2,6 +2,7 @@
 
 import api from "@/lib/api";
 import Image from "next/image";
+import Link from "next/link";
 import { useState, useEffect, use } from "react"
 
 export default function Pokemon({ params }) {
@@ -31,13 +32,26 @@ export default function Pokemon({ params }) {
             <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${numero}.png`} width={300} height={300} alt="XXX"></Image>
 
             <div className="stats">
-                <p>Health: {pokemon?.baseStats.hp}</p>
-                <p>Attack: {pokemon?.baseStats.atk}</p>
-                <p>Defense: {pokemon?.baseStats.def}</p>
-                <p>Special Attack: {pokemon?.baseStats.spa}</p>
-                <p>Special Defense: {pokemon?.baseStats.spd}</p>
-                <p>Speed: {pokemon?.baseStats.spe}</p>
+                <h2>Base stats</h2>
+                <h4><label htmlFor="hp">Health: {pokemon?.baseStats?.hp} </label>
+                <meter id="hp" min={0} max={1} low={0.4} high={0.8} value={pokemon?.baseStats?.hp / 255}/></h4>
+                <h4><label htmlFor="atk">Attack: {pokemon?.baseStats?.atk} </label>
+                <meter id="atk" min={0} max={1} low={0.4} high={0.8} value={pokemon?.baseStats?.atk / 255} /></h4>
+                <h4><label htmlFor="def">Defense: {pokemon?.baseStats?.def} </label>
+                <meter id="def" min={0} max={1} low={0.4} high={0.8} value={pokemon?.baseStats?.def / 255} /></h4>
+                <h4><label htmlFor="spa">Special Attack: {pokemon?.baseStats?.spa} </label>
+                <meter id="spa" min={0} max={1} low={0.4} high={0.8} value={pokemon?.baseStats?.spa / 255} /></h4>
+                <h4><label htmlFor="spd">Special Defense: {pokemon?.baseStats?.spd} </label>
+                <meter id="spd" min={0} max={1} low={0.4} high={0.8} value={pokemon?.baseStats?.spd / 255} /></h4>
+                <h4><label htmlFor="spe">Speed: {pokemon?.baseStats?.spe} </label>
+                <meter id="spe" min={0} max={1} low={0.4} high={0.8} value={pokemon?.baseStats?.spe / 255} /></h4>
             </div>
+
+            <h2>Abilities</h2>
+
+            <br />
+
+            <Link href="/"><button className="exibir">Voltar</button></Link>
         </>
     )
 }
