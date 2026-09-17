@@ -1,5 +1,6 @@
 'use client'
 
+import Moves from "@/components/ListMoves";
 import api from "@/lib/api";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,11 +11,14 @@ export default function Pokemon({ params }) {
     const { id } = use(params);
     const name = id.toLowerCase().replace("-", "");
     const [pokemon, setPokemon] = useState({});
+    const [learnset, setLearnset] = useState({});
     const [evolution, setEvolution] = useState({});
     const [prevolution, setPrevolution] = useState({});
     const [number, setNumber] = useState(0)
     const [evoNumber, setEvoNumber] = useState(0)
     const [prevoNumber, setPrevoNumber] = useState(0)
+
+    const typesNumbers = { "Normal": 1,"Fighting": 2,"Flying": 3,"Poison": 4,"Ground": 5,"Rock": 6,"Bug": 7,"Ghost": 8,"Steel": 9,"Fire": 10,"Water": 11,"Grass": 12,"Electric": 13,"Psychic": 14,"Ice": 15,"Dragon": 16,"Dark": 17,"Fairy": 18,}
 
     async function getPokemon() {
         const { data } = await api.get('/pokedex.json');
@@ -31,12 +35,15 @@ export default function Pokemon({ params }) {
         }
     }
 
-    console.log(evolution);
-    console.log(prevolution);
-    console.log(pokemon);
+    async function getLearnset() {
+        const { data } = await api.get('/learnsets.json');
+        setLearnset(data[name].learnset);
+        console.log(data[name].learnset);
+    }
 
     useEffect(() => {
         getPokemon()
+        getLearnset()
     }, [])
 
     return (
@@ -49,17 +56,17 @@ export default function Pokemon({ params }) {
             <div className="stats">
                 <h2>Base stats</h2>
                 <h4><label htmlFor="hp">Health: {pokemon?.baseStats?.hp} </label>
-                    <meter id="hp" min={0} max={1} low={0.2} high={0.5} optimum={1} value={(pokemon?.baseStats?.hp / 255).toString()} /></h4>
+                    <meter id="hp" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(pokemon?.baseStats?.hp / 255).toString()} /></h4>
                 <h4><label htmlFor="atk">Attack: {pokemon?.baseStats?.atk} </label>
-                    <meter id="atk" min={0} max={1} low={0.2} high={0.5} optimum={1} value={(pokemon?.baseStats?.atk / 255).toString()} /></h4>
+                    <meter id="atk" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(pokemon?.baseStats?.atk / 255).toString()} /></h4>
                 <h4><label htmlFor="def">Defense: {pokemon?.baseStats?.def} </label>
-                    <meter id="def" min={0} max={1} low={0.2} high={0.5} optimum={1} value={(pokemon?.baseStats?.def / 255).toString()} /></h4>
+                    <meter id="def" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(pokemon?.baseStats?.def / 255).toString()} /></h4>
                 <h4><label htmlFor="spa">Special Attack: {pokemon?.baseStats?.spa} </label>
-                    <meter id="spa" min={0} max={1} low={0.2} high={0.5} optimum={1} value={(pokemon?.baseStats?.spa / 255).toString()} /></h4>
+                    <meter id="spa" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(pokemon?.baseStats?.spa / 255).toString()} /></h4>
                 <h4><label htmlFor="spd">Special Defense: {pokemon?.baseStats?.spd} </label>
-                    <meter id="spd" min={0} max={1} low={0.2} high={0.5} optimum={1} value={(pokemon?.baseStats?.spd / 255).toString()} /></h4>
+                    <meter id="spd" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(pokemon?.baseStats?.spd / 255).toString()} /></h4>
                 <h4><label htmlFor="spe">Speed: {pokemon?.baseStats?.spe} </label>
-                    <meter id="spe" min={0} max={1} low={0.2} high={0.5} optimum={1} value={(pokemon?.baseStats?.spe / 255).toString()} /></h4>
+                    <meter id="spe" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(pokemon?.baseStats?.spe / 255).toString()} /></h4>
             </div>
 
             <br />
@@ -106,6 +113,10 @@ export default function Pokemon({ params }) {
 
                     : <p>No evolution</p>
             }
+
+            <h2>Learnset:</h2>
+
+            <Moves learnset={learnset} typesNumbers={typesNumbers}/>
 
             <br />
 
