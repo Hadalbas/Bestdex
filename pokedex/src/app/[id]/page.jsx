@@ -105,54 +105,6 @@ export default function Pokemon({ params }) {
 
                 <br />
 
-                <br />
-
-                <h2>Abilities</h2>
-                <h4>Normal: {pokemon?.abilities ? pokemon?.abilities["0"] : "carregando"}  {pokemon?.abilities && pokemon?.abilities["1"]}</h4>
-
-                {
-                    pokemon?.abilities?.H && <h4>Hidden: {pokemon?.abilities?.H}</h4>
-                }
-
-                <br />
-
-                <h2>Evolution Line:</h2>
-
-                {
-                    pokemon?.prevo
-                        ? <div className={`detalhePokemon`}>
-                            <Link href={pokemon?.prevo}>
-                                <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${prevoNumber}.png`} width={150} height={150} alt="XXX"></Image>
-
-                                <div className="detalhePokemon-data">
-                                    <h2>#{prevolution.num}</h2>
-                                    <h2>{pokemon?.prevo}</h2>
-                                </div>
-                            </Link>
-                        </div>
-
-                        : <p>No prevolution</p>
-                }
-
-                {
-                    pokemon?.evos
-                        ? <div className={`detalhePokemon`}>
-                            <Link href={pokemon?.evos[0]}>
-                                <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${evoNumber}.png`} width={150} height={150} alt="XXX"></Image>
-
-                                <div className="detalhePokemon-data">
-                                    <h2>#{evolution.num}</h2>
-                                    <h2>{pokemon?.evos[0]}</h2>
-                                </div>
-                            </Link>
-                        </div>
-
-                        : <p>No evolution</p>
-                }
-
-                <br />
-
-                <Link href="/"><button className="exibir">Back</button></Link>
                 <div className="evolution-line">
                     <h2>Evolution Line:</h2>
 
