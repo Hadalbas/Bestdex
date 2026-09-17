@@ -12,10 +12,10 @@ export default function Pokemon({ params }) {
     const name = id.toLowerCase().replace("-", "");
     const [pokemon, setPokemon] = useState({});
     const [learnset, setLearnset] = useState({});
-    const [evolution, setEvolution] = useState({});
+    const [evolution, setEvolution] = useState([]);
     const [prevolution, setPrevolution] = useState({});
     const [number, setNumber] = useState(0)
-    const [evoNumber, setEvoNumber] = useState(0)
+    const [evoNumber, setEvoNumber] = useState([])
     const [prevoNumber, setPrevoNumber] = useState(0)
 
     const typesNumbers = { "Normal": 1, "Fighting": 2, "Flying": 3, "Poison": 4, "Ground": 5, "Rock": 6, "Bug": 7, "Ghost": 8, "Steel": 9, "Fire": 10, "Water": 11, "Grass": 12, "Electric": 13, "Psychic": 14, "Ice": 15, "Dragon": 16, "Dark": 17, "Fairy": 18, }
@@ -26,8 +26,11 @@ export default function Pokemon({ params }) {
         setNumber(data[name].num.toString().padStart(3, "0"))
 
         if (data[name]?.evos != undefined) {
-            setEvolution(data[data[name]?.evos[0].toLowerCase()]);
-            setEvoNumber((data[data[name]?.evos[0].toLowerCase()].num).toString().padStart(3, "0"))
+            data[name]?.evos.map((evo) => {
+                setEvolution(evolution => [...evolution, data[evo.toLocaleLowerCase()]]);
+                setEvoNumber(evoNumber => [...evoNumber, (data[evo.toLocaleLowerCase()].num).toString().padStart(3, "0")])
+            })
+
         }
         if (data[name]?.prevo != undefined) {
             setPrevolution(data[data[name]?.prevo.toLowerCase()]);
@@ -38,7 +41,6 @@ export default function Pokemon({ params }) {
     async function getLearnset() {
         const { data } = await api.get('/learnsets.json');
         setLearnset(data[name].learnset);
-        console.log(data[name].learnset);
     }
 
     useEffect(() => {
@@ -127,16 +129,19 @@ export default function Pokemon({ params }) {
 
                         {
                             pokemon?.evos
-                                ? <div className={`detalhePokemon`}>
-                                    <Link href={pokemon?.evos[0]}>
-                                        <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${evoNumber}.png`} width={150} height={150} alt="XXX"></Image>
+                                ? pokemon?.evos.map((evo, i) =>
 
-                                        <div className="detalhePokemon-data">
-                                            <h2>#{evolution.num}</h2>
-                                            <h2>{pokemon?.evos[0]}</h2>
-                                        </div>
-                                    </Link>
-                                </div>
+                                    <div className={`detalhePokemon`} key={i}>
+                                        <Link href={evo}>
+                                            <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${evoNumber[i]}.png`} width={150} height={150} alt="XXX"></Image>
+
+                                            <div className="detalhePokemon-data">
+                                                <h2>#{evolution[i]?.num}</h2>
+                                                <h2>{evo}</h2>
+                                            </div>
+                                        </Link>
+                                    </div>
+                                )
 
                                 : <p>No evolution</p>
                         }

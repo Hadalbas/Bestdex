@@ -17,9 +17,6 @@ export default function Moves({ learnset, typesNumbers }) {
         getAllMoves()
     }, [])
 
-    console.log(learnset)
-    console.log(moves)
-
     return (
         <>
             {
