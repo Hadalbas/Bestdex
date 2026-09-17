@@ -18,7 +18,7 @@ export default function Pokemon({ params }) {
     const [evoNumber, setEvoNumber] = useState(0)
     const [prevoNumber, setPrevoNumber] = useState(0)
 
-    const typesNumbers = { "Normal": 1,"Fighting": 2,"Flying": 3,"Poison": 4,"Ground": 5,"Rock": 6,"Bug": 7,"Ghost": 8,"Steel": 9,"Fire": 10,"Water": 11,"Grass": 12,"Electric": 13,"Psychic": 14,"Ice": 15,"Dragon": 16,"Dark": 17,"Fairy": 18,}
+    const typesNumbers = { "Normal": 1, "Fighting": 2, "Flying": 3, "Poison": 4, "Ground": 5, "Rock": 6, "Bug": 7, "Ghost": 8, "Steel": 9, "Fire": 10, "Water": 11, "Grass": 12, "Electric": 13, "Psychic": 14, "Ice": 15, "Dragon": 16, "Dark": 17, "Fairy": 18, }
 
     async function getPokemon() {
         const { data } = await api.get('/pokedex.json');
@@ -48,79 +48,158 @@ export default function Pokemon({ params }) {
 
     return (
         <>
-            <h2>#{pokemon?.num}</h2>
-            <h1>{pokemon.name}</h1>
+            <div className="pokemon-stats-page">
+                <div className="pokemon-stats">
+                    <div className="pokemon-exhibited">
+                        <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${number}.png`} width={300} height={300} alt="XXX"></Image>
+                        <div className="pokemon-stats-header">
+                            <h2>#{pokemon?.num}</h2>
+                            <hr />
+                            <h1>{pokemon.name}</h1>
+                        </div>
 
-            <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${number}.png`} width={300} height={300} alt="XXX"></Image>
+                    </div>
+                    <div className="stats-abilities-container">
+                        <div className="stats-container">
+                            <h2>Base stats</h2>
+                            <div className="stats">
+                                <div className="stat-row">
+                                    <label htmlFor="hp" className="stat-label">Health: {pokemon?.baseStats?.hp}</label>
+                                    <meter id="hp" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(pokemon?.baseStats?.hp / 255).toString()} className="stat-meter" />
+                                </div>
+                                <div className="stat-row">
+                                    <label htmlFor="atk" className="stat-label">Attack: {pokemon?.baseStats?.atk}</label>
+                                    <meter id="atk" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(pokemon?.baseStats?.atk / 255).toString()} className="stat-meter" />
+                                </div>
+                                <div className="stat-row">
+                                    <label htmlFor="def" className="stat-label">Defense: {pokemon?.baseStats?.def}</label>
+                                    <meter id="def" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(pokemon?.baseStats?.def / 255).toString()} className="stat-meter" />
+                                </div>
+                                <div className="stat-row">
+                                    <label htmlFor="spa" className="stat-label">Special Attack: {pokemon?.baseStats?.spa}</label>
+                                    <meter id="spa" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(pokemon?.baseStats?.spa / 255).toString()} className="stat-meter" />
+                                </div>
+                                <div className="stat-row">
+                                    <label htmlFor="spd" className="stat-label">Special Defense: {pokemon?.baseStats?.spd}</label>
+                                    <meter id="spd" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(pokemon?.baseStats?.spd / 255).toString()} className="stat-meter" />
+                                </div>
+                                <div className="stat-row">
+                                    <label htmlFor="spe" className="stat-label">Speed: {pokemon?.baseStats?.spe}</label>
+                                    <meter id="spe" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(pokemon?.baseStats?.spe / 255).toString()} className="stat-meter" />
+                                </div>
+                            </div>
+                        </div>
 
-            <div className="stats">
-                <h2>Base stats</h2>
-                <h4><label htmlFor="hp">Health: {pokemon?.baseStats?.hp} </label>
-                    <meter id="hp" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(pokemon?.baseStats?.hp / 255).toString()} /></h4>
-                <h4><label htmlFor="atk">Attack: {pokemon?.baseStats?.atk} </label>
-                    <meter id="atk" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(pokemon?.baseStats?.atk / 255).toString()} /></h4>
-                <h4><label htmlFor="def">Defense: {pokemon?.baseStats?.def} </label>
-                    <meter id="def" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(pokemon?.baseStats?.def / 255).toString()} /></h4>
-                <h4><label htmlFor="spa">Special Attack: {pokemon?.baseStats?.spa} </label>
-                    <meter id="spa" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(pokemon?.baseStats?.spa / 255).toString()} /></h4>
-                <h4><label htmlFor="spd">Special Defense: {pokemon?.baseStats?.spd} </label>
-                    <meter id="spd" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(pokemon?.baseStats?.spd / 255).toString()} /></h4>
-                <h4><label htmlFor="spe">Speed: {pokemon?.baseStats?.spe} </label>
-                    <meter id="spe" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(pokemon?.baseStats?.spe / 255).toString()} /></h4>
+                        <br />
+
+                        <div className="abilities">
+                            <h2>Abilities</h2>
+                            <h4>Normal: {pokemon?.abilities ? pokemon?.abilities["0"] : "carregando"}  {pokemon?.abilities && pokemon?.abilities["1"]}</h4>
+
+                            {
+                                pokemon?.abilities?.H && <h4>Hidden: {pokemon?.abilities?.H}</h4>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <br />
+
+                <br />
+
+                <h2>Abilities</h2>
+                <h4>Normal: {pokemon?.abilities ? pokemon?.abilities["0"] : "carregando"}  {pokemon?.abilities && pokemon?.abilities["1"]}</h4>
+
+                {
+                    pokemon?.abilities?.H && <h4>Hidden: {pokemon?.abilities?.H}</h4>
+                }
+
+                <br />
+
+                <h2>Evolution Line:</h2>
+
+                {
+                    pokemon?.prevo
+                        ? <div className={`detalhePokemon`}>
+                            <Link href={pokemon?.prevo}>
+                                <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${prevoNumber}.png`} width={150} height={150} alt="XXX"></Image>
+
+                                <div className="detalhePokemon-data">
+                                    <h2>#{prevolution.num}</h2>
+                                    <h2>{pokemon?.prevo}</h2>
+                                </div>
+                            </Link>
+                        </div>
+
+                        : <p>No prevolution</p>
+                }
+
+                {
+                    pokemon?.evos
+                        ? <div className={`detalhePokemon`}>
+                            <Link href={pokemon?.evos[0]}>
+                                <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${evoNumber}.png`} width={150} height={150} alt="XXX"></Image>
+
+                                <div className="detalhePokemon-data">
+                                    <h2>#{evolution.num}</h2>
+                                    <h2>{pokemon?.evos[0]}</h2>
+                                </div>
+                            </Link>
+                        </div>
+
+                        : <p>No evolution</p>
+                }
+
+                <br />
+
+                <Link href="/"><button className="exibir">Back</button></Link>
+                <div className="evolution-line">
+                    <h2>Evolution Line:</h2>
+
+                    <div className="evolutions">
+                        {
+                            pokemon?.prevo
+                                ? <div className={`detalhePokemon`}>
+                                    <Link href={pokemon?.prevo}>
+                                        <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${prevoNumber}.png`} width={150} height={150} alt="XXX"></Image>
+
+                                        <div className="detalhePokemon-data">
+                                            <h2>#{prevolution.num}</h2>
+                                            <h2>{pokemon?.prevo}</h2>
+                                        </div>
+                                    </Link>
+                                </div>
+
+                                : <p>No prevolution</p>
+                        }
+
+                        {
+                            pokemon?.evos
+                                ? <div className={`detalhePokemon`}>
+                                    <Link href={pokemon?.evos[0]}>
+                                        <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${evoNumber}.png`} width={150} height={150} alt="XXX"></Image>
+
+                                        <div className="detalhePokemon-data">
+                                            <h2>#{evolution.num}</h2>
+                                            <h2>{pokemon?.evos[0]}</h2>
+                                        </div>
+                                    </Link>
+                                </div>
+
+                                : <p>No evolution</p>
+                        }
+                    </div>
+                </div>
+
+                <h2>Learnset:</h2>
+
+                <Moves learnset={learnset} typesNumbers={typesNumbers} />
+
+                <br />
+
+                <Link href="/"><button className="exibir">Back</button></Link>
             </div>
 
-            <br />
-
-            <h2>Abilities</h2>
-            <h4>Normal: {pokemon?.abilities ? pokemon?.abilities["0"] : "carregando"}  {pokemon?.abilities && pokemon?.abilities["1"]}</h4>
-
-            {
-                pokemon?.abilities?.H && <h4>Hidden: {pokemon?.abilities?.H}</h4>
-            }
-
-            <br />
-
-            <h2>Evolution Line:</h2>
-
-            {
-                pokemon?.prevo
-                    ? <div className={`detalhePokemon`}>
-                        <Link href={pokemon?.prevo}>
-                            <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${prevoNumber}.png`} width={150} height={150} alt="XXX"></Image>
-
-                            <div className="detalhePokemon-data">
-                                <h2>#{prevolution.num}</h2>
-                                <h2>{pokemon?.prevo}</h2>
-                            </div>
-                        </Link>
-                    </div>
-
-                    : <p>No prevolution</p>
-            }
-
-            {
-                pokemon?.evos
-                    ? <div className={`detalhePokemon`}>
-                        <Link href={pokemon?.evos[0]}>
-                            <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${evoNumber}.png`} width={150} height={150} alt="XXX"></Image>
-
-                            <div className="detalhePokemon-data">
-                                <h2>#{evolution.num}</h2>
-                                <h2>{pokemon?.evos[0]}</h2>
-                            </div>
-                        </Link>
-                    </div>
-
-                    : <p>No evolution</p>
-            }
-
-            <h2>Learnset:</h2>
-
-            <Moves learnset={learnset} typesNumbers={typesNumbers}/>
-
-            <br />
-
-            <Link href="/"><button className="exibir">Back</button></Link>
         </>
     )
 }
