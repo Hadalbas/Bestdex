@@ -8,7 +8,7 @@ export default function Pokemon({ pokemon, typesNumbers }) {
     return (
         <>
                 <div className={`detalhePokemon`}>
-                    <Link href={pokemon.name}>
+                    <Link href={pokemon.name.replace(/ /, "")}>
                     <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${numero}.png`} width={150} height={150} alt="XXX"></Image>
 
                     <div className="detalhePokemon-data">
