@@ -9,7 +9,7 @@ import { useState, useEffect, use } from "react"
 export default function Pokemon({ params }) {
 
     const { id } = use(params);
-    const name = id.toLowerCase().replace("-", "");
+    const name = id.toLowerCase().replace(/-|[.]| /g, "");
     const [pokemon, setPokemon] = useState({});
     const [learnset, setLearnset] = useState({});
     const [evolution, setEvolution] = useState([]);
@@ -28,14 +28,14 @@ export default function Pokemon({ params }) {
 
         if (data[name]?.evos != undefined) {
             data[name]?.evos.map((evo) => {
-                setEvolution(evolution => [...evolution, data[evo.toLocaleLowerCase()]]);
-                setEvoNumber(evoNumber => [...evoNumber, (data[evo.toLocaleLowerCase()].num).toString().padStart(3, "0")])
+                setEvolution(evolution => [...evolution, data[evo.toLocaleLowerCase().replace(/-|[.]| /g, "")]]);
+                setEvoNumber(evoNumber => [...evoNumber, (data[evo.toLocaleLowerCase().replace(/-|[.]| /g, "")].num).toString().padStart(3, "0")])
             })
 
         }
         if (data[name]?.prevo != undefined) {
-            setPrevolution(data[data[name]?.prevo.toLowerCase()]);
-            setPrevoNumber((data[data[name]?.prevo.toLowerCase()].num).toString().padStart(3, "0"))
+            setPrevolution(data[data[name]?.prevo.toLowerCase().replace(/-|[.]| /g, "")]);
+            setPrevoNumber((data[data[name]?.prevo.toLowerCase().replace(/-|[.]| /g, "")].num).toString().padStart(3, "0"))
         }
     }
 
@@ -64,13 +64,12 @@ export default function Pokemon({ params }) {
             <div className="pokemon-stats-page">
                 <div className="pokemon-stats">
                     <div className="pokemon-exhibited">
-                        <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${number}.png`} width={300} height={300} alt="XXX"></Image>
+                        <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${number}${pokemon?.baseSpecies ? "_f2" : ""}.png`} width={300} height={300} alt="XXX"></Image>
                         <div className="pokemon-stats-header">
                             <h2>#{pokemon?.num}</h2>
                             <hr />
                             <h1>{pokemon.name}</h1>
                         </div>
-
                     </div>
                     <div className="stats-abilities-container">
                         <div className="stats-container">
@@ -107,7 +106,7 @@ export default function Pokemon({ params }) {
 
                         <div className="abilities">
                             <h2>Abilities</h2>
-                            <h4>Normal: {pokemon?.abilities ? pokemon?.abilities["0"] : "carregando"}  {pokemon?.abilities && pokemon?.abilities["1"]}</h4>
+                            <h4>Normal: {pokemon?.abilities ? pokemon?.abilities["0"] : "carregando"} {(pokemon?.abilities && pokemon?.abilities["1"]) != undefined && <>{"and " + pokemon?.abilities["1"]}</>}</h4>
 
                             {
                                 pokemon?.abilities?.H && <h4>Hidden: {pokemon?.abilities?.H}</h4>
@@ -125,8 +124,8 @@ export default function Pokemon({ params }) {
                         {
                             pokemon?.prevo
                                 ? <div className={`detalhePokemon`}>
-                                    <Link href={pokemon?.prevo}>
-                                        <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${prevoNumber}.png`} width={150} height={150} alt="XXX"></Image>
+                                    <Link href={pokemon?.prevo.replace(/ /, "")}>
+                                        <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${prevoNumber}${prevolution?.baseSpecies ? "_f2" : ""}.png`} width={150} height={150} alt="XXX"></Image>
 
                                         <div className="detalhePokemon-data">
                                             <h2>#{prevolution.num}</h2>
@@ -143,8 +142,8 @@ export default function Pokemon({ params }) {
                                 ? pokemon?.evos.map((evo, i) =>
 
                                     <div className={`detalhePokemon`} key={i}>
-                                        <Link href={evo}>
-                                            <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${evoNumber[i]}.png`} width={150} height={150} alt="XXX"></Image>
+                                        <Link href={evo.replace(/ /, "")}>
+                                            <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${evoNumber[i]}${evolution[i]?.baseSpecies ? "_f2" : ""}.png`} width={150} height={150} alt="XXX"></Image>
 
                                             <div className="detalhePokemon-data">
                                                 <h2>#{evolution[i]?.num}</h2>
@@ -170,13 +169,14 @@ export default function Pokemon({ params }) {
                 </div>
                 </div>
 
+                <Link href="/"><button className="exibir">Back</button></Link>
+
                 <h2>Learnset:</h2>
                 
                 <Moves learnset={learnset} typesNumbers={typesNumbers} />
 
                 <br />
 
-                <Link href="/"><button className="exibir">Back</button></Link>
             </div>
 
         </>
