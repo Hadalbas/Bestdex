@@ -7,9 +7,14 @@
 }
 
 body {
-  background-color: #080B38;
   color: #F4F4F6;
   text-align: center;
+}
+
+.main-page {
+  background-color: #080B38;
+  min-height: 100vh;
+  z-index: 0;
 }
 
 button {
@@ -21,20 +26,22 @@ button:hover {
   background-color: darkgray;
 }
 
-.title {
+.header-title {
   font-size: 50px;
+  cursor: default;
 }
 
 header{
   position: fixed;
   top: 0px;
-  width: 100%; height: 100px;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #080B38;
   border-radius: 0 0 34px 34px;
-  z-index: 1;
+  z-index: 2;
+  padding: 35px 0;
 }
 
 nav {
@@ -87,7 +94,6 @@ hr {
 
 .banner-container {
   height: 850px;
-  margin-top: -50px;
   padding: 50px 0 0 0;
   background-image: url(../../public/Texto-do-seu-parágrafo.png);
   background-repeat: no-repeat;
@@ -95,7 +101,7 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: -1;
+  z-index: 1;
   position: relative;
 }
 
@@ -103,6 +109,7 @@ hr {
   font-size: 25px;
   width: 50%;
   text-align: center;
+  cursor: default;
 }
 
 .banner-text h3 {
@@ -119,13 +126,24 @@ hr {
   margin: 20px 10px 50px 10px;
 }
 
-.search-container {
+.search-section {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
-  gap: 50px;
+  margin: 40px 0; /* Controla o espaçamento do topo e da base de forma uniforme */
+}
+
+.search-container {
+  background-color: #0c1047;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; /* Permite que o seletor vá para baixo se a tela for muito pequena (responsividade) */
+  gap: 30px; /* Reduzido de 50px para os elementos não ficarem espalhados demais */
+  padding: 20px 40px;
+  border: #111555 3px solid;
+  border-radius: 20px;
 }
 
 .search-filter {
@@ -155,14 +173,16 @@ hr {
 
 .search {
   width: 250px;
-  border: 2px white solid;
+  background-color: rgba(255, 255, 255, 0.08); /* Fundo semi-transparente */
+  border: 1px solid rgba(255, 255, 255, 0.2); /* Borda sutil */
   border-radius: 20px;
-  padding-left: 15px;
+  padding: 5px 15px;
   font-size: larger;
+  color: white;
 }
-
 .search:focus {
-  border: 2px white solid;
+  border: 1px solid #4CAF50; /* Brilha uma cor quando clica */
+  outline: none;
 }
 
 .types-text {
@@ -184,9 +204,9 @@ hr {
 .detalhePokemon {
   position: relative;
   isolation: isolate;
-  border: 2px white solid;
-  background-color: #000000;
-  transition: 0.3s;
+  border: 1px solid rgba(255, 255, 255, 0.12); /* Uma borda fina e muito mais elegante */
+  background-color: #0b0e38;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   border-radius: 20px;
   width: 250px;
   height: 420px;
@@ -195,6 +215,13 @@ hr {
   display: flex;
   align-items: center;
   padding: 15px 0 5px 0;
+}
+
+/* Efeito de hover profissionalizado */
+.detalhePokemon:hover {
+  transform: translateY(-5px) scale(1.02);
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .detalhePokemon::before {
@@ -225,10 +252,6 @@ hr {
   align-items: center;
 }
 
-.detalhePokemon:hover {
-  transform: scale(1.05);
-}
-
 .detalhePokemon:hover::before {
   transform: rotate(0deg);
 }
@@ -239,15 +262,11 @@ hr {
   background-color: #2d313b;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between; /* ⬅️ Muda de center para space-between */
   align-items: center;
-  gap: 8px;
-  padding: 15px;
+  padding: 20px 15px; /* Aumenta um pouco o padding interno */
   border-radius: 15px;
   color: #ffffff;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   margin-top: 10px;
 }
 
@@ -292,8 +311,9 @@ hr {
 }
 
 .pokemon-stats-page {
-  width: 100vw; height: 100vh;
-  background: #080B38;
+  margin-top: 100px;
+  width: 100%; height: 100%;
+  background: var(--pokemon-bg-color, #050729);
   padding-top: 50px;
   display: flex;
   flex-direction: column;
@@ -301,8 +321,7 @@ hr {
 }
 
 .pokemon-stats {
-  background: rgb(7, 7, 107);
-  width: 70%;
+  width: 90%;
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -315,20 +334,28 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 20px;
+  gap: 50px;
   padding: 10px;
   margin-left: 50px;
 }
 
 .pokemon-exhibited img {
-  width: 350px;
-  height: 350px;
+  background: radial-gradient(circle, hsla(0, 0%, 100%, 0.125) 0%, #0000 72.5%);
+  width: 400px;
+  height: 400px;
+  padding: 40px;
 }
 
 .pokemon-stats-header {
   display: flex;
   flex-direction: column;
   text-align: justify;
+}
+
+.pokemon-stats-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
 }
 
 .pokemon-stats-header h2 {
@@ -368,6 +395,7 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   gap: 20px;
 }
 
@@ -403,8 +431,8 @@ hr {
 }
 
 .stat-label {
-  font-size: 16px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 500;
   letter-spacing: 0.5px;
 }
 
@@ -414,14 +442,18 @@ hr {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
+  accent-color: #4CAF50;
   border-radius: 50px;
   overflow: hidden;
+  border: none;
+  box-shadow: none;
+  background: rgba(255,255,255,0.1);
 }
 
 .stat-meter::-webkit-meter-bar {
   height: 30px;
   border-radius: 4px;
-  background: #ddd;
+  background: rgba(255,255,255,0.1);
   border: none;
 }
 
