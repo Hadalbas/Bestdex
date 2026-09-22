@@ -17,6 +17,7 @@ export default function Pokemon({ params }) {
     const [number, setNumber] = useState(0)
     const [evoNumber, setEvoNumber] = useState([])
     const [prevoNumber, setPrevoNumber] = useState(0)
+    const [isOpen, setIsOpen] = useState(false);
 
     const typesNumbers = { "Normal": 1, "Fighting": 2, "Flying": 3, "Poison": 4, "Ground": 5, "Rock": 6, "Bug": 7, "Ghost": 8, "Steel": 9, "Fire": 10, "Water": 11, "Grass": 12, "Electric": 13, "Psychic": 14, "Ice": 15, "Dragon": 16, "Dark": 17, "Fairy": 18, }
 
@@ -50,6 +51,16 @@ export default function Pokemon({ params }) {
 
     return (
         <>
+            <header>
+                <nav>
+                    <li><h1 className="title">Bestdex</h1></li>
+                <ul> {/* Ainda não foram feitas as páginas */}
+                    <li><Link href="/"><i className="fa-solid fa-house"></i> Home</Link></li>
+                    <li><Link href="/trade"><i className="fa-solid fa-exchange-alt"></i> Trade</Link></li>
+                    <li><Link href="/account"><i className="fa-solid fa-user"></i> Account</Link></li> {/* Ainda necessário criar um sistema de login */}
+                </ul>
+                </nav>
+            </header>
             <div className="pokemon-stats-page">
                 <div className="pokemon-stats">
                     <div className="pokemon-exhibited">
@@ -148,8 +159,19 @@ export default function Pokemon({ params }) {
                     </div>
                 </div>
 
-                <h2>Learnset:</h2>
+                <div className="accordion-container">
+                    <div className="accordion-container">
+                    <button className={`accordion ${isOpen ? "active" : ""}`} onClick={() => setIsOpen(!isOpen)}>Learn set <i className="fa-solid fa-caret-down"></i> </button>
+                    {isOpen && (
+                        <div className="panel" style={{ display: "block" }}>
+                            <p>Conteúdo que aparece e desaparece!</p>
+                        </div>
+                    )}
+                </div>
+                </div>
 
+                <h2>Learnset:</h2>
+                
                 <Moves learnset={learnset} typesNumbers={typesNumbers} />
 
                 <br />
