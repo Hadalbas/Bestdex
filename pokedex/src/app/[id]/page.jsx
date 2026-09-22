@@ -4,6 +4,7 @@ import Moves from "@/components/ListMoves";
 import api from "@/lib/api";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState, useEffect, use } from "react"
 
 export default function Pokemon({ params }) {
@@ -12,11 +13,13 @@ export default function Pokemon({ params }) {
     const name = id.toLowerCase().replace(/-|[.]| /g, "");
     const [pokemon, setPokemon] = useState({});
     const [learnset, setLearnset] = useState({});
+    const [baseForme, setBaseForme] = useState({});
     const [evolution, setEvolution] = useState([]);
     const [prevolution, setPrevolution] = useState({});
     const [number, setNumber] = useState(0)
     const [evoNumber, setEvoNumber] = useState([])
     const [prevoNumber, setPrevoNumber] = useState(0)
+
 
     const typesNumbers = { "Normal": 1, "Fighting": 2, "Flying": 3, "Poison": 4, "Ground": 5, "Rock": 6, "Bug": 7, "Ghost": 8, "Steel": 9, "Fire": 10, "Water": 11, "Grass": 12, "Electric": 13, "Psychic": 14, "Ice": 15, "Dragon": 16, "Dark": 17, "Fairy": 18, }
 
@@ -25,6 +28,9 @@ export default function Pokemon({ params }) {
         setPokemon(data[name]);
         setNumber(data[name].num.toString().padStart(3, "0"))
 
+        if (data[name]?.baseSpecies != undefined) {
+            setBaseForme(data[data[name]?.baseSpecies.toLowerCase().replace(/-|[.]| /g, "")]);
+        }
         if (data[name]?.evos != undefined) {
             data[name]?.evos.map((evo) => {
                 setEvolution(evolution => [...evolution, data[evo.toLocaleLowerCase().replace(/-|[.]| /g, "")]]);
@@ -40,7 +46,7 @@ export default function Pokemon({ params }) {
 
     async function getLearnset() {
         const { data } = await api.get('/learnsets.json');
-        setLearnset(data[name].learnset);
+        data[name]?.learnset && setLearnset(data[name].learnset)
     }
 
     useEffect(() => {
@@ -48,12 +54,35 @@ export default function Pokemon({ params }) {
         getLearnset()
     }, [])
 
+    const router = useRouter();
+
+    function handleFormeChange(e) {
+        router.push(`/${e.target.value.replace(/ /, "")}`)
+    }
+
     return (
         <>
             <div className="pokemon-stats-page">
+
+
+                {pokemon?.formeOrder || pokemon?.baseSpecies
+                    ?
+                    <div className="select-container">
+                        <label htmlFor="Formes" className="types-text">Select forme: </label>
+
+                        <select name="Formes" defaultValue={pokemon.name} onChange={handleFormeChange}>
+                            {pokemon?.formeOrder 
+                            ? pokemon.formeOrder.map((forme) => <option key={forme} value={forme}>{forme}</option>)
+                            : baseForme.formeOrder.map((forme) => <option key={forme} value={forme}>{forme}</option>)
+                            }
+                        </select>
+                    </div>
+                    : <></>
+                }
+
                 <div className="pokemon-stats">
                     <div className="pokemon-exhibited">
-                        <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${number}${pokemon?.baseSpecies ? "_f2" : ""}.png`} width={300} height={300} alt="XXX"></Image>
+                        <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${number}${pokemon?.baseSpecies ? `_f${baseForme.formeOrder.indexOf(pokemon.name)+1}` : ""}.png`} width={300} height={300} alt="XXX"></Image>
                         <div className="pokemon-stats-header">
                             <h2>#{pokemon?.num}</h2>
                             <hr />
@@ -149,10 +178,7 @@ export default function Pokemon({ params }) {
 
                 <Link href="/"><button className="exibir">Back</button></Link>
 
-                <h2>Learnset:</h2>
-
                 <Moves learnset={learnset} typesNumbers={typesNumbers} />
-
                 <br />
 
             </div>
