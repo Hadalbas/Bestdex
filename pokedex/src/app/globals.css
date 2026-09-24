@@ -56,9 +56,10 @@ ul{
   width: 40%;
   display: flex;
   justify-content: space-evenly;
+  margin: 0;
 }
 
-li {
+nav li {
   font-size: 25px;
   text-decoration: none;
   transition: 0.2s;
@@ -174,15 +175,15 @@ hr {
 
 .search {
   width: 250px;
-  background-color: rgba(255, 255, 255, 0.08); /* Fundo semi-transparente */
-  border: 1px solid rgba(255, 255, 255, 0.2); /* Borda sutil */
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 20px;
   padding: 5px 15px;
   font-size: larger;
   color: white;
 }
 .search:focus {
-  border: 1px solid #4CAF50; /* Brilha uma cor quando clica */
+  border: 1px solid #4CAF50;
   outline: none;
 }
 
