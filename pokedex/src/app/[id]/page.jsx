@@ -12,12 +12,14 @@ export default function Pokemon({ params }) {
     const { id } = use(params);
     const name = id.toLowerCase().replace(/-|[.]| /g, "");
     const [pokemon, setPokemon] = useState({});
-    const [learnset, setLearnset] = useState({});
     const [baseForme, setBaseForme] = useState({});
-    const [evolution, setEvolution] = useState([]);
-    const [prevolution, setPrevolution] = useState({});
     const [number, setNumber] = useState(0)
-    const [evoNumber, setEvoNumber] = useState([])
+    const [learnset, setLearnset] = useState({});
+    const [evolution, setEvolution] = useState([]);
+    const [baseFormeEvo, setBaseFormeEvo] = useState([]);
+    const [evoNumber, setEvoNumber] = useState([]);
+    const [prevolution, setPrevolution] = useState({});
+    const [baseFormePrevo, setBaseFormePrevo] = useState({});
     const [prevoNumber, setPrevoNumber] = useState(0)
 
 
@@ -33,14 +35,26 @@ export default function Pokemon({ params }) {
         }
         if (data[name]?.evos != undefined) {
             data[name]?.evos.map((evo) => {
-                setEvolution(evolution => [...evolution, data[evo.toLocaleLowerCase().replace(/-|[.]| /g, "")]]);
-                setEvoNumber(evoNumber => [...evoNumber, (data[evo.toLocaleLowerCase().replace(/-|[.]| /g, "")].num).toString().padStart(3, "0")])
+                const evol = data[evo.toLocaleLowerCase().replace(/-|[.]| /g, "")]
+
+                setEvolution(evolution => [...evolution, evol]);
+                setEvoNumber(evoNumber => [...evoNumber, (evol.num).toString().padStart(3, "0")])
+
+                if (evol?.baseSpecies != undefined) {
+                    setBaseFormeEvo(data[evol?.baseSpecies.toLowerCase().replace(/-|[.]| /g, "")]);
+                }
             })
 
         }
         if (data[name]?.prevo != undefined) {
-            setPrevolution(data[data[name]?.prevo.toLowerCase().replace(/-|[.]| /g, "")]);
-            setPrevoNumber((data[data[name]?.prevo.toLowerCase().replace(/-|[.]| /g, "")].num).toString().padStart(3, "0"))
+            const prevo = data[data[name]?.prevo.toLowerCase().replace(/-|[.]| /g, "")]
+
+            setPrevolution(prevo);
+            setPrevoNumber((prevo.num).toString().padStart(3, "0"))
+
+            if (prevo?.baseSpecies != undefined) {
+                setBaseFormePrevo(data[prevo?.baseSpecies.toLowerCase().replace(/-|[.]| /g, "")]);
+            }
         }
     }
 
@@ -70,10 +84,10 @@ export default function Pokemon({ params }) {
                     <div className="select-container">
                         <label htmlFor="Formes" className="types-text">Select forme: </label>
 
-                        <select name="Formes" defaultValue={pokemon.name} onChange={handleFormeChange} className="dropdown" style={{width: "150px"}}>
-                            {pokemon?.formeOrder 
-                            ? pokemon.formeOrder.map((forme, i) => <option key={i} value={forme}>{forme}</option>)
-                            : baseForme.formeOrder.map((forme, i) => <option key={i} value={forme}>{forme}</option>)
+                        <select name="Formes" defaultValue={pokemon.name} onChange={handleFormeChange} className="dropdown" style={{ width: "150px" }}>
+                            {pokemon?.formeOrder
+                                ? pokemon.formeOrder.map((forme, i) => <option key={i} value={forme}>{forme}</option>)
+                                : baseForme.formeOrder.map((forme, i) => <option key={i} value={forme}>{forme}</option>)
                             }
                         </select>
                     </div>
@@ -82,7 +96,7 @@ export default function Pokemon({ params }) {
 
                 <div className="pokemon-stats">
                     <div className="pokemon-exhibited">
-                        <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${number}${(pokemon?.baseSpecies && pokemon.num != 744) ? `_f${baseForme.formeOrder.indexOf(pokemon.name)+1}` : ""}.png`} width={300} height={300} alt="Image not found"></Image>
+                        <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${number}${(pokemon?.baseSpecies && pokemon.num != 744) ? `_f${baseForme.formeOrder.indexOf(pokemon.name) + 1}` : ""}.png`} width={300} height={300} alt="Image not found"></Image>
                         <div className="pokemon-stats-header">
                             <h2>#{pokemon?.num}</h2>
                             <hr />
@@ -143,7 +157,7 @@ export default function Pokemon({ params }) {
                             pokemon?.prevo
                                 ? <div className={`detalhePokemon`}>
                                     <Link href={pokemon?.prevo.replace(/ /, "")}>
-                                        <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${prevoNumber}${(prevolution?.baseSpecies && prevoNumber != 744) ? `_f${baseForme?.formeOrder.indexOf(pokemon.name)+1}` : ""}.png`} width={150} height={150} alt="Image not found"></Image>
+                                        <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${prevoNumber}${(prevolution?.baseSpecies && prevoNumber != 744) ? `_f${baseFormePrevo?.formeOrder?.indexOf(prevolution.name) + 1}` : ""}.png`} width={150} height={150} alt="Image not found"></Image>
 
                                         <div className="detalhePokemon-data">
                                             <h2>#{prevolution.num}</h2>
@@ -161,7 +175,7 @@ export default function Pokemon({ params }) {
 
                                     <div className={`detalhePokemon`} key={i}>
                                         <Link href={evo.replace(/ /, "")}>
-                                            <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${evoNumber[i]}${(evolution[i]?.baseSpecies && evoNumber != 744) ? `_f${baseForme?.formeOrder.indexOf(pokemon.name)+1}` : ""}.png`} width={150} height={150} alt="Image not found"></Image>
+                                            <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${evoNumber[i]}${(evolution[i]?.baseSpecies) ? `_f${baseFormeEvo?.formeOrder.indexOf(evo) + 1}` : ""}.png`} width={150} height={150} alt="Image not found"></Image>
 
                                             <div className="detalhePokemon-data">
                                                 <h2>#{evolution[i]?.num}</h2>
