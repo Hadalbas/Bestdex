@@ -1,6 +1,8 @@
 import Link from "next/link";
-import { Montserrat } from "next/font/google";
+import 'bootstrap/dist/css/bootstrap.css';
 import "./globals.css";
+import { Montserrat } from "next/font/google";
+import BootstrapClient from '@/components/BootstrapClient.jsx';
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 
@@ -16,7 +18,19 @@ export default function RootLayout({ children }) {
       <head>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossOrigin="anonymous" referrerPolicy="no-referrer"></link>
       </head>
-      <body>{children}</body>
+      <body>{children}
+        <header>
+          <nav>
+            <h1 className="header-title">Bestdex</h1>
+            <ul>
+              <li><Link href="/"><i className="fa-solid fa-house"></i> Home</Link></li>
+              <li><Link href="/trade"><i className="fa-solid fa-exchange-alt"></i> Trade</Link></li>
+              <li><Link href="/account"><i className="fa-solid fa-user"></i> Account</Link></li>
+            </ul>
+          </nav>
+        </header>
+        <BootstrapClient />
+      </body>
     </html>
   );
 }

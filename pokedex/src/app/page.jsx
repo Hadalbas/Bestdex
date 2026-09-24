@@ -23,17 +23,7 @@ export default function Home() {
   return (
     <>
       <div className="main-page">
-        <header>
-          <nav>
-            {/* Removido o <li> solto para manter o HTML válido e bem alinhado */}
-            <h1 className="header-title">Bestdex</h1>
-            <ul>
-              <li><Link href="/"><i className="fa-solid fa-house"></i> Home</Link></li>
-              <li><Link href="/trade"><i className="fa-solid fa-exchange-alt"></i> Trade</Link></li>
-              <li><Link href="/account"><i className="fa-solid fa-user"></i> Account</Link></li>
-            </ul>
-          </nav>
-        </header>
+        
 
         <section className="banner">
           <div className="banner-container">
@@ -42,12 +32,10 @@ export default function Home() {
               <hr />
               <h3>Discover and collect all your favorite Pokémon <br /> and create the ultimate deck! <br /> Trade with other trainers and improve your strategy!</h3>
             </div>
-            {/* Mantida a imagem do Pikachu exatamente como estava */}
             <Image src="/c/3.svg" height={500} width={500} alt="pikachu image"/>
           </div>
         </section>
 
-        {/* Seção de busca purificada (removidas tags <br /> soltas que quebravam o layout) */}
         <section className="search-section">
           <div className="search-container">
             <div className="search-filter">
@@ -82,7 +70,6 @@ export default function Home() {
           </div>
         </section>
         
-        {/* Listagem dos cards alinhados */}
         <Lista lista={pokemon} search={search} tipo={tipo}/>
       </div>
     </>

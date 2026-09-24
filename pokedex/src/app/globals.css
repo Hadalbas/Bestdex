@@ -39,8 +39,9 @@ header{
   justify-content: center;
   align-items: center;
   background-color: #080B38;
+  border-bottom: #13175a 3px solid;
   border-radius: 0 0 34px 34px;
-  z-index: 2;
+  z-index: 1000;
   padding: 35px 0;
 }
 
@@ -55,9 +56,10 @@ ul{
   width: 40%;
   display: flex;
   justify-content: space-evenly;
+  margin: 0;
 }
 
-li {
+nav li {
   font-size: 25px;
   text-decoration: none;
   transition: 0.2s;
@@ -131,7 +133,7 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 40px 0; /* Controla o espaçamento do topo e da base de forma uniforme */
+  margin: 40px 0;
 }
 
 .search-container {
@@ -139,8 +141,8 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap; /* Permite que o seletor vá para baixo se a tela for muito pequena (responsividade) */
-  gap: 30px; /* Reduzido de 50px para os elementos não ficarem espalhados demais */
+  flex-wrap: wrap;
+  gap: 30px;
   padding: 20px 40px;
   border: #111555 3px solid;
   border-radius: 20px;
@@ -173,15 +175,15 @@ hr {
 
 .search {
   width: 250px;
-  background-color: rgba(255, 255, 255, 0.08); /* Fundo semi-transparente */
-  border: 1px solid rgba(255, 255, 255, 0.2); /* Borda sutil */
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 20px;
   padding: 5px 15px;
   font-size: larger;
   color: white;
 }
 .search:focus {
-  border: 1px solid #4CAF50; /* Brilha uma cor quando clica */
+  border: 1px solid #4CAF50;
   outline: none;
 }
 
@@ -262,9 +264,9 @@ hr {
   background-color: #2d313b;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* ⬅️ Muda de center para space-between */
+  justify-content: space-between;
   align-items: center;
-  padding: 20px 15px; /* Aumenta um pouco o padding interno */
+  padding: 20px 15px;
   border-radius: 15px;
   color: #ffffff;
   margin-top: 10px;
@@ -318,6 +320,9 @@ hr {
   display: flex;
   flex-direction: column;
   align-items: center;
+  color: white;
+  list-style-type: none;
+  text-decoration: none;
 }
 
 .pokemon-stats {
@@ -331,6 +336,7 @@ hr {
 }
 
 .pokemon-exhibited {
+  width: 40%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -364,22 +370,20 @@ hr {
   letter-spacing: 0.5px;
 }
 
-.stats-abilities-container {
-  width: 40%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-radius: 100px 60px 60px 100px;
-}
-
 .abilities {
+  background-color: #0c1047;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 10px;
-  margin-top: 20px;
+  margin: 20px auto;
+  padding: 20px 30px;
+  border-radius: 20px;
+}
+
+.abilities h2 {
+  font-weight: 600;
 }
 
 .evolution-line {
@@ -405,7 +409,7 @@ hr {
 }
 
 .stats-container {
-  width: 70%;
+  width: 40%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -476,4 +480,74 @@ hr {
   margin: 5px 0;
   width: 80%;
   border: 1px solid white;
+}
+
+.accordion {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 50px 0 50px 0;
+}
+
+.accordion-item {
+  width: 100%;
+  overflow: hidden;
+}
+
+.move {
+  display: flex;
+}
+
+.learnset-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+  padding: 15px;
+  background-color: #13175a;
+  border-radius: 0 0 4px 4px;
+}
+
+.move {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: auto !important;
+  height: auto !important;
+  padding: 10px !important;
+  border-radius: 8px !important;
+  background-color: white !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.learnset-title {
+  color: white;
+  font-weight: 700;
+}
+
+.learnset-h4 {
+  margin: 0 0 8px 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.move-img {
+  max-width: 100%;
+  height: auto;
+}
+
+.learnset-h5 {
+  margin: 8px 0 0 0;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.accordion-body {
+  background-color: #13175a;
+}
+
+.accordion-item {
+  border: #181d75 2px solid;
 }

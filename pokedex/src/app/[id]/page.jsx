@@ -103,7 +103,6 @@ export default function Pokemon({ params }) {
                             <h1>{pokemon.name}</h1>
                         </div>
                     </div>
-                    <div className="stats-abilities-container">
                         <div className="stats-container">
                             <h2>Base stats</h2>
                             <div className="stats">
@@ -134,8 +133,6 @@ export default function Pokemon({ params }) {
                             </div>
                         </div>
 
-                        <br />
-
                         <div className="abilities">
                             <h2>Abilities</h2>
                             <h4>Normal: {pokemon?.abilities ? pokemon?.abilities["0"] : "carregando"} {(pokemon?.abilities && pokemon?.abilities["1"]) != undefined && <>{"and " + pokemon?.abilities["1"]}</>}</h4>
@@ -144,7 +141,6 @@ export default function Pokemon({ params }) {
                                 pokemon?.abilities?.H && <h4>Hidden: {pokemon?.abilities?.H}</h4>
                             }
                         </div>
-                    </div>
                 </div>
 
                 <br />
@@ -190,10 +186,24 @@ export default function Pokemon({ params }) {
                     </div>
                 </div>
 
-                <Link href="/"><button className="exibir">Back</button></Link>
+                
+                <div className="accordion" id="accordionExample">
+                    <div className="accordion-item">
+                        <h2 className="accordion-header" id="headingOne">
+                        <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            Learn Sets
+                        </button>
+                        </h2>
+                        <div id="collapseOne" className="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div className="accordion-body">
+                            <Moves learnset={learnset} typesNumbers={typesNumbers} />
+                        </div>
+                        </div>
+                    </div>
+                    
+                </div>
 
-                <Moves learnset={learnset} typesNumbers={typesNumbers} />
-                <br />
+                <Link href="/"><button className="exibir">Back</button></Link>
 
             </div>
 

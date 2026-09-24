@@ -23,18 +23,22 @@ export default function Moves({ learnset, typesNumbers }) {
             {
                 Object.keys(learnset).length > 0 &&
                 <div>
-                    <h2>Learnset:</h2>
+                    <h2 className="learnset-title">Learnset:</h2>
 
-                    {
-                        Object.keys(learnset).map((move, i) =>
-                            <div key={i} className="move" title={moves[move].desc}>
-                                <h4 key={i}>{moves[move]?.name}</h4>
-                                {/* <Image src={`/pokemon-icons-main/icons/${moves[move].type.toLocaleLowerCase()}.svg`} width={20} height={20} alt={moves[move].type}></Image> */}
-                                <Image src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-ix/scarlet-violet/${typesNumbers[moves[move].type]}.png`} width={100} height={20} alt={moves[move].type}></Image>
-                                <Image src={`/pokemon-icons-main/icons/${moves[move].category}IC_Masters.png`} width={39} height={20} alt={moves[move].type}></Image>
-                                <h5 key={move}>Effect: {moves[move].shortDesc} <p></p> Power: {moves[move]?.basePower} Accuracy: {moves[move]?.accuracy === true ? "---" : moves[move]?.accuracy + '%'} PP: {moves[move]?.pp}</h5>
-                            </div>)
-                    }
+                    <div className="learnset-container">
+                        {
+                            Object.keys(learnset).map((move, i) =>
+                                <div key={i} className="move" title={moves[move].desc}>
+                                    <h4 className="learnset-h4" key={i}>{moves[move]?.name}</h4>
+                                    {/* <Image src={`/pokemon-icons-main/icons/${moves[move].type.toLocaleLowerCase()}.svg`} width={20} height={20} alt={moves[move].type}></Image> */}
+                                    <div className="move-img">
+                                        <Image src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-ix/scarlet-violet/${typesNumbers[moves[move].type]}.png`} width={100} height={20} alt={moves[move].type}></Image>
+                                        <Image src={`/pokemon-icons-main/icons/${moves[move].category}IC_Masters.png`} width={39} height={20} alt={moves[move].type}></Image>
+                                    </div>
+                                    <h5 className="learnset-h5" key={move}>Effect: {moves[move].shortDesc} <p></p> Power: {moves[move]?.basePower} Accuracy: {moves[move]?.accuracy === true ? "---" : moves[move]?.accuracy + '%'} PP: {moves[move]?.pp}</h5>
+                                </div>)
+                        }
+                    </div>
                 </div>
             }
         </>
