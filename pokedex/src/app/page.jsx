@@ -57,7 +57,7 @@ export default function Home() {
             
             <div className="select-container">
               <label htmlFor="tipos" className="types-text">Select types: </label>
-              <select name="tipos" className="dropdown" value={tipo} onChange={e => setTipo(e.target.value)}>
+              <select name="tipos" className="dropdown" style={{width: tipo ? tipo.length * 0.85 + 2.5 + 'em' : '5em'}} value={tipo} onChange={e => setTipo(e.target.value)}>
                 <option value="">All</option>
                 <option value="Fire">Fire</option>
                 <option value="Grass">Grass</option>

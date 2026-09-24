@@ -65,15 +65,15 @@ export default function Pokemon({ params }) {
             <div className="pokemon-stats-page">
 
 
-                {pokemon?.formeOrder || pokemon?.baseSpecies
+                {(pokemon?.formeOrder || pokemon?.baseSpecies) && pokemon?.name != "Unown"
                     ?
                     <div className="select-container">
                         <label htmlFor="Formes" className="types-text">Select forme: </label>
 
-                        <select name="Formes" defaultValue={pokemon.name} onChange={handleFormeChange}>
+                        <select name="Formes" defaultValue={pokemon.name} onChange={handleFormeChange} className="dropdown" style={{width: "150px"}}>
                             {pokemon?.formeOrder 
-                            ? pokemon.formeOrder.map((forme) => <option key={forme} value={forme}>{forme}</option>)
-                            : baseForme.formeOrder.map((forme) => <option key={forme} value={forme}>{forme}</option>)
+                            ? pokemon.formeOrder.map((forme, i) => <option key={i} value={forme}>{forme}</option>)
+                            : baseForme.formeOrder.map((forme, i) => <option key={i} value={forme}>{forme}</option>)
                             }
                         </select>
                     </div>
@@ -82,7 +82,7 @@ export default function Pokemon({ params }) {
 
                 <div className="pokemon-stats">
                     <div className="pokemon-exhibited">
-                        <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${number}${pokemon?.baseSpecies ? `_f${baseForme.formeOrder.indexOf(pokemon.name)+1}` : ""}.png`} width={300} height={300} alt="XXX"></Image>
+                        <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${number}${(pokemon?.baseSpecies && pokemon.num != 744) ? `_f${baseForme.formeOrder.indexOf(pokemon.name)+1}` : ""}.png`} width={300} height={300} alt="Image not found"></Image>
                         <div className="pokemon-stats-header">
                             <h2>#{pokemon?.num}</h2>
                             <hr />
@@ -143,7 +143,7 @@ export default function Pokemon({ params }) {
                             pokemon?.prevo
                                 ? <div className={`detalhePokemon`}>
                                     <Link href={pokemon?.prevo.replace(/ /, "")}>
-                                        <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${prevoNumber}${prevolution?.baseSpecies ? "_f2" : ""}.png`} width={150} height={150} alt="XXX"></Image>
+                                        <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${prevoNumber}${(prevolution?.baseSpecies && prevoNumber != 744) ? `_f${baseForme?.formeOrder.indexOf(pokemon.name)+1}` : ""}.png`} width={150} height={150} alt="Image not found"></Image>
 
                                         <div className="detalhePokemon-data">
                                             <h2>#{prevolution.num}</h2>
@@ -161,7 +161,7 @@ export default function Pokemon({ params }) {
 
                                     <div className={`detalhePokemon`} key={i}>
                                         <Link href={evo.replace(/ /, "")}>
-                                            <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${evoNumber[i]}${evolution[i]?.baseSpecies ? "_f2" : ""}.png`} width={150} height={150} alt="XXX"></Image>
+                                            <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${evoNumber[i]}${(evolution[i]?.baseSpecies && evoNumber != 744) ? `_f${baseForme?.formeOrder.indexOf(pokemon.name)+1}` : ""}.png`} width={150} height={150} alt="Image not found"></Image>
 
                                             <div className="detalhePokemon-data">
                                                 <h2>#{evolution[i]?.num}</h2>
