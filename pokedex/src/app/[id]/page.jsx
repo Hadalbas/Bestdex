@@ -78,13 +78,12 @@ export default function Pokemon({ params }) {
         <>
             <div className="pokemon-stats-page">
 
-
                 {(pokemon?.formeOrder || pokemon?.baseSpecies) && pokemon?.name != "Unown"
                     ?
                     <div className="select-container">
                         <label htmlFor="Formes" className="types-text">Select forme: </label>
 
-                        <select name="Formes" defaultValue={pokemon.name} onChange={handleFormeChange} className="dropdown" style={{ width: "150px" }}>
+                        <select name="Formes" defaultValue={pokemon.name} onChange={handleFormeChange} className="dropdown" style={{width: pokemon.name ? pokemon.name.length * 0.75 + 2.5 + 'em' : '5em'}}>
                             {pokemon?.formeOrder
                                 ? pokemon.formeOrder.map((forme, i) => <option key={i} value={forme}>{forme}</option>)
                                 : baseForme.formeOrder.map((forme, i) => <option key={i} value={forme}>{forme}</option>)
@@ -96,7 +95,7 @@ export default function Pokemon({ params }) {
 
                 <div className="pokemon-stats">
                     <div className="pokemon-exhibited">
-                        <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${number}${(pokemon?.baseSpecies && pokemon.num != 744) ? `_f${baseForme.formeOrder.indexOf(pokemon.name) + 1}` : ""}.png`} width={300} height={300} alt="Image not found"></Image>
+                        <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${number}${(pokemon?.baseSpecies && pokemon.num != 25 && pokemon.num != 744 && pokemon.num != 133) ? `_f${baseForme.formeOrder.indexOf(pokemon.name) + 1}` : ""}.png`} width={300} height={300} alt="Image not found"></Image>
                         <div className="pokemon-stats-header">
                             <h2>#{pokemon?.num}</h2>
                             <hr />
