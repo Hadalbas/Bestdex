@@ -15,14 +15,14 @@ export default function Pokemon({ params }) {
     const name = id.toLowerCase().replace(/-|[.]| /g, "");
     const [pokemon, setPokemon] = useState({});
     const [baseForme, setBaseForme] = useState({});
-    const [number, setNumber] = useState(0)
+    const [number, setNumber] = useState("132")
     const [learnset, setLearnset] = useState({});
     const [evolution, setEvolution] = useState([]);
     const [baseFormeEvo, setBaseFormeEvo] = useState([]);
     const [evoNumber, setEvoNumber] = useState([]);
     const [prevolution, setPrevolution] = useState({});
     const [baseFormePrevo, setBaseFormePrevo] = useState({});
-    const [prevoNumber, setPrevoNumber] = useState(0)
+    const [prevoNumber, setPrevoNumber] = useState(1)
 
 
     const typesNumbers = { "Normal": 1, "Fighting": 2, "Flying": 3, "Poison": 4, "Ground": 5, "Rock": 6, "Bug": 7, "Ghost": 8, "Steel": 9, "Fire": 10, "Water": 11, "Grass": 12, "Electric": 13, "Psychic": 14, "Ice": 15, "Dragon": 16, "Dark": 17, "Fairy": 18, }
@@ -105,8 +105,8 @@ export default function Pokemon({ params }) {
 
                         <select name="Formes" defaultValue={pokemon.name} onChange={handleFormeChange} className="dropdown" style={{width: pokemon.name ? pokemon.name.length * 0.75 + 2.5 + 'em' : '5em'}}>
                             {pokemon?.formeOrder
-                                ? pokemon.formeOrder.map((forme, i) => <option key={i} value={forme}>{forme}</option>)
-                                : baseForme.formeOrder.map((forme, i) => <option key={i} value={forme}>{forme}</option>)
+                                ? pokemon.formeOrder.filter((pkm) => !pkm.includes("Tera")).map((forme, i) => <option key={i} value={forme}>{forme}</option>)
+                                : baseForme.formeOrder.filter((pkm) => !pkm.includes("Tera")).map((forme, i) => <option key={i} value={forme}>{forme}</option>)
                             }
                         </select>
                     </div>
@@ -115,7 +115,7 @@ export default function Pokemon({ params }) {
 
                 <div className="pokemon-stats">
                     <div className="pokemon-exhibited">
-                        <Image className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${number}${(pokemon?.baseSpecies && pokemon.num != 25 && pokemon.num != 744 && pokemon.num != 133) ? `_f${baseForme.formeOrder.indexOf(pokemon.name) + 1}` : ""}.png`} width={300} height={300} alt="Image not found"></Image>
+                        <Image loading="eager" className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${number}${(pokemon?.baseSpecies && pokemon.num != 25 && pokemon.num != 744 && pokemon.num != 133) ? `_f${baseForme.formeOrder.indexOf(pokemon.name) + 1}` : ""}.png`} width={300} height={300} alt="Image not found"></Image>
                         <div className="pokemon-stats-header">
                             <h2>#{pokemon?.num}</h2>
                             <hr />
