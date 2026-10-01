@@ -1,0 +1,83 @@
+.main-page {
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../../../public/login-bg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+    .login-container {
+    width: 85%;
+    height: 80%;
+    position: relative;
+    background-color: transparent;
+    border-radius: 50px;
+    display: flex;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.login-banner-container {
+    width: 60%;
+    background-image: url(../../../public/login-banner.png);
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: -370px;
+    border-radius: 50px 0 0 50px;
+    z-index: 1;
+}
+
+.login-input {
+    margin-left: 50%;
+    width: 50%;
+    height: 100%;
+    background-color: #080B38;
+    border-radius: 28px;
+    z-index: 2;
+    position: relative;
+    padding: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+    backdrop-filter: blur(6px);
+    box-shadow: -50px 0 100px rgba(0, 0, 0, 0.5);
+}
+
+.login-input h1 {
+    font-size: 3rem;
+    color: #fff;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.login-input input {
+    width: 100%;
+    padding: 15px;
+    border-radius: 50px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    margin-top: 15px;
+}
+
+.login-input .login-exibir {
+    width: 100%;
+    padding: 15px;
+    border-radius: 50px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    margin: none;
+    background-color: #FF0000;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}

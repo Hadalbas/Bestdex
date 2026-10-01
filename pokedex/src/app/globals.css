@@ -31,6 +31,15 @@ body {
   z-index: 0;
 }
 
+body.hide-header header {
+  display: none !important;
+}
+
+body.hide-header .main-page,
+body.hide-header .pokemon-stats-page {
+  margin-top: 0;
+}
+
 button {
   cursor: pointer;
   transition: 0.3s;

@@ -1,6 +1,8 @@
 'use client'
 
 import { useState } from "react"
+import './login.css'
+import HideHeader from '@/components/HideHeader'
 
 export default function Login() {
 
@@ -12,18 +14,22 @@ export default function Login() {
     }
     return (
         <>
+            <HideHeader />
             <div className="main-page">
-                <br /><br /><br /><br />
-                <br /><br /><br /><br />
 
-                <h1>Log into Bestdex to have access to your account</h1>
-
-                <label htmlFor="name">Username</label><input value={name} onChange={(e)=>{setName(e.target.value)}} type="text" id="name" />
-                <label htmlFor="password">Password</label><input value={password} onChange={(e)=>{setPassword(e.target.value)}} type="text" id="password" />
-
-                <br />
-                
-                <button onClick={submit} className="exibir">Create account</button>
+                <div className="login-container">
+                    <div className="login-banner-container"></div>
+                    <div className="login-input">
+                        <h1>LOG IN</h1>
+                        
+                        <input value={name} onChange={(e)=>{setName(e.target.value)}} type="text" id="name" placeholder="Email or Username"/>
+                        <input value={password} onChange={(e)=>{setPassword(e.target.value)}} type="text" id="password" placeholder="Password"/>
+                        
+                        <br />
+                        
+                        <button onClick={submit} className="login-exibir">Create account</button>
+                    </div>
+                </div>
             
             </div>
         </>
