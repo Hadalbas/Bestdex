@@ -1,11 +1,13 @@
 'use client'
 
+import Footer from "@/components/Footer";
 import Moves from "@/components/ListMoves";
 import api from "@/lib/api";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, useEffect, use } from "react"
+import "./evolution.css"
 
 export default function Pokemon({ params }) {
 
@@ -68,6 +70,24 @@ export default function Pokemon({ params }) {
         getLearnset()
     }, [])
 
+    useEffect(() => {
+        const acc = document.getElementById('accordionExample')
+        if (!acc) return
+
+        function onShow() { acc.classList.add('expanded') }
+        function onHide() { acc.classList.remove('expanded') }
+
+        if (acc.querySelector('.accordion-collapse.show')) acc.classList.add('expanded')
+
+        acc.addEventListener('show.bs.collapse', onShow)
+        acc.addEventListener('hide.bs.collapse', onHide)
+
+        return () => {
+            acc.removeEventListener('show.bs.collapse', onShow)
+            acc.removeEventListener('hide.bs.collapse', onHide)
+        }
+    }, [])
+
     const router = useRouter();
 
     function handleFormeChange(e) {
@@ -81,7 +101,7 @@ export default function Pokemon({ params }) {
                 {(pokemon?.formeOrder || pokemon?.baseSpecies) && pokemon?.name != "Unown"
                     ?
                     <div className="select-container">
-                        <label htmlFor="Formes" className="types-text">Select forme: </label>
+                        <label htmlFor="Formes" className="types-text">Select form: </label> {/* O termo em inglês usa "m mudo" */}
 
                         <select name="Formes" defaultValue={pokemon.name} onChange={handleFormeChange} className="dropdown" style={{width: pokemon.name ? pokemon.name.length * 0.75 + 2.5 + 'em' : '5em'}}>
                             {pokemon?.formeOrder
@@ -202,10 +222,12 @@ export default function Pokemon({ params }) {
                     
                 </div>
 
+                <hr className="accordion-button-hr"/>
+
                 <Link href="/"><button className="exibir">Back</button></Link>
-
+                
+                <Footer />
             </div>
-
         </>
     )
 }
