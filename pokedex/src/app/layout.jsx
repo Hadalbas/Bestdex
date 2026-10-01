@@ -2,9 +2,11 @@ import Link from "next/link";
 import 'bootstrap/dist/css/bootstrap.css';
 import "./globals.css";
 import { Montserrat } from "next/font/google";
+import { Bebas_Neue } from "next/font/google";
 import BootstrapClient from '@/components/BootstrapClient.jsx';
 
 const montserrat = Montserrat({ subsets: ["latin"] });
+const bebasNeue = Bebas_Neue({ subsets: ["latin"], weight: ['400'], display: 'swap' });
 
 export const metadata = {
   title: "Bestdex",
@@ -21,7 +23,7 @@ export default function RootLayout({ children }) {
       <body>{children}
         <header>
           <nav>
-            <h1 className="header-title">Bestdex</h1>
+            <h1 className={`header-title ${bebasNeue.className}`}>Bestdex</h1>
             <ul>
               <li><Link href="/"><i className="fa-solid fa-house"></i> Home</Link></li>
               <li><Link href="/trade"><i className="fa-solid fa-exchange-alt"></i> Trade</Link></li>

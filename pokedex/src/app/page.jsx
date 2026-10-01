@@ -1,5 +1,6 @@
 'use client'
 
+import Footer from "@/components/Footer";
 import Lista from "@/components/Lista";
 import api from "@/lib/api";
 import Image from "next/image";
@@ -71,6 +72,8 @@ export default function Home() {
         </section>
         
         <Lista lista={pokemon} search={search} tipo={tipo}/>
+
+        <Footer />
       </div>
     </>
   );

@@ -11,6 +11,20 @@ body {
   text-align: center;
 }
 
+:root {
+  --bg-page: #080B38;
+  --panel-bg: #0c1047;
+  --panel-strong: #13175a;
+  --accent: #4CAF50;
+  --muted: rgba(255,255,255,0.12);
+  --border: #181d75;
+  --btn-bg: #272121;
+  --btn-text: #F4F4F6;
+  --card-shadow: 0 6px 18px rgba(2,6,23,0.6);
+  --text-on-dark: #F8F9FB;
+  --text-on-light: #111217;
+}
+
 .main-page {
   background-color: #080B38;
   min-height: 100vh;
@@ -26,9 +40,18 @@ button:hover {
   background-color: darkgray;
 }
 
-.header-title {
-  font-size: 50px;
-  cursor: default;
+.footer {
+  width: 100%;
+  height: 150px;
+  background-color: #020316;
+  color: #F4F4F6;
+  text-align: center;
+  padding: 20px 0;
+  border-top: #13175a 3px solid;
+  border-radius: 34px 34px 0 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 header{
@@ -42,13 +65,20 @@ header{
   border-bottom: #13175a 3px solid;
   border-radius: 0 0 34px 34px;
   z-index: 1000;
-  padding: 35px 0;
+  padding: 30px 0 25px 0;
+}
+
+.header-title {
+  font-size: 70px;
+  cursor: default;
+  padding-top: 5px;
 }
 
 nav {
-  width: 95%;
+  width: 100%;
   display: flex;
   justify-content: space-around;
+  gap: 200px;
   align-items: center;
 }
 
@@ -124,7 +154,7 @@ hr {
   font-size: x-large;
   border: 2px white solid;
   border-radius: 15px;
-  padding: 10px;
+  padding: 5px 10px;
   margin: 20px 10px 50px 10px;
 }
 
@@ -206,7 +236,7 @@ hr {
 .detalhePokemon {
   position: relative;
   isolation: isolate;
-  border: 1px solid rgba(255, 255, 255, 0.12); /* Uma borda fina e muito mais elegante */
+  border: 1px solid rgba(255, 255, 255, 0.12);
   background-color: #0b0e38;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   border-radius: 20px;
@@ -219,7 +249,6 @@ hr {
   padding: 15px 0 5px 0;
 }
 
-/* Efeito de hover profissionalizado */
 .detalhePokemon:hover {
   transform: translateY(-5px) scale(1.02);
   border-color: rgba(255, 255, 255, 0.35);
@@ -310,244 +339,4 @@ hr {
 
 .tipos:hover {
   cursor: pointer;
-}
-
-.pokemon-stats-page {
-  margin-top: 100px;
-  width: 100%; height: 100%;
-  background: var(--pokemon-bg-color, #050729);
-  padding-top: 50px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: white;
-  list-style-type: none;
-  text-decoration: none;
-}
-
-.pokemon-stats {
-  width: 90%;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin-top: 20px;
-  border-radius: 80px;
-  padding: 20px;
-}
-
-.pokemon-exhibited {
-  width: 40%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 50px;
-  padding: 10px;
-  margin-left: 50px;
-}
-
-.pokemon-exhibited img {
-  background: radial-gradient(circle, hsla(0, 0%, 100%, 0.125) 0%, #0000 72.5%);
-  width: 400px;
-  height: 400px;
-  padding: 40px;
-}
-
-.pokemon-stats-header {
-  display: flex;
-  flex-direction: column;
-  text-align: justify;
-}
-
-.pokemon-stats-header h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
-
-.pokemon-stats-header h2 {
-  color: rgba(255, 255, 255, 0.5);
-  font-weight: 400;
-  letter-spacing: 0.5px;
-}
-
-.abilities {
-  background-color: #0c1047;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  margin: 20px auto;
-  padding: 20px 30px;
-  border-radius: 20px;
-}
-
-.abilities h2 {
-  font-weight: 600;
-}
-
-.evolution-line {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.evolutions {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.evolutions p {
-  font-style: italic;
-  color: rgba(255, 255, 255, 0.5);
-}
-
-.stats-container {
-  width: 40%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.stats {
-  margin-top: 15px;
-  width: 70%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: justify;
-  gap: 20px;
-}
-
-.stat-row {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  align-items: flex-start;
-  width: 100%;
-}
-
-.stat-label {
-  font-size: 15px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-}
-
-.stat-meter {
-  width: 100%;
-  height: 25px;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  accent-color: #4CAF50;
-  border-radius: 50px;
-  overflow: hidden;
-  border: none;
-  box-shadow: none;
-  background: rgba(255,255,255,0.1);
-}
-
-.stat-meter::-webkit-meter-bar {
-  height: 30px;
-  border-radius: 4px;
-  background: rgba(255,255,255,0.1);
-  border: none;
-}
-
-.stat-meter::-webkit-meter-optimum-value {
-  background: #4CAF50;
-  border-radius: 4px;
-}
-
-.stat-meter::-webkit-meter-suboptimum-value {
-  background: #ff9800;
-  border-radius: 4px;
-}
-
-.stat-meter::-webkit-meter-even-less-good-value {
-  background: #f44336;
-  border-radius: 4px;
-}
-
-.pokemon-stats-header hr {
-  margin: 5px 0;
-  width: 80%;
-  border: 1px solid white;
-}
-
-.accordion {
-  width: 60%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 50px 0 50px 0;
-}
-
-.accordion-item {
-  width: 100%;
-  overflow: hidden;
-}
-
-.move {
-  display: flex;
-}
-
-.learnset-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 12px;
-  padding: 15px;
-  background-color: #13175a;
-  border-radius: 0 0 4px 4px;
-}
-
-.move {
-  display: flex !important;
-  flex-direction: column !important;
-  align-items: center !important;
-  justify-content: space-between !important;
-  width: auto !important;
-  height: auto !important;
-  padding: 10px !important;
-  border-radius: 8px !important;
-  background-color: white !important;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.learnset-title {
-  color: white;
-  font-weight: 700;
-}
-
-.learnset-h4 {
-  margin: 0 0 8px 0;
-  font-size: 1.1rem;
-  font-weight: 700;
-}
-
-.move-img {
-  max-width: 100%;
-  height: auto;
-}
-
-.learnset-h5 {
-  margin: 8px 0 0 0;
-  font-size: 0.9rem;
-  color: #666;
-}
-
-.accordion-body {
-  background-color: #13175a;
-}
-
-.accordion-item {
-  border: #181d75 2px solid;
 }
