@@ -23,7 +23,7 @@ export default function Home() {
 
   return (
     <>
-      <div className="main-page">
+      <div key="home-page" className="main-page">
         
 
         <section className="banner">
