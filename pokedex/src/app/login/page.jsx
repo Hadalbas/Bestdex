@@ -61,26 +61,32 @@ export default function Login() {
             <HideHeader />
             <div className="main-page">
 
-                <h1>Log into Bestdex to have access to your account</h1>
-
-
-                {
-                    loginFail
-                        ? <p className='loginfail'>{loginFail}</p>
-                        : <div>
-                            <label autoFocus htmlFor="nome">Username</label><input value={nome} onChange={e => { setNome(e.target.value) }} onKeyUp={handleKeyUp} type="text" id="nome" />
-                            <label htmlFor="senha">Password</label><input value={senha} onChange={e => { setSenha(e.target.value) }} onKeyUp={handleKeyUp} type="text" id="senha" />
-                        </div>
-                }
-
-                <br />
-
-                {
-                    loginFail ? <button onClick={handleReset}>Tentar novamente</button>
-                        : <button onClick={handleLogin} className="exibir">Log-in</button>
-                }
-
-                <Link href='/'><button className='exibir'>Back</button></Link>
+                <div className="login-container">
+                    <div className="login-banner-container"></div>
+                    <div className="login-input">
+                    <h1>Sign in</h1>
+                    <h3>Log into Bestdex to access your account</h3>
+                    
+                    
+                        {
+                            loginFail
+                                ? <p className='loginfail'>{loginFail}</p>
+                                : <div>
+                                    <input value={nome} onChange={e => { setNome(e.target.value) }} onKeyUp={handleKeyUp} type="text" id="nome" placeholder="Email or Username" />
+                                    <input value={senha} onChange={e => { setSenha(e.target.value) }} onKeyUp={handleKeyUp} type="text" id="senha" placeholder="Password" />
+                                </div>
+                        }
+                        
+                        <br />
+                        
+                        {
+                            loginFail ? <button onClick={handleReset}>Tentar novamente</button>
+                                : <button onClick={handleLogin} className="login-exibir">Log-in</button>
+                        }
+                    <Link href='/'><button className='login-exibir login-back'>Back</button></Link>
+                    </div>
+                    
+                </div>
 
 
             </div>
