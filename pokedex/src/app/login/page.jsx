@@ -63,14 +63,13 @@ export default function Login() {
     return (
         <>
             <HideHeader />
-            <div className="main-page">
+            <div key="login-page" className="login-page">
 
                 <div className="login-container">
                     <div className="login-banner-container"></div>
                     <div className="login-input">
                     <h1>Sign in</h1>
                     <h3>Log into Bestdex to access your account</h3>
-                    
                     
                         {
                             loginFail
@@ -92,10 +91,7 @@ export default function Login() {
 
                     <Link href='/'><button className='login-exibir login-back'>Back</button></Link>
                     </div>
-                    
                 </div>
-
-
             </div>
         </>
     )

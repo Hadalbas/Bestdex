@@ -29,6 +29,8 @@ body {
   background-color: #080B38;
   min-height: 100vh;
   z-index: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 body.hide-header header {
