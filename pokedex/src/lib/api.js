@@ -3,7 +3,7 @@ const { default: axios } = require("axios");
 // const urlAPI = 'http://localhost:3005/treinadores'
 
 const api = axios.create({
-    baseURLe: 'https://play.pokemonshowdown.com/data',
+    baseURL: 'https://play.pokemonshowdown.com/data',
     withCredentials: false //para enviar/receber cookies
 })
 

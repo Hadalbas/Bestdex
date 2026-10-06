@@ -84,10 +84,10 @@ export default function Login() {
                         
                         {loginFail
                                 ? <button onClick={handleReset} className="login-exibir">Try Again</button>
-                                : <button onClick={handleLogin} className="login-exibir">Log-in</button>
+                                : <button onClick={handleLogin} className="login-exibir">{signIn ? "Sign" : "Log"}-in</button>
                         }
 
-                    <p className="clickable" onClick={() => setSignIn(!signIn)}>{signIn ? "Already have an account? " : "Don't have an account yet? "}Click here to sign-in</p>
+                    <p className="clickable" onClick={() => setSignIn(!signIn)}>{signIn ? "Already have an account? " : "Don't have an account yet? "}Click here to {signIn ? "log" : "sign"}-in</p>
 
                     <Link href='/'><button className='login-exibir login-back'>Back</button></Link>
                     </div>
