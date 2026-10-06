@@ -7,13 +7,26 @@ import HideHeader from '@/components/HideHeader'
 
 export default function Login() {
 
-    const [name, setName] = useState('')
-    const [password, setPassword] = useState('')
+    const [nome, setNome] = useState('')
+    const [senha, setSenha] = useState('')
     const [loginFail, setLoginFail] = useState('')
 
+    const encodedParams = new URLSearchParams();
+    encodedParams.set('nome', 'secret');
+    encodedParams.set('senha', 'codes');
+
+    const options = {
+        method: 'POST',
+        url: 'http://localhost:3005/login',
+        headers: { 'content-type': 'application/x-www-form-urlencoded' },
+        data: encodedParams,
+    };
+
     async function handleLogin() {
+        //alert(`${nome} ${senha}`)
+
         try {
-            const response = await api.post('/login', { name, password })
+            const response = await api.post('/login', { nome: nome, senha: senha })
             if (response.status == 200) {
                 console.log('Logged in sucessfully! Redirecting...')
 
@@ -28,12 +41,18 @@ export default function Login() {
         }
     }
 
+    function handleReset() {
+        setLoginFail('')
+        setNome('')
+        setSenha('')
+    }
+
     function handleKeyUp(e) {
         if (e.key == 'Enter') {
             handleLogin()
         } else if (e.key == 'Escape') {
-            if (e.target.id == 'name') setName('')
-            if (e.target.id == 'password') setPassword('')
+            if (e.target.id == 'nome') setNome('')
+            if (e.target.id == 'senha') setSenha('')
         }
     }
 
@@ -44,13 +63,26 @@ export default function Login() {
 
                 <h1>Log into Bestdex to have access to your account</h1>
 
-                <label htmlFor="name">Username</label><input value={name} onChange={(e)=>{setName(e.target.value)}} type="text" id="name" />
-                <label htmlFor="password">Password</label><input value={password} onChange={(e)=>{setPassword(e.target.value)}} type="text" id="password" />
+
+                {
+                    loginFail
+                        ? <p className='loginfail'>{loginFail}</p>
+                        : <div>
+                            <label autoFocus htmlFor="nome">Username</label><input value={nome} onChange={e => { setNome(e.target.value) }} onKeyUp={handleKeyUp} type="text" id="nome" />
+                            <label htmlFor="senha">Password</label><input value={senha} onChange={e => { setSenha(e.target.value) }} onKeyUp={handleKeyUp} type="text" id="senha" />
+                        </div>
+                }
 
                 <br />
-                
-                <button onClick={submit} className="exibir">Create account</button>
-            
+
+                {
+                    loginFail ? <button onClick={handleReset}>Tentar novamente</button>
+                        : <button onClick={handleLogin} className="exibir">Log-in</button>
+                }
+
+                <Link href='/'><button className='exibir'>Back</button></Link>
+
+
             </div>
         </>
     )
