@@ -4,39 +4,43 @@ import Link from "next/link"
 import { useState } from "react"
 import './login.css'
 import HideHeader from '@/components/HideHeader'
+import axios from "axios"
 
 export default function Login() {
 
     const [nome, setNome] = useState('')
     const [senha, setSenha] = useState('')
     const [loginFail, setLoginFail] = useState('')
-
-    const encodedParams = new URLSearchParams();
-    encodedParams.set('nome', 'secret');
-    encodedParams.set('senha', 'codes');
-
-    const options = {
-        method: 'POST',
-        url: 'http://localhost:3005/login',
-        headers: { 'content-type': 'application/x-www-form-urlencoded' },
-        data: encodedParams,
-    };
+    const [signIn, setSignIn] = useState(false)
 
     async function handleLogin() {
-        //alert(`${nome} ${senha}`)
 
         try {
-            const response = await api.post('/login', { nome: nome, senha: senha })
-            if (response.status == 200) {
+            //const response = await api.post('/treinadores', { nome, senha })
+            const treinador = {nome: nome, senha: senha}
+            const response = signIn ? await axios.post("http://localhost:3005/treinadores", treinador) : await axios.post("http://localhost:3005/login", treinador)
+            if (!signIn && response.status == 200) {
                 console.log('Logged in sucessfully! Redirecting...')
 
                 //criar cookie local pq o chrome não deixa o localhost acessar o cookie que vem de ads.osorio.ifrs.edu.br - remover se a página for hospedada num servidor
                 const tokenValue = response.data.token || 'usuario_autenticado_remotamente'
                 document.cookie = `token=${tokenValue}; path=/; max-age=86400; SameSite=Lax`
 
-                window.location.replace('/account')
+                window.location.replace('/')
             }
+            if (signIn && response.status == 201) {
+                console.log('Created account sucessfully! Redirecting...')
+
+                //criar cookie local pq o chrome não deixa o localhost acessar o cookie que vem de ads.osorio.ifrs.edu.br - remover se a página for hospedada num servidor
+                const tokenValue = response.data.token || 'usuario_autenticado_remotamente'
+                document.cookie = `token=${tokenValue}; path=/; max-age=86400; SameSite=Lax`
+
+                window.location.replace('/')
+            }
+            console.log("Resposta:" + response)
         } catch (error) {
+            console.log("Erro:" + error)
+
             setLoginFail(error.response?.data?.message || "An error occurred")
         }
     }
@@ -79,10 +83,13 @@ export default function Login() {
                         
                         <br />
                         
-                        {
-                            loginFail ? <button onClick={handleReset}>Tentar novamente</button>
+                        {loginFail
+                                ? <button onClick={handleReset} className="login-exibir">Try Again</button>
                                 : <button onClick={handleLogin} className="login-exibir">Log-in</button>
                         }
+
+                    <p className="clickable" onClick={() => setSignIn(!signIn)}>{signIn ? "Already have an account? " : "Don't have an account yet? "}Click here to sign-in</p>
+
                     <Link href='/'><button className='login-exibir login-back'>Back</button></Link>
                     </div>
                     
