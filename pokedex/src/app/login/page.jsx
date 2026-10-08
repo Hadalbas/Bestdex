@@ -4,7 +4,7 @@ import Link from "next/link"
 import { useState } from "react"
 import './login.css'
 import HideHeader from '@/components/HideHeader'
-import axios from "axios"
+import { accessTreinador, createTreinador } from "@/lib/api"
 
 export default function Login() {
 
@@ -18,15 +18,16 @@ export default function Login() {
         try {
             //const response = await api.post('/treinadores', { nome, senha })
             const treinador = {nome: nome, senha: senha}
-            const response = signIn ? await axios.post("http://localhost:3005/treinadores", treinador) : await axios.post("http://localhost:3005/login", treinador)
+            const response = signIn ? await createTreinador(treinador) : await accessTreinador(treinador)
             if (!signIn && response.status == 200) {
                 console.log('Logged in sucessfully! Redirecting...')
 
                 //criar cookie local pq o chrome não deixa o localhost acessar o cookie que vem de ads.osorio.ifrs.edu.br - remover se a página for hospedada num servidor
                 const tokenValue = response.data.token || 'usuario_autenticado_remotamente'
+                alert(tokenValue)
                 document.cookie = `token=${tokenValue}; path=/; max-age=86400; SameSite=Lax`
 
-                window.location.replace('/')
+                window.location.replace('/account')
             }
             if (signIn && response.status == 201) {
                 console.log('Created account sucessfully! Redirecting...')
@@ -35,7 +36,7 @@ export default function Login() {
                 const tokenValue = response.data.token || 'usuario_autenticado_remotamente'
                 document.cookie = `token=${tokenValue}; path=/; max-age=86400; SameSite=Lax`
 
-                window.location.replace('/')
+                window.location.replace('/account')
             }
             console.log("Resposta:" + response)
         } catch (error) {
@@ -68,14 +69,14 @@ export default function Login() {
                 <div className="login-container">
                     <div className="login-banner-container"></div>
                     <div className="login-input">
-                    <h1>Sign in</h1>
-                    <h3>Log into Bestdex to access your account</h3>
+                    <h1>{signIn ? "Sign" : "Log"}-in</h1>
+                    <h3>{signIn ? "Sign" : "Log"} into Bestdex to {signIn ? "create an" : "access your"} account</h3>
                     
                         {
                             loginFail
                                 ? <p className='loginfail'>{loginFail}</p>
                                 : <div>
-                                    <input value={nome} onChange={e => { setNome(e.target.value) }} onKeyUp={handleKeyUp} type="text" id="nome" placeholder="Email or Username" />
+                                    <input value={nome} onChange={e => { setNome(e.target.value) }} onKeyUp={handleKeyUp} type="text" id="nome" placeholder="Username" />
                                     <input value={senha} onChange={e => { setSenha(e.target.value) }} onKeyUp={handleKeyUp} type="text" id="senha" placeholder="Password" />
                                 </div>
                         }

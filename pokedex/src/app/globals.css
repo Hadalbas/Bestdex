@@ -37,6 +37,21 @@ body.hide-header header {
   display: none !important;
 }
 
+.login-exibir {
+    width: 60%;
+    padding: 15px;
+    border-radius: 20px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    margin: none;
+    background-color: #FF0000;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin: 0 auto;
+}
+
 body.hide-header .main-page,
 body.hide-header .pokemon-stats-page {
   margin-top: 0;
