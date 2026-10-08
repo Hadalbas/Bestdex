@@ -17,4 +17,13 @@ export async function logoutTreinador(){
     return await axios.post(urlAPI+'/logout')
 }
 
+export async function getDataTreinador(id){
+    console.log(await axios.get(urlAPI+`/treinadores/${id}`))
+    return await axios.get(urlAPI+`/treinadores/${id}`)
+}
+
+export async function changeNameTreinador(treinador){
+    return await axios.post(urlAPI+'/treinadores', treinador)
+}
+
 export default api

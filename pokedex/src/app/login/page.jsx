@@ -24,7 +24,7 @@ export default function Login() {
 
                 //criar cookie local pq o chrome não deixa o localhost acessar o cookie que vem de ads.osorio.ifrs.edu.br - remover se a página for hospedada num servidor
                 const tokenValue = response.data.token || 'usuario_autenticado_remotamente'
-                alert(tokenValue)
+                
                 document.cookie = `token=${tokenValue}; path=/; max-age=86400; SameSite=Lax`
 
                 window.location.replace('/account')
