@@ -143,8 +143,13 @@ hr {
   color: white;
 }
 
+.banner {
+  width: 100%;
+}
+
 .banner-container {
   height: 850px;
+  width: 100%;
   padding: 50px 0 0 0;
   background-image: url(../../public/Texto-do-seu-parágrafo.png);
   background-repeat: no-repeat;
