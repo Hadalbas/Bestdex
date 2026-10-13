@@ -112,7 +112,7 @@ export default function Pokemon({ params }) {
                     </div>
                     : <></>
                 }
-
+                    {/* Botão para adicionar ao time */}
                 <div className="pokemon-stats">
                     <div className="pokemon-exhibited">
                         <Image loading="eager" className="pokemon" src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${number}${(pokemon?.baseSpecies && pokemon.num != 25 && pokemon.num != 744 && pokemon.num != 133) ? `_f${baseForme.formeOrder.indexOf(pokemon.name) + 1}` : ""}.png`} width={300} height={300} alt="Image not found"></Image>

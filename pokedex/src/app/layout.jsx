@@ -26,7 +26,6 @@ export default function RootLayout({ children }) {
             <Link href="/"><h1 className={`header-title ${bebasNeue.className}`}>Bestdex</h1></Link>
             <ul>
               <li><Link href="/"><i className="fa-solid fa-house"></i> Home</Link></li>
-              <li><Link href="/trade"><i className="fa-solid fa-exchange-alt"></i> Trade</Link></li>
               <li><Link href="/account"><i className="fa-solid fa-user"></i> Account</Link></li>
             </ul>
           </nav>
