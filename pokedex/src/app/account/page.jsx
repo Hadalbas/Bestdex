@@ -7,11 +7,11 @@ import Footer from "@/components/Footer";
 
 export default function Account(){
 
-    const [nome, setNome] = useState('')
+    const [name, setName] = useState('')
 
     async function findUser() {
         const data = await getDataTreinador(document.cookie.substring(6))
-        setNome(data.data.nome)
+        setName(data.data.nome)
     }
 
     async function handleLogout() {
@@ -30,7 +30,7 @@ export default function Account(){
                     <div className="profile-main">
                         <section className="sidebar-team-container">
                         <div className="sidebar">
-                            <h1 className="welcome">Welcome,<br />(Username)</h1>
+                            <h1 className="welcome">Welcome,<br />{name}</h1>
                             {/* <>Foto de perfil ou icone simples</> */}
                             <div className="pfp-mockup"></div>
                             {/* <>User Status? Como vitórias, derrotas, etc.</> */}
