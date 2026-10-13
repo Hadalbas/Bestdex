@@ -1,8 +1,16 @@
 'use client'
 
-import { logoutTreinador } from "@/lib/api";
+import { getDataTreinador, logoutTreinador } from "@/lib/api";
+import { use, useEffect, useState } from "react";
 
 export default function Account(){
+
+    const [nome, setNome] = useState('')
+
+    async function findUser() {
+        const data = await getDataTreinador(document.cookie.substring(6))
+        setNome(data.data.nome)
+    }
 
     async function handleLogout() {
         await logoutTreinador();
@@ -10,11 +18,16 @@ export default function Account(){
 
         window.location.replace('/')
     }
+
+    useEffect(()=>{
+        findUser()
+    }, []);
+
     return(
         <div className="main-page">
             <br /><br /><br /><br /><br /><br /><br /><br />
 
-            <h1>Welcome</h1>
+            <h1>Welcome, {nome}</h1>
 
             <h3>I mean, there's nothing on this page yet, but that's some good progress!!</h3>
 

@@ -11,29 +11,32 @@ export default function Login() {
     const [nome, setNome] = useState('')
     const [senha, setSenha] = useState('')
     const [loginFail, setLoginFail] = useState('')
-    const [signIn, setSignIn] = useState(false)
+    const [signUp, setsignUp] = useState(false)
 
     async function handleLogin() {
 
         try {
             //const response = await api.post('/treinadores', { nome, senha })
             const treinador = {nome: nome, senha: senha}
-            const response = signIn ? await createTreinador(treinador) : await accessTreinador(treinador)
-            if (!signIn && response.status == 200) {
+            const response = signUp ? await createTreinador(treinador) : await accessTreinador(treinador)
+            if (!signUp && response.status == 200) {
                 console.log('Logged in sucessfully! Redirecting...')
 
+                // const id = await getIdTreinador(nome)
+                const id = response.data.user.id
+
                 //criar cookie local pq o chrome não deixa o localhost acessar o cookie que vem de ads.osorio.ifrs.edu.br - remover se a página for hospedada num servidor
-                const tokenValue = response.data.token || 'usuario_autenticado_remotamente'
+                const tokenValue = response.data.token || id
                 
                 document.cookie = `token=${tokenValue}; path=/; max-age=86400; SameSite=Lax`
 
                 window.location.replace('/account')
             }
-            if (signIn && response.status == 201) {
+            if (signUp && response.status == 201) {
                 console.log('Created account sucessfully! Redirecting...')
 
                 //criar cookie local pq o chrome não deixa o localhost acessar o cookie que vem de ads.osorio.ifrs.edu.br - remover se a página for hospedada num servidor
-                const tokenValue = response.data.token || 'usuario_autenticado_remotamente'
+                const tokenValue = response.data.token || id
                 document.cookie = `token=${tokenValue}; path=/; max-age=86400; SameSite=Lax`
 
                 window.location.replace('/account')
@@ -69,8 +72,8 @@ export default function Login() {
                 <div className="login-container">
                     <div className="login-banner-container"></div>
                     <div className="login-input">
-                    <h1>{signIn ? "Sign" : "Log"}-in</h1>
-                    <h3>{signIn ? "Sign" : "Log"} into Bestdex to {signIn ? "create an" : "access your"} account</h3>
+                    <h1>{signUp ? "Sign-up" : "Log-in"}</h1>
+                    <h3>{signUp ? "Sign" : "Log"} into Bestdex to {signUp ? "create an" : "access your"} account</h3>
                     
                         {
                             loginFail
@@ -85,10 +88,10 @@ export default function Login() {
                         
                         {loginFail
                                 ? <button onClick={handleReset} className="login-exibir">Try Again</button>
-                                : <button onClick={handleLogin} className="login-exibir">{signIn ? "Sign" : "Log"}-in</button>
+                                : <button onClick={handleLogin} className="login-exibir">{signUp ? "Sign-up" : "Log-in"}</button>
                         }
 
-                    <p className="clickable" onClick={() => setSignIn(!signIn)}>{signIn ? "Already have an account? " : "Don't have an account yet? "}Click here to {signIn ? "log" : "sign"}-in</p>
+                    <p className="clickable" onClick={() => setsignUp(!signUp)}>{signUp ? "Already have an account? " : "Don't have an account yet? "}Click here to {signUp ? "log-in" : "sign-up"} instead</p>
 
                     <Link href='/'><button className='login-exibir login-back'>Back</button></Link>
                     </div>
