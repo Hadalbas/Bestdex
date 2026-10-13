@@ -1,7 +1,9 @@
 'use client'
 
 import { getDataTreinador, logoutTreinador } from "@/lib/api";
-import { use, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import './profile.css'
+import Footer from "@/components/Footer";
 
 export default function Account(){
 
@@ -25,13 +27,33 @@ export default function Account(){
 
     return(
         <div className="main-page">
-            <br /><br /><br /><br /><br /><br /><br /><br />
-
-            <h1>Welcome, {nome}</h1>
-
-            <h3>I mean, there's nothing on this page yet, but that's some good progress!!</h3>
-
-            <button className="login-exibir" onClick={handleLogout}><i className="fa-solid fa-arrow-right-from-bracket"></i> Logout</button>
-        </div>
+                    <div className="profile-main">
+                        <section className="sidebar-team-container">
+                        <div className="sidebar">
+                            <h1 className="welcome">Welcome,<br />(Username)</h1>
+                            {/* <>Foto de perfil ou icone simples</> */}
+                            <div className="pfp-mockup"></div>
+                            {/* <>User Status? Como vitórias, derrotas, etc.</> */}
+                            <div className="stats-mockup">
+                                <div>
+                                    <p>Battles: <br /> <span>0</span></p>
+                                </div>
+                                <div>
+                                    <p>Victories: <br /> <span>0</span></p>
+                                </div>
+                                <div>
+                                    <p>Defeats: <br /> <span>0</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="pokemon-team-main-container">
+                            {/* <TimePokemon /> */}
+                        </div>
+                        </section>
+        
+                        <button className="login-exibir logout" onClick={handleLogout}><i className="fa-solid fa-arrow-right-from-bracket"></i> Logout</button>
+                    </div>
+                    <Footer />
+                </div>
     )
 }
