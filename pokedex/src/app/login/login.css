@@ -81,6 +81,7 @@
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     margin: 0 auto;
+    margin-top: 20px;
 }
 
 .login-exibir:hover {
@@ -88,6 +89,7 @@
 }
 
 .login-back {
+    margin-top: 20px;
     background-color: #2c2c2c;
     width: 30%;
     border-radius: 20px;
@@ -110,4 +112,12 @@
 
 .try-again:hover {
     background-color: #FF4C4C;
+}
+
+.login-clickable {
+    color: #ffffffab;
+    cursor: pointer;
+    text-decoration: underline;
+    text-align: center;
+    margin-top: 40px;
 }

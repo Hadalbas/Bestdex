@@ -1,0 +1,83 @@
+.profile-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 200px;
+    height: 100vh;
+    text-align: center;
+}
+
+.sidebar-team-container {
+    width: 90%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+}
+
+.sidebar {
+    width: 30%;
+    height: 100%;
+    background-color: #10155e;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+}
+
+.pokemon-team-main-container {
+    width: 70%;
+    height: 100%;
+    background-color: #10155e;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pfp-mockup {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: linear-gradient(0deg, #ebc51e, #ee720d);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stats-mockup {
+    display: flex;
+    gap: 10px;
+}
+
+.stats-mockup div {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    background-color: #ffffff25;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 70px 65px;
+}
+
+.stats-mockup div p {
+    font-size: 20px;
+    font-weight: 600;
+    color: white;
+    margin: 0;
+}
+
+.welcome {
+    font-size: 40px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: white;
+}
+
+.logout {
+    margin: 50px;
+}

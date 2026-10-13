@@ -5,6 +5,7 @@ import { useState } from "react"
 import './login.css'
 import HideHeader from '@/components/HideHeader'
 import { accessTreinador, createTreinador } from "@/lib/api"
+import Footer from "@/components/Footer"
 
 export default function Login() {
 
@@ -84,16 +85,14 @@ export default function Login() {
                                 </div>
                         }
                         
-                        <br />
-                        
                         {loginFail
                                 ? <button onClick={handleReset} className="login-exibir">Try Again</button>
                                 : <button onClick={handleLogin} className="login-exibir">{signUp ? "Sign-up" : "Log-in"}</button>
                         }
 
-                    <p className="clickable" onClick={() => setsignUp(!signUp)}>{signUp ? "Already have an account? " : "Don't have an account yet? "}Click here to {signUp ? "log-in" : "sign-up"} instead</p>
 
                     <Link href='/'><button className='login-exibir login-back'>Back</button></Link>
+                    <p className="login-clickable" onClick={() => setSignIn(!signIn)}>{signIn ? "Already have an account? " : "Don't have an account yet? "}Click here to {signIn ? "log" : "sign"}-in</p>
                     </div>
                 </div>
             </div>
