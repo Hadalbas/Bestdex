@@ -21,7 +21,6 @@ export async function getIdTreinador(nome){
     return await axios.get(urlAPI+'/treinador', nome)
 }
 export async function getDataTreinador(id){
-    console.log(await axios.get(urlAPI+`/treinadores/${id}`))
     return await axios.get(urlAPI+`/treinadores/${id}`)
 }
 

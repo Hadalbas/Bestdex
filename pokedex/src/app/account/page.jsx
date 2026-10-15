@@ -22,7 +22,7 @@ export default function Account(){
     }
 
     useEffect(()=>{
-        //findUser()
+        findUser()
     }, []);
 
     return(
