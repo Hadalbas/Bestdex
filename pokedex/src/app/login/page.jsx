@@ -4,7 +4,7 @@ import Link from "next/link"
 import { useState } from "react"
 import './login.css'
 import HideHeader from '@/components/HideHeader'
-import { accessTreinador, createTreinador } from "@/lib/api"
+import { accessTreinador, createTreinador, getIdTreinador } from "@/lib/api"
 import Footer from "@/components/Footer"
 
 export default function Login() {
@@ -12,7 +12,7 @@ export default function Login() {
     const [nome, setNome] = useState('')
     const [senha, setSenha] = useState('')
     const [loginFail, setLoginFail] = useState('')
-    const [signUp, setsignUp] = useState(false)
+    const [signUp, setSignUp] = useState(false)
 
     async function handleLogin() {
 
@@ -23,8 +23,8 @@ export default function Login() {
             if (!signUp && response.status == 200) {
                 console.log('Logged in sucessfully! Redirecting...')
 
-                // const id = await getIdTreinador(nome)
-                const id = response.data.user.id
+                //const id = await getIdTreinador(nome)
+                const id = await response.data.user.id
 
                 //criar cookie local pq o chrome não deixa o localhost acessar o cookie que vem de ads.osorio.ifrs.edu.br - remover se a página for hospedada num servidor
                 const tokenValue = response.data.token || id
@@ -36,8 +36,12 @@ export default function Login() {
             if (signUp && response.status == 201) {
                 console.log('Created account sucessfully! Redirecting...')
 
+                //const id = await getIdTreinador(nome)
+                const id = await response.data.treinador._id
+
                 //criar cookie local pq o chrome não deixa o localhost acessar o cookie que vem de ads.osorio.ifrs.edu.br - remover se a página for hospedada num servidor
                 const tokenValue = response.data.token || id
+                
                 document.cookie = `token=${tokenValue}; path=/; max-age=86400; SameSite=Lax`
 
                 window.location.replace('/account')
@@ -85,14 +89,15 @@ export default function Login() {
                                 </div>
                         }
                         
-                        {loginFail
+                        {
+                            loginFail
                                 ? <button onClick={handleReset} className="login-exibir">Try Again</button>
                                 : <button onClick={handleLogin} className="login-exibir">{signUp ? "Sign-up" : "Log-in"}</button>
                         }
 
 
                     <Link href='/'><button className='login-exibir login-back'>Back</button></Link>
-                    <p className="login-clickable" onClick={() => setSignIn(!signIn)}>{signIn ? "Already have an account? " : "Don't have an account yet? "}Click here to {signIn ? "log" : "sign"}-in</p>
+                    <p className="login-clickable" onClick={() => setSignUp(!signUp)}>{signUp ? "Already have an account? " : "Don't have an account yet? "}Click here to {signUp ? "log-in" : "sign-up"}</p>
                     </div>
                 </div>
             </div>
