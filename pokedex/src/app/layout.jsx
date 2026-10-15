@@ -2,11 +2,10 @@ import Link from "next/link";
 import 'bootstrap/dist/css/bootstrap.css';
 import "./globals.css";
 import { Montserrat } from "next/font/google";
-import { Bebas_Neue } from "next/font/google";
 import BootstrapClient from '@/components/BootstrapClient.jsx';
 
 const montserrat = Montserrat({ subsets: ["latin"] });
-const bebasNeue = Bebas_Neue({ subsets: ["latin"], weight: ['400'], display: 'swap' });
+
 
 export const metadata = {
   title: "Bestdex",
@@ -21,15 +20,6 @@ export default function RootLayout({ children }) {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossOrigin="anonymous" referrerPolicy="no-referrer"></link>
       </head>
       <body>{children}
-        <header>
-          <nav>
-            <Link href="/"><h1 className={`header-title ${bebasNeue.className}`}>Bestdex</h1></Link>
-            <ul>
-              <li><Link href="/"><i className="fa-solid fa-house"></i> Home</Link></li>
-              <li><Link href="/account"><i className="fa-solid fa-user"></i> Account</Link></li>
-            </ul>
-          </nav>
-        </header>
         <BootstrapClient />
       </body>
     </html>

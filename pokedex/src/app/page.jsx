@@ -1,6 +1,7 @@
 'use client'
 
 import Footer from "@/components/Footer";
+import Header from "@/components/Header(READ)";
 import Lista from "@/components/Lista";
 import api from "@/lib/api";
 import Image from "next/image";
@@ -25,7 +26,7 @@ export default function Home() {
     <>
       <div key="home-page" className="main-page">
         
-
+        <Header />
         <section className="banner">
           <div className="banner-container">
             <div className="banner-text">

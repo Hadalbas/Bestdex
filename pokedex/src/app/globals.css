@@ -76,6 +76,7 @@ button:hover {
 header{
   position: fixed;
   top: 0px;
+  height: 78px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -88,7 +89,7 @@ header{
 }
 
 .header-title {
-  font-size: 70px;
+  font-size: 60px;
   cursor: default;
   padding-top: 5px;
 }
@@ -97,19 +98,20 @@ nav {
   width: 100%;
   display: flex;
   justify-content: space-around;
-  gap: 200px;
+  gap: 100px;
   align-items: center;
 }
 
 ul{
   width: 40%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   margin: 0;
+  align-items: center;
 }
 
 nav li {
-  font-size: 25px;
+  font-size: 20px;
   text-decoration: none;
   transition: 0.2s;
 }
@@ -148,7 +150,7 @@ hr {
 }
 
 .banner-container {
-  height: 850px;
+  height: 700px;
   width: 100%;
   padding: 50px 0 0 0;
   background-image: url(../../public/Texto-do-seu-parágrafo.png);
@@ -393,4 +395,22 @@ hr {
 
 .tipos:hover {
   cursor: pointer;
+}
+
+.nav-search {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.search-input {
+  display: flex;
+  color: white;
+  align-items: center;
+  gap: 20px;
+}
+
+.search-input i {
+  font-size: 20px;
 }

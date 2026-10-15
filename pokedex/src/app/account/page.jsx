@@ -4,6 +4,7 @@ import { getDataTreinador, logoutTreinador } from "@/lib/api";
 import { useEffect, useState } from "react";
 import './profile.css'
 import Footer from "@/components/Footer";
+import Header from "@/components/Header(READ)";
 
 export default function Account(){
 
@@ -27,36 +28,37 @@ export default function Account(){
 
     return(
         <div className="main-page">
-                    <div className="profile-main">
-                        <section className="sidebar-team-container">
-                        <div className="sidebar">
-                            <h1 className="welcome">Welcome,<br />{name}</h1>
-                                                                                    {/* <>User Status? Como vitórias, derrotas, etc.</> */}
-                            <div className="stats-mockup">                          {/* <- MOCKUP */}
-                                <div><p>Battles:<br/><span>0</span></p></div>
-                                <div><p>Victories:<br/><span>0</span></p></div>
-                                <div><p>Defeats:<br/><span>0</span></p></div>
-                            </div>
-                        </div>
-                        <div className="pokemon-team-main-container">
-                            {/* <TimePokemon /> */}
-                            
-                                    <div className="card-container">                {/* MOCKUP */} 
-                                        <div className="card-content-container">Pikachu <br /> Stats: 0/0/0</div>
-                                        <div className="card-content-container">Bulbasaur <br /> Stats: 0/0/0</div>
-                                        <div className="card-content-container">Charizard <br /> Stats: 0/0/0</div>  {/* Not final design, add stats and details you think are important */}
-                                        <div className="card-content-container">Blastoise <br /> Stats: 0/0/0</div>
-                                        <div className="card-content-container">Caterpie <br /> Stats: 0/0/0</div>
-                                        <div className="card-content-container">Beedrill <br /> Stats: 0/0/0</div>
-                                        <div className="card-content-container add-pokemon">Add Pokémon</div>
-                                    </div>
-                                
-                        </div>
-                        </section>
-        
-                        <button className="login-exibir logout" onClick={handleLogout}><i className="fa-solid fa-arrow-right-from-bracket"></i> Logout</button>
+            <Header />
+            <div className="profile-main">
+                <section className="sidebar-team-container">
+                <div className="sidebar">
+                    <h1 className="welcome">Welcome,<br />{name}</h1>
+                                                                            {/* <>User Status? Como vitórias, derrotas, etc.</> */}
+                    <div className="stats-mockup">                          {/* <- MOCKUP */}
+                        <div><p>Battles:<br/><span>0</span></p></div>
+                        <div><p>Victories:<br/><span>0</span></p></div>
+                        <div><p>Defeats:<br/><span>0</span></p></div>
                     </div>
-                    <Footer />
                 </div>
+                <div className="pokemon-team-main-container">
+                    {/* <TimePokemon /> */}
+                    
+                            <div className="card-container">                {/* MOCKUP */} 
+                                <div className="card-content-container">Pikachu <br /> Stats: 0/0/0</div>
+                                <div className="card-content-container">Bulbasaur <br /> Stats: 0/0/0</div>
+                                <div className="card-content-container">Charizard <br /> Stats: 0/0/0</div>  {/* Not final design, add stats and details you think are important */}
+                                <div className="card-content-container">Blastoise <br /> Stats: 0/0/0</div>
+                                <div className="card-content-container">Caterpie <br /> Stats: 0/0/0</div>
+                                <div className="card-content-container">Beedrill <br /> Stats: 0/0/0</div>
+                                <div className="card-content-container add-pokemon">Add Pokémon</div>
+                            </div>
+                        
+                </div>
+                </section>
+
+                <button className="login-exibir logout" onClick={handleLogout}><i className="fa-solid fa-arrow-right-from-bracket"></i> Logout</button>
+            </div>
+            <Footer />
+        </div>
     )
 }
