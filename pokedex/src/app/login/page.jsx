@@ -23,8 +23,8 @@ export default function Login() {
             if (!signUp && response.status == 200) {
                 console.log('Logged in sucessfully! Redirecting...')
 
-                // const id = await getIdTreinador(nome)
-                const id = response.data.user.id
+                const id = await getIdTreinador(nome)
+                //const id = response.data.user.id
 
                 //criar cookie local pq o chrome não deixa o localhost acessar o cookie que vem de ads.osorio.ifrs.edu.br - remover se a página for hospedada num servidor
                 const tokenValue = response.data.token || id
@@ -35,6 +35,9 @@ export default function Login() {
             }
             if (signUp && response.status == 201) {
                 console.log('Created account sucessfully! Redirecting...')
+
+                const id = await getIdTreinador(nome)
+                //const id = response.data.user.id
 
                 //criar cookie local pq o chrome não deixa o localhost acessar o cookie que vem de ads.osorio.ifrs.edu.br - remover se a página for hospedada num servidor
                 const tokenValue = response.data.token || id
@@ -92,7 +95,7 @@ export default function Login() {
 
 
                     <Link href='/'><button className='login-exibir login-back'>Back</button></Link>
-                    <p className="login-clickable" onClick={() => setSignIn(!signIn)}>{signIn ? "Already have an account? " : "Don't have an account yet? "}Click here to {signIn ? "log" : "sign"}-in</p>
+                    <p className="login-clickable" onClick={() => setsignUp(!signUp)}>{signUp ? "Already have an account? " : "Don't have an account yet? "}Click here to {signUp ? "log" : "sign"}-in</p>
                     </div>
                 </div>
             </div>
