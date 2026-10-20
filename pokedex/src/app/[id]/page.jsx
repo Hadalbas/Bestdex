@@ -25,6 +25,7 @@ export default function Pokemon({ params }) {
     const [prevolution, setPrevolution] = useState({});
     const [baseFormePrevo, setBaseFormePrevo] = useState({});
     const [prevoNumber, setPrevoNumber] = useState(1)
+
     const [isInTeam, setIsInTeam] = useState(false)
     const [teamMessage, setTeamMessage] = useState('')
 
@@ -127,7 +128,7 @@ export default function Pokemon({ params }) {
             return;
         }
 
-        setTeamMessage(`${pokemon.name} is already in your team.`);
+        setTeamMessage(`${pokemon.name} cannot add pokemon to your team.`);
     }
 
     return (

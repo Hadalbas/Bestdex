@@ -1,4 +1,6 @@
-export default function AccountPokemonCard({ name, stats = [], onRemove }) {
+import Image from "next/image";
+
+export default function AccountPokemonCard({ name, image, stats = [], onRemove }) {
     const [hp, atk, def, spa, spd, spe] = stats;
 
     return (
@@ -8,7 +10,9 @@ export default function AccountPokemonCard({ name, stats = [], onRemove }) {
                 <span className="pokemon-badge">Lv. 25</span>
             </div>
 
-            <div className="pokemon-sprite">⚡</div>
+            <div className="pokemon-sprite">
+                <Image src={image} width={70} height={70} alt={name+"_image"}/>
+            </div>
 
             <div className="pokemon-stats-list">
                 <span>HP: {hp}</span>
