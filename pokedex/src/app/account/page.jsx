@@ -5,14 +5,34 @@ import { useEffect, useState } from "react";
 import './profile.css'
 import Footer from "@/components/Footer";
 import Header from "@/components/Header(READ)";
+import AccountStatCard from "@/components/AccountStatCard";
+import AccountPokemonCard from "@/components/AccountPokemonCard";
+import { getTeam, removePokemonFromTeam } from "@/lib/teamStorage";
+import Link from "next/link";
 
 export default function Account(){
 
     const [name, setName] = useState('')
+    const [team, setTeam] = useState([])
+
+    const trainerStats = [
+        { label: 'Battles', value: 0 },
+        { label: 'Victories', value: 0 },
+        { label: 'Defeats', value: 0 }
+    ]
 
     async function findUser() {
         const data = await getDataTreinador(document.cookie.substring(6))
         setName(data.data.nome)
+    }
+
+    function loadTeam() {
+        setTeam(getTeam())
+    }
+
+    function handleRemovePokemon(nameToRemove) {
+        removePokemonFromTeam(nameToRemove)
+        loadTeam()
     }
 
     async function handleLogout() {
@@ -24,6 +44,14 @@ export default function Account(){
 
     useEffect(()=>{
         findUser()
+        loadTeam()
+
+        const handleTeamUpdate = () => loadTeam();
+        window.addEventListener('bestdex-team-updated', handleTeamUpdate);
+
+        return () => {
+            window.removeEventListener('bestdex-team-updated', handleTeamUpdate);
+        }
     }, []);
 
     return(
@@ -31,29 +59,44 @@ export default function Account(){
             <Header />
             <div className="profile-main">
                 <section className="sidebar-team-container">
-                <div className="sidebar">
-                    <h1 className="welcome">Welcome,<br />{name}</h1>
-                                                                            {/* <>User Status? Como vitórias, derrotas, etc.</> */}
-                    <div className="stats-mockup">                          {/* <- MOCKUP */}
-                        <div><p>Battles:<br/><span>0</span></p></div>
-                        <div><p>Victories:<br/><span>0</span></p></div>
-                        <div><p>Defeats:<br/><span>0</span></p></div>
+                    <aside className="sidebar">
+                        <div className="profile-header">
+                            <h1 className="welcome">Welcome,<br />{name || 'Trainer'}</h1>
+                        </div>
+
+                        <div className="stats-mockup">
+                            {trainerStats.map((stat) => (
+                                <AccountStatCard key={stat.label} label={stat.label} value={stat.value} />
+                            ))}
+                        </div>
+
+                        <div className="profile-summary">
+                            <p>Region: Kanto</p>
+                            <p>Team: {team.length} Pokémon</p>
+                            <p>Rank: Rookie</p>
+                        </div>
+                    </aside>
+
+                    <div className="pokemon-team-main-container">
+                        <div className="card-container">
+                            {team.length > 0 ? team.map((pokemon) => (
+                                <AccountPokemonCard
+                                    key={pokemon.id || pokemon.name}
+                                    name={pokemon.name}
+                                    stats={[
+                                        pokemon.baseStats?.hp ?? 0,
+                                        pokemon.baseStats?.atk ?? 0,
+                                        pokemon.baseStats?.def ?? 0,
+                                        pokemon.baseStats?.spa ?? 0,
+                                        pokemon.baseStats?.spd ?? 0,
+                                        pokemon.baseStats?.spe ?? 0,
+                                    ]}
+                                    onRemove={() => handleRemovePokemon(pokemon.name)}
+                                />
+                            )) : <div className="card-content-container empty-team">No Pokémon in your team yet.</div>}
+                            <Link href="/" className="card-content-container add-pokemon">Add Pokémon</Link>
+                        </div>
                     </div>
-                </div>
-                <div className="pokemon-team-main-container">
-                    {/* <TimePokemon /> */}
-                    
-                            <div className="card-container">                {/* MOCKUP */} 
-                                <div className="card-content-container">Pikachu <br /> Stats: 0/0/0</div>
-                                <div className="card-content-container">Bulbasaur <br /> Stats: 0/0/0</div>
-                                <div className="card-content-container">Charizard <br /> Stats: 0/0/0</div>  {/* Not final design, add stats and details you think are important */}
-                                <div className="card-content-container">Blastoise <br /> Stats: 0/0/0</div>
-                                <div className="card-content-container">Caterpie <br /> Stats: 0/0/0</div>
-                                <div className="card-content-container">Beedrill <br /> Stats: 0/0/0</div>
-                                <div className="card-content-container add-pokemon">Add Pokémon</div>
-                            </div>
-                        
-                </div>
                 </section>
 
                 <button className="login-exibir logout" onClick={handleLogout}><i className="fa-solid fa-arrow-right-from-bracket"></i> Logout</button>

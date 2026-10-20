@@ -20,7 +20,7 @@ export default function Header() {
             <ul>
               <li><Link href="/"><i className="fa-solid fa-house"></i> Home</Link></li>
               <li><Link href="/account"><i className="fa-solid fa-user"></i> Account</Link></li>
-              <label htmlFor="search-input" className="search-input"><input id="search-input" className="nav-search search" type="text" onChange={(e)=>setSearch(e.target.value)} value={search} placeholder="Search..."/><i class="fa-solid fa-magnifying-glass"></i></label>
+              <label htmlFor="search-input" className="search-input"><input id="search-input" className="nav-search search" type="text" onChange={(e)=>setSearch(e.target.value)} value={search} placeholder="Search..."/><i className="fa-solid fa-magnifying-glass"></i></label>
             </ul>            {/* Pensando em ter uma barra de pesquisa para os pokémons, aparecendo um dropdown com os resultados, assim quando clicar seria redirecionado para a página na pasta [id], seria mais rápido para adicionar os pokémons ao time */ }
           </nav>
         </header>

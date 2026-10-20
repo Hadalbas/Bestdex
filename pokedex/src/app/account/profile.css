@@ -1,131 +1,287 @@
+.main-page {
+    background-color: #060938;
+    width: 100%;
+}
+
 .profile-main {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 200px;
-    height: 100vh;
-    width: 100vw;
+    min-height: 100vh;
+    width: 100%;
     text-align: center;
+    padding: 0 1rem 2rem;
+    box-sizing: border-box;
 }
 
 .sidebar-team-container {
-    width: 90%;
-    height: 90%;
+    width: min(1200px, 90%);
+    min-height: 700px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 100px;
+    align-items: stretch;
+    gap: 2rem;
+    flex-wrap: wrap;
 }
 
 .sidebar {
-    width: 30%;
-    height: 100%;
+    flex: 0 0 30%;
+    min-width: 280px;
     background-color: #10155e;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    gap: 100px;
+    gap: 1.5rem;
+    padding: 2rem 1.25rem;
+    box-sizing: border-box;
+}
+
+.profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
 }
 
 .pokemon-team-main-container {
-    width: 70%;
-    height: 100%;
+    flex: 1 1 50%;
+    min-width: 300px;
     background-color: #10155e;
     border-radius: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 50px;
+    padding: clamp(1rem, 2vw, 2rem);
+    box-sizing: border-box;
 }
 
 .pfp-mockup {
-    width: 200px;
-    height: 200px;
+    width: clamp(120px, 15vw, 200px);
+    aspect-ratio: 1;
     border-radius: 50%;
     background: linear-gradient(0deg, #ebc51e, #ee720d);
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: clamp(2rem, 4vw, 4rem);
 }
 
 .stats-mockup {
-    display: flex;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(80px, 1fr));
+    gap: 0.75rem;
+    width: 100%;
 }
 
-.stats-mockup div {
-    width: 100px;
-    height: 100px;
+.stat-card {
+    min-height: 110px;
     border-radius: 10px;
     background-color: #ffffff25;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 70px 65px;
+    padding: 0.75rem;
+    box-sizing: border-box;
 }
 
-.stats-mockup div p {
-    font-size: 20px;
+.stat-card p {
+    font-size: clamp(0.8rem, 1.2vw, 1.1rem);
     font-weight: 600;
     color: white;
+    margin: 0;
+    line-height: 1.4;
+}
+
+.stat-card span {
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
+    font-weight: 700;
+}
+
+.profile-summary {
+    width: 100%;
+    background-color: #ffffff12;
+    border-radius: 12px;
+    padding: 1rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: 0.95rem;
+}
+
+.profile-summary p {
     margin: 0;
 }
 
 .welcome {
-    font-size: 40px;
+    font-size: clamp(1.8rem, 2vw, 2.8rem);
     font-weight: 600;
-    letter-spacing: 3px;
+    letter-spacing: 2px;
     color: white;
+    margin: 0;
 }
 
 .logout {
-    margin: 50px;
+    margin-top: 2rem;
 }
 
 .login-exibir {
-    width: 20%;
+    width: min(240px, 60%);
     padding: 15px;
     border-radius: 20px;
     border: none;
     outline: none;
     font-size: 1rem;
-    margin: none;
     background-color: #FF0000;
     color: #fff;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-    margin: 0 auto;
-    margin-top: 20px;
 }
-
 
 .card-container {
     width: 100%;
-    height: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1rem;
     background-color: #151c81a9;
     border-radius: 10px;
-    padding: 50px;
+    padding: clamp(1rem, 2vw, 2rem);
+    box-sizing: border-box;
 }
 
 .card-content-container {
-    width: 210px;
-    height: 275px;
+    min-height: 220px;
+    padding: 1rem;
     background-color: #ffffff25;
     border-radius: 10px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    font-size: 20px;
+    font-size: 1rem;
     font-weight: 600;
     color: white;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.pokemon-card-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.pokemon-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.pokemon-badge {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 999px;
+    padding: 0.3rem 0.55rem;
+    font-size: 0.7rem;
+}
+
+.pokemon-sprite {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.08);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
+
+.pokemon-stats {
+    font-size: 0.85rem;
+    opacity: 0.95;
+}
+
+.pokemon-stats-list {
+    width: 100%;
+    display: grid;
+    gap: 0.25rem;
+    font-size: 0.7rem;
+    line-height: 1.4;
+    color: white;
+    text-align: left;
+    background: rgba(255,255,255,0.04);
+    border-radius: 8px;
+    padding: 0.5rem 0.6rem;
+}
+
+.remove-team-button {
+    margin-top: 0.5rem;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    background: rgba(255, 0, 0, 0.18);
+    color: white;
+    padding: 0.5rem 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
 }
 
 .add-pokemon {
     border: 2px dashed #ffffff50;
+    min-height: 220px;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+}
+
+.empty-team {
+    width: 100%;
+    min-height: 180px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    opacity: 0.85;
+}
+
+@media (max-width: 900px) {
+    .profile-main {
+        margin-top: 120px;
+    }
+
+    .sidebar-team-container {
+        width: 95%;
+    }
+
+    .sidebar,
+    .pokemon-team-main-container {
+        flex-basis: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .profile-main {
+        padding: 0 0.75rem 1.5rem;
+    }
+
+    .stats-mockup {
+        grid-template-columns: repeat(3, minmax(60px, 1fr));
+    }
+
+    .card-container {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    }
+
+    .card-content-container {
+        min-height: 180px;
+    }
+
+    .login-exibir {
+        width: 70%;
+    }
 }
