@@ -157,7 +157,7 @@
     height: 320px;
     width: 220px;
     padding: 1rem;
-    background-color: #ffffff25;
+    background-color: #090d42;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -168,6 +168,7 @@
     color: white;
     text-align: center;
     box-sizing: border-box;
+    text-align: center;
 }
 
 .pokemon-card-header {
@@ -182,6 +183,7 @@
 .pokemon-name {
     font-size: 1.1rem;
     font-weight: 700;
+    margin: 0 auto;
 }
 
 .pokemon-badge {
@@ -237,11 +239,12 @@
 }
 
 .add-pokemon {
+    background-color: #00000063;
     border: 2px dashed #ffffff50;
     min-height: 220px;
     justify-content: center;
     text-decoration: none;
-    color: white;
+    color: rgba(255, 255, 255, 0.829);
 }
 
 .empty-team {
@@ -289,4 +292,12 @@
     .login-exibir {
         width: 70%;
     }
+}
+
+
+.bi-plus-lg {
+    height: 100px;
+    width: 100px;
+    font-weight: 100;
+    color: rgba(255, 255, 255, 0.26);
 }

@@ -214,7 +214,8 @@ export default function Pokemon({ params }) {
                 <br />
 
                 <div className="evolution-line">
-                    <h2>Evolution Line:</h2>
+                    <h2>Evolution Line</h2>
+                    <span><i className="fa-solid fa-angle-down"></i></span>
 
                     <div className="evolutions">
                         {
