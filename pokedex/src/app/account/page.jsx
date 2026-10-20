@@ -83,6 +83,7 @@ export default function Account(){
                                 <AccountPokemonCard
                                     key={pokemon.id || pokemon.name}
                                     name={pokemon.name}
+                                    image={pokemon.image}
                                     stats={[
                                         pokemon.baseStats?.hp ?? 0,
                                         pokemon.baseStats?.atk ?? 0,
