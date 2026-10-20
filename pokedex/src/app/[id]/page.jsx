@@ -7,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, useEffect, use } from "react"
-import { addPokemonToTeam, isPokemonInTeam } from "@/lib/teamStorage";
+import { addPokemonToTeam, isPokemonInTeam, getTeam, MAX_TEAM_SIZE } from "@/lib/teamStorage";
 import "./evolution.css"
 import Header from "@/components/Header(READ)";
 
@@ -106,6 +106,13 @@ export default function Pokemon({ params }) {
 
     function handleAddToTeam() {
         if (!pokemon?.name) return;
+
+        const team = getTeam();
+
+        if (team.length >= MAX_TEAM_SIZE) {
+            setTeamMessage(`Your team is already full (${MAX_TEAM_SIZE} Pokémon).`);
+            return;
+        }
 
         const added = addPokemonToTeam({
             id: pokemon.name,
@@ -207,7 +214,8 @@ export default function Pokemon({ params }) {
                 <br />
 
                 <div className="evolution-line">
-                    <h2>Evolution Line:</h2>
+                    <h2>Evolution Line</h2>
+                    <span><i className="fa-solid fa-angle-down"></i></span>
 
                     <div className="evolutions">
                         {

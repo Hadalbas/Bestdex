@@ -92,6 +92,13 @@ header{
   font-size: 60px;
   cursor: default;
   padding-top: 5px;
+  cursor: pointer;
+}
+
+.fa-magnifying-glass {
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
 }
 
 nav {
@@ -208,7 +215,12 @@ hr {
 .search-filter {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 10px;
+}
+
+.search-filter h2 {
+  margin: 0;
 }
 
 .search-filter input {

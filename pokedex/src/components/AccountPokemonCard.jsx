@@ -7,7 +7,6 @@ export default function AccountPokemonCard({ name, image, stats = [], onRemove }
         <div className="card-content-container">
             <div className="pokemon-card-header">
                 <span className="pokemon-name">{name}</span>
-                <span className="pokemon-badge">Lv. 25</span>
             </div>
 
             <div className="pokemon-sprite">

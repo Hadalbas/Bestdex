@@ -26,7 +26,7 @@
 }
 
 .sidebar {
-    flex: 0 0 30%;
+    height: 700px;
     min-width: 280px;
     background-color: #10155e;
     border-radius: 20px;
@@ -122,7 +122,7 @@
     font-weight: 600;
     letter-spacing: 2px;
     color: white;
-    margin: 0;
+    margin: 50px 0 150px 0;
 }
 
 .logout {
@@ -154,9 +154,10 @@
 }
 
 .card-content-container {
-    min-height: 220px;
+    height: 320px;
+    width: 220px;
     padding: 1rem;
-    background-color: #ffffff25;
+    background-color: #090d42;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
@@ -167,6 +168,7 @@
     color: white;
     text-align: center;
     box-sizing: border-box;
+    text-align: center;
 }
 
 .pokemon-card-header {
@@ -181,6 +183,7 @@
 .pokemon-name {
     font-size: 1.1rem;
     font-weight: 700;
+    margin: 0 auto;
 }
 
 .pokemon-badge {
@@ -193,8 +196,6 @@
 .pokemon-sprite {
     width: 72px;
     height: 72px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.08);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -207,8 +208,11 @@
 }
 
 .pokemon-stats-list {
+    height: 30%;
     width: 100%;
     display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     gap: 0.25rem;
     font-size: 0.7rem;
     line-height: 1.4;
@@ -217,6 +221,9 @@
     background: rgba(255,255,255,0.04);
     border-radius: 8px;
     padding: 0.5rem 0.6rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .remove-team-button {
@@ -232,11 +239,12 @@
 }
 
 .add-pokemon {
+    background-color: #00000063;
     border: 2px dashed #ffffff50;
     min-height: 220px;
     justify-content: center;
     text-decoration: none;
-    color: white;
+    color: rgba(255, 255, 255, 0.829);
 }
 
 .empty-team {
@@ -284,4 +292,12 @@
     .login-exibir {
         width: 70%;
     }
+}
+
+
+.bi-plus-lg {
+    height: 100px;
+    width: 100px;
+    font-weight: 100;
+    color: rgba(255, 255, 255, 0.26);
 }

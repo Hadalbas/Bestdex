@@ -9,11 +9,10 @@ const bebasNeue = Bebas_Neue({ subsets: ["latin"], weight: ['400'], display: 'sw
 export default function Header() {
   const [search, setSearch] = useState('');
 
-    // async function getPokedex() {
-    //     const { data } = await api.get('/pokedex.json');
-    //     setPokemon(data);
-    // }
-    
+    async function getPokedex() {
+        const { data } = await api.get('/pokedex.json');
+        setPokemon(data);
+    }
     return (
         <header>
           <nav>
