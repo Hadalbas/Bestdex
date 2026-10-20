@@ -28,4 +28,11 @@ export async function changeNameTreinador(treinador){
     return await axios.post(urlAPI+'/treinadores', treinador)
 }
 
+export async function getTeams() {
+    return await axios.get(urlAPI+`/times`)
+}
+export async function createTeam(nome, criador, regulacao, pokemons) {
+    return await axios.post(urlAPI+`/times`, {nome, criador, regulacao, pokemons})
+}
+
 export default api

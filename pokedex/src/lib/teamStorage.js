@@ -1,3 +1,5 @@
+import { createTeam } from "./api";
+
 const TEAM_KEY = 'bestdex_team';
 export const MAX_TEAM_SIZE = 6;
 
@@ -10,6 +12,33 @@ export function getTeam() {
     } catch {
         return [];
     }
+}
+
+export async function saveTeam(userName, teamName){
+    const team = getTeam()
+    let pokemons = []
+    
+    for(let pokemon of team){
+        pokemons.push({
+            species: pokemon.name,
+            nickname: "",
+            item: "None",
+            ability: "Intimidate",
+            gender: "f",
+            shiny: false,
+            stats: {
+                hp: 0,
+                at: 1,
+                df: 2,
+                sa: 3,
+                sd: 4,
+                sp: 5
+            },
+            moves: []
+        })
+    }
+
+    return await createTeam(teamName, userName, "reg-m", pokemons)
 }
 
 export function addPokemonToTeam(pokemon) {

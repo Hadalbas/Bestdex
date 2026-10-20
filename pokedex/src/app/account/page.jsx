@@ -7,13 +7,16 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header(READ)";
 import AccountStatCard from "@/components/AccountStatCard";
 import AccountPokemonCard from "@/components/AccountPokemonCard";
-import { getTeam, removePokemonFromTeam } from "@/lib/teamStorage";
+import { getTeam, removePokemonFromTeam, saveTeam } from "@/lib/teamStorage";
 import Link from "next/link";
 
 export default function Account(){
 
-    const [name, setName] = useState('')
+    const [userName, setUserName] = useState('')
+    const [teamName, setTeamName] = useState('New Team')
     const [team, setTeam] = useState([])
+
+    const [response, setResponse] = useState('')
 
     const trainerStats = [
         { label: 'Battles', value: 0 },
@@ -23,13 +26,16 @@ export default function Account(){
 
     async function findUser() {
         const data = await getDataTreinador(document.cookie.substring(6))
-        setName(data.data.nome)
+        setUserName(data.data.nome)
     }
 
     function loadTeam() {
         setTeam(getTeam())
     }
-
+    function uploadTeam() {
+        let response = saveTeam(userName, teamName)
+        setResponse(response.status)
+    }
     function handleRemovePokemon(nameToRemove) {
         removePokemonFromTeam(nameToRemove)
         loadTeam()
@@ -61,7 +67,7 @@ export default function Account(){
                 <section className="sidebar-team-container">
                     <aside className="sidebar">
                         <div className="profile-header">
-                            <h1 className="welcome">Welcome,<br />{name || 'Trainer'}</h1>
+                            <h1 className="welcome">Welcome,<br />{userName || 'Trainer'}</h1>
                         </div>
 
                         <div className="stats-mockup">
@@ -78,6 +84,9 @@ export default function Account(){
                     </aside>
 
                     <div className="pokemon-team-main-container">
+
+                        <input id="TeamNamer" type="text" onChange={(e) => {setTeamName(e.target.value)}} value={teamName}/>
+
                         <div className="card-container">
                             {team.length > 0 ? team.map((pokemon) => (
                                 <AccountPokemonCard
@@ -95,10 +104,15 @@ export default function Account(){
                                     onRemove={() => handleRemovePokemon(pokemon.name)}
                                 />
                             )) : <div className="card-content-container empty-team">No Pokémon in your team yet.</div>}
-                            <Link href="/" className="card-content-container add-pokemon">Add Pokémon</Link>
+                            {team.length < 6 && <Link href="/" className="card-content-container add-pokemon">Add Pokémon</Link>}
                         </div>
                     </div>
+
+                    <p>{response}</p>
+
                 </section>
+
+                    <button onClick={uploadTeam}>Publish Team</button>
 
                 <button className="login-exibir logout" onClick={handleLogout}><i className="fa-solid fa-arrow-right-from-bracket"></i> Logout</button>
             </div>

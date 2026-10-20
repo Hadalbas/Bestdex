@@ -52,7 +52,7 @@
     min-width: 300px;
     background-color: #10155e;
     border-radius: 20px;
-    display: flex;
+    /* display: flex; */
     justify-content: center;
     align-items: center;
     padding: clamp(1rem, 2vw, 2rem);
