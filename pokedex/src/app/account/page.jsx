@@ -33,8 +33,7 @@ export default function Account(){
         setTeam(getTeam())
     }
     function uploadTeam() {
-        let response = saveTeam(userName, teamName)
-        setResponse(response.status)
+        setResponse(saveTeam(userName, teamName).data?.message)
     }
     function handleRemovePokemon(nameToRemove) {
         removePokemonFromTeam(nameToRemove)
@@ -115,9 +114,10 @@ export default function Account(){
                         </div>
                     </div>
 
-                    <p>{response}</p>
 
                 </section>
+
+                    <p>{response}</p>
 
                     <button onClick={uploadTeam}>Publish Team</button>
 

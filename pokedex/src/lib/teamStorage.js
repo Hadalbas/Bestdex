@@ -68,6 +68,9 @@ export function addPokemonToTeam(pokemon) {
                 spa: pokemon.baseStats?.spa ?? 0,
                 spd: pokemon.baseStats?.spd ?? 0,
                 spe: pokemon.baseStats?.spe ?? 0,
+            },
+            evs: {
+                // hp: 
             }
         }
     ];

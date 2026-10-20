@@ -5,7 +5,7 @@ import Header from "@/components/Header(READ)";
 import Lista from "@/components/Lista";
 import api from "@/lib/api";
 import Image from "next/image";
-import Link from "next/link";
+// import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function Home() {
