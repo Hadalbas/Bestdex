@@ -1,4 +1,4 @@
-export default function Edit({ name, stats }){
+export default function Edit(){
     
     return(
         <>

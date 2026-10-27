@@ -103,6 +103,7 @@ export default function Account(){
                                     onRemove={() => handleRemovePokemon(pokemon.name)}
                                 />
                             )) : <div className="card-content-container empty-team">No Pokémon in your team yet.</div>}
+
                             {team.length < 6 && (
                                 <Link href="/" className="card-content-container add-pokemon">
                                     Add Pokémon
@@ -111,6 +112,7 @@ export default function Account(){
                                     </svg>
                                 </Link>
                             )}
+
                         </div>
                     </div>
 

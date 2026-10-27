@@ -226,6 +226,18 @@
     text-align: center;
 }
 
+.edit-team-button {
+    margin-top: 0.5rem;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    background: rgba(200, 200, 200, 0.38);
+    color: white;
+    padding: 0.5rem 0.75rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
 .remove-team-button {
     margin-top: 0.5rem;
     width: 100%;

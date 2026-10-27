@@ -41,6 +41,10 @@ export async function saveTeam(userName, teamName){
     return await createTeam(teamName, userName, "reg-m", pokemons)
 }
 
+// export function updatePokemonFromTeam(pokemonName, hpEV, atkEV, defEV, spaEV, spdEV, speEV){
+
+// }
+
 export function addPokemonToTeam(pokemon) {
     if (typeof window === 'undefined') return false;
 
@@ -70,7 +74,12 @@ export function addPokemonToTeam(pokemon) {
                 spe: pokemon.baseStats?.spe ?? 0,
             },
             evs: {
-                // hp: 
+                hp: 0,
+                atk: 0,
+                def: 0,
+                spa: 0,
+                spd: 0,
+                spe: 0
             }
         }
     ];
