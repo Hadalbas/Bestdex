@@ -41,9 +41,10 @@ export async function saveTeam(userName, teamName){
     return await createTeam(teamName, userName, "reg-m", pokemons)
 }
 
-// export function updatePokemonFromTeam(pokemonName, hpEV, atkEV, defEV, spaEV, spdEV, speEV){
-
-// }
+export function updatePokemonFromTeam(pokemonName, hpEV, atkEV, defEV, spaEV, spdEV, speEV){
+    // const pokemon = getTeam()
+    console.log(getTeam().filter(pokemon => pokemon.name == pokemonName))
+}
 
 export function addPokemonToTeam(pokemon) {
     if (typeof window === 'undefined') return false;

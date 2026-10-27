@@ -1,5 +1,6 @@
 'use client'
 
+import { updatePokemonFromTeam } from "@/lib/teamStorage";
 import Image from "next/image";
 import { useState } from "react";
 
@@ -13,7 +14,6 @@ export default function AccountPokemonCard({ name, image, stats = [], onRemove }
     const [sdEV, setSdEV] = useState(0)
     const [spEV, setSpEV] = useState(0)
     const [hp, atk, def, spa, spd, spe] = stats;
-
 
     return (
         <div className="card-content-container">
@@ -48,7 +48,15 @@ export default function AccountPokemonCard({ name, image, stats = [], onRemove }
             }
 
 
-            <button className="edit-team-button" onClick={() => setEdit(!edit)}>Edit</button>
+            {
+            edit 
+            ? <>
+                <button className="save-edit-team-button" onClick={updatePokemonFromTeam}>Save</button> 
+                <button className="edit-team-button" onClick={() => setEdit(false)}>Cancel</button>
+            </>
+            : <button className="edit-team-button" onClick={() => setEdit(true)}>Edit</button>
+            }
+
             <button className="remove-team-button" onClick={onRemove}>Remove</button>
         </div>
     );
