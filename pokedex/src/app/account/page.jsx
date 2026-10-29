@@ -7,14 +7,17 @@ import Footer from "@/components/Footer";
 import Header from "@/components/Header(READ)";
 import AccountStatCard from "@/components/AccountStatCard";
 import AccountPokemonCard from "@/components/AccountPokemonCard";
+import EditPokemon from "@/components/EditPokemon";
 import { getTeam, removePokemonFromTeam, saveTeam } from "@/lib/teamStorage";
 import Link from "next/link";
 
-export default function Account(){
+export default function Account() {
 
     const [userName, setUserName] = useState('')
     const [teamName, setTeamName] = useState('New Team')
     const [team, setTeam] = useState([])
+    const [editingPokemon, setEditingPokemon] = useState('')
+    const [focusPokemon, setFocusPokemon] = useState({})
 
     const [response, setResponse] = useState('')
 
@@ -40,6 +43,11 @@ export default function Account(){
         loadTeam()
     }
 
+    function changeEditingPokemon(pokemon) {
+        pokemon && setFocusPokemon(team.find(({ name }) => name === pokemon))
+        setEditingPokemon(pokemon)
+    }
+
     async function handleLogout() {
         await logoutTreinador();
         document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
@@ -47,7 +55,7 @@ export default function Account(){
         window.location.replace('/')
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         findUser()
         loadTeam()
 
@@ -59,7 +67,7 @@ export default function Account(){
         }
     }, []);
 
-    return(
+    return (
         <div className="main-page">
             <Header />
             <div className="profile-main">
@@ -84,7 +92,7 @@ export default function Account(){
 
                     <div className="pokemon-team-main-container">
 
-                        <label><input id="TeamNamer" type="text" onChange={(e) => {setTeamName(e.target.value)}} value={teamName}/><div className="pen-container"><i className="fa-solid fa-pen"></i></div></label>
+                        <input id="TeamNamer" type="text" onChange={(e) => {setTeamName(e.target.value)}} value={teamName}/>
 
                         <div className="card-container">
                             {team.length > 0 ? team.map((pokemon) => (
@@ -101,6 +109,7 @@ export default function Account(){
                                         pokemon.baseStats?.spe ?? 0,
                                     ]}
                                     onRemove={() => handleRemovePokemon(pokemon.name)}
+                                    changeEditingPokemon={() => changeEditingPokemon(pokemon.name)}
                                 />
                             )) : <div className="card-content-container empty-team">No Pokémon in your team yet.</div>}
 
@@ -108,7 +117,7 @@ export default function Account(){
                                 <Link href="/" className="card-content-container add-pokemon">
                                     Add Pokémon
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-plus-lg" viewBox="0 0 16 16">
-                                        <path fillRule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"/>
+                                        <path fillRule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2" />
                                     </svg>
                                 </Link>
                             )}
@@ -119,9 +128,25 @@ export default function Account(){
 
                 </section>
 
-                    <p>{response}</p>
+                {editingPokemon
+                    ? <EditPokemon
+                        name={focusPokemon.name}
+                        image={focusPokemon.image}
+                        stats={[
+                            focusPokemon.baseStats?.hp ?? 0,
+                            focusPokemon.baseStats?.atk ?? 0,
+                            focusPokemon.baseStats?.def ?? 0,
+                            focusPokemon.baseStats?.spa ?? 0,
+                            focusPokemon.baseStats?.spd ?? 0,
+                            focusPokemon.baseStats?.spe ?? 0
+                        ]}
+                        changeEditingPokemon={() => changeEditingPokemon('')} 
+                        />
+                    : <></>}
 
-                    <button className="publish-button" onClick={uploadTeam}>Publish Team</button>
+                <p>{response}</p>
+
+                    <button onClick={uploadTeam}>Publish Team</button>
 
                 <button className="login-exibir logout" onClick={handleLogout}><i className="fa-solid fa-arrow-right-from-bracket"></i> Logout</button>
             </div>
