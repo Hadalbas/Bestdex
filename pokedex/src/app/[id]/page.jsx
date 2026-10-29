@@ -28,6 +28,7 @@ export default function Pokemon({ params }) {
 
     const [isInTeam, setIsInTeam] = useState(false)
     const [teamMessage, setTeamMessage] = useState('')
+    const [messageType, setMessageType] = useState('info')
 
 
     const typesNumbers = { "Normal": 1, "Fighting": 2, "Flying": 3, "Poison": 4, "Ground": 5, "Rock": 6, "Bug": 7, "Ghost": 8, "Steel": 9, "Fire": 10, "Water": 11, "Grass": 12, "Electric": 13, "Psychic": 14, "Ice": 15, "Dragon": 16, "Dark": 17, "Fairy": 18, }
@@ -110,6 +111,7 @@ export default function Pokemon({ params }) {
         const team = getTeam();
 
         if (team.length >= MAX_TEAM_SIZE) {
+            setMessageType('error');
             setTeamMessage(`Your team is already full (${MAX_TEAM_SIZE} Pokémon).`);
             return;
         }
@@ -124,11 +126,13 @@ export default function Pokemon({ params }) {
 
         if (added) {
             setIsInTeam(true);
-            setTeamMessage(`${pokemon.name} added to your team!`);
+            setMessageType('success');
+            setTeamMessage([`${pokemon.name} added to your team!`]);
             return;
         }
 
-        setTeamMessage(`${pokemon.name} cannot add pokemon to your team.`);
+        setMessageType('error');
+        setTeamMessage([`${pokemon.name} cannot add pokemon to your team.`]);
     }
 
     return (
@@ -208,7 +212,11 @@ export default function Pokemon({ params }) {
                     >
                         {isInTeam ? 'In Team' : 'Add to Team'}
                     </button>
-                    {teamMessage && <p className="team-message">{teamMessage}</p>}
+                    {teamMessage && (
+                        <p className={`team-message ${messageType}`}>
+                        {teamMessage}
+                        </p>
+                    )}
                 </div>
 
                 <br />

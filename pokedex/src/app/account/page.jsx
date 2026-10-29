@@ -84,7 +84,7 @@ export default function Account(){
 
                     <div className="pokemon-team-main-container">
 
-                        <input id="TeamNamer" type="text" onChange={(e) => {setTeamName(e.target.value)}} value={teamName}/>
+                        <label><input id="TeamNamer" type="text" onChange={(e) => {setTeamName(e.target.value)}} value={teamName}/><div className="pen-container"><i className="fa-solid fa-pen"></i></div></label>
 
                         <div className="card-container">
                             {team.length > 0 ? team.map((pokemon) => (
@@ -121,7 +121,7 @@ export default function Account(){
 
                     <p>{response}</p>
 
-                    <button onClick={uploadTeam}>Publish Team</button>
+                    <button className="publish-button" onClick={uploadTeam}>Publish Team</button>
 
                 <button className="login-exibir logout" onClick={handleLogout}><i className="fa-solid fa-arrow-right-from-bracket"></i> Logout</button>
             </div>

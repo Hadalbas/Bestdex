@@ -325,3 +325,49 @@
     font-weight: 100;
     color: rgba(255, 255, 255, 0.26);
 }
+
+.publish-button {
+    color: #111;
+    cursor: pointer;
+    background: linear-gradient(135deg, #ffdb2d, #ff7a18);
+    border: none;
+    border-radius: 999px;
+    padding: .9rem 1.8rem;
+    font-size: 1rem;
+    font-weight: 700;
+    transition: transform .2s, filter .2s;
+}
+
+#TeamNamer {
+    color: #fff;
+    background-color: #ffffff14;
+    border: 1px solid #fff3;
+    border-radius: 20px;
+    width: 250px;
+    padding: 5px 15px;
+    font-size: larger;
+}
+
+.pen-container {
+    height: 40px;
+    width: 40px;
+    background-color: #ffffff14;
+    border: 1px solid #ffffff25;
+    border-radius: 50px;
+    margin-left: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fa-pen {
+    cursor: pointer;
+    font-size: 20px;
+}
+
+label {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
