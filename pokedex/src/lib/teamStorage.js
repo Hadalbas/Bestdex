@@ -27,18 +27,12 @@ export async function saveTeam(userName, teamName) {
             gender: "f",
             shiny: false,
             stats: {
-                hp: 0,
-                at: 1,
-                df: 2,
-                sa: 3,
-                sd: 4,
-                sp: 5
-            //     hp: pokemon.evs.hp,
-            //     at: pokemon.evs.atk,
-            //     df: pokemon.evs.def,
-            //     sa: pokemon.evs.spa,
-            //     sd: pokemon.evs.spd,
-            //     sp: pokemon.evs.spe
+                hp: pokemon.evs.hp,
+                at: pokemon.evs.atk,
+                df: pokemon.evs.def,
+                sa: pokemon.evs.spa,
+                sd: pokemon.evs.spd,
+                sp: pokemon.evs.spe
             },
             moves: []
         })
@@ -47,13 +41,14 @@ export async function saveTeam(userName, teamName) {
     return await createTeam(teamName, userName, "reg-m", pokemons)
 }
 
-export function updatePokemonFromTeam(pokemonName, hpEV, atkEV, defEV, spaEV, spdEV, speEV) {
+export function updatePokemonFromTeam(pokemonName, ability, hpEV, atkEV, defEV, spaEV, spdEV, speEV) {
 
     const team = getTeam();
 
     const pokemon = team.find(({ name }) => name === pokemonName)
     const position = team.indexOf(pokemon)
 
+    pokemon.ability = ability ?? "Intimidate"
     pokemon.evs.hp = parseInt(hpEV) ?? 0
     pokemon.evs.atk = parseInt(atkEV) ?? 0
     pokemon.evs.def = parseInt(defEV) ?? 0

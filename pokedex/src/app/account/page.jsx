@@ -135,6 +135,7 @@ export default function Account() {
                     ? <EditPokemon
                         name={focusPokemon.name}
                         image={focusPokemon.image}
+                        ability={focusPokemon.ability}
                         stats={[
                             focusPokemon.baseStats?.hp ?? 0,
                             focusPokemon.baseStats?.atk ?? 0,

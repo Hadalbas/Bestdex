@@ -4,10 +4,13 @@ import { updatePokemonFromTeam } from "@/lib/teamStorage";
 import Image from "next/image";
 import { useState } from "react"
 
-export default function Editor({ name, image, stats = [], evs = [], changeEditingPokemon }) {
+export default function Editor({ name, image, ability, stats = [], evs = [], changeEditingPokemon }) {
 
     const [hp, at, df, sa, sd, sp] = stats;
     const [hepEV, atkEV, defEV, spaEV, spdEv, speEV] = evs;
+
+    const [newAbility, setNewAbility] = useState(ability)
+
 
     const [hpEV, setHpEV] = useState(hepEV)
     const [atEV, setAtEV] = useState(atkEV)
@@ -20,7 +23,7 @@ export default function Editor({ name, image, stats = [], evs = [], changeEditin
         <div className="pokemon-edit-container">
             <div className="card-content-container">
             
-                <button className="save-edit-team-button" onClick={() => {updatePokemonFromTeam(name, parseInt(hpEV), parseInt(atEV), parseInt(dfEV), parseInt(saEV), parseInt(sdEV), parseInt(spEV)); changeEditingPokemon()}}>Save</button>
+                <button className="save-edit-team-button" onClick={() => {updatePokemonFromTeam(name, newAbility, parseInt(hpEV), parseInt(atEV), parseInt(dfEV), parseInt(saEV), parseInt(sdEV), parseInt(spEV)); changeEditingPokemon()}}>Save</button>
                 <button className="edit-team-button" onClick={changeEditingPokemon}>Cancel</button>
                 <div className="pokemon-card-header">
                     <span className="pokemon-name">{name}</span>
@@ -42,6 +45,9 @@ export default function Editor({ name, image, stats = [], evs = [], changeEditin
             
             
             </div>
+
+            <h1>Ability: {ability}</h1>
+
             <div className="pokemon-slide-stats-list">
                 <div className="slide-container">
                     <label className="stats-slide-label">

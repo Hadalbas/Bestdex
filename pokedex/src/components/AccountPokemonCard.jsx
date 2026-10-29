@@ -1,6 +1,3 @@
-'use client'
-
-import { updatePokemonFromTeam } from "@/lib/teamStorage";
 import Image from "next/image";
 
 export default function AccountPokemonCard({ name, image, stats = [], onRemove, changeEditingPokemon }) {
@@ -26,9 +23,7 @@ export default function AccountPokemonCard({ name, image, stats = [], onRemove, 
                         <span>SPE: <strong>{spe}</strong></span>
                 </div>
             
-{/* updatePokemonFromTeam */}
             <button className="edit-team-button" onClick={changeEditingPokemon}>Edit</button>
-
             <button className="remove-team-button" onClick={onRemove}>Remove</button>
         </div>
     );
