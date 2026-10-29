@@ -18,12 +18,12 @@ export default function AccountPokemonCard({ name, image, stats = [], onRemove, 
             </div>
 
                 <div className="pokemon-stats-list">
-                        <span>HP:  {hp}</span>
-                        <span>ATK: {atk}</span>
-                        <span>DEF: {def}</span>
-                        <span>SPA: {spa}</span>
-                        <span>SPD: {spd}</span>
-                        <span>SPE: {spe}</span>
+                        <span>HP:  <strong>{hp}</strong></span>
+                        <span>ATK: <strong>{atk}</strong></span>
+                        <span>DEF: <strong>{def}</strong></span>
+                        <span>SPA: <strong>{spa}</strong></span>
+                        <span>SPD: <strong>{spd}</strong></span>
+                        <span>SPE: <strong>{spe}</strong></span>
                 </div>
             
 {/* updatePokemonFromTeam */}
