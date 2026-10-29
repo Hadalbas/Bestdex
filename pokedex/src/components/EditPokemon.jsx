@@ -1,23 +1,25 @@
 'use client'
 
+import { updatePokemonFromTeam } from "@/lib/teamStorage";
 import Image from "next/image";
 import { useState } from "react"
 
-export default function Editor({ name, image, stats = [], changeEditingPokemon }) {
+export default function Editor({ name, image, stats = [], evs = [], changeEditingPokemon }) {
 
     const [hp, at, df, sa, sd, sp] = stats;
+    const [hepEV, atkEV, defEV, spaEV, spdEv, speEV] = evs;
 
-    const [hpEV, setHpEV] = useState(0)
-    const [atEV, setAtEV] = useState(0)
-    const [dfEV, setDfEV] = useState(0)
-    const [saEV, setSaEV] = useState(0)
-    const [sdEV, setSdEV] = useState(0)
-    const [spEV, setSpEV] = useState(0)
+    const [hpEV, setHpEV] = useState(hepEV)
+    const [atEV, setAtEV] = useState(atkEV)
+    const [dfEV, setDfEV] = useState(defEV)
+    const [saEV, setSaEV] = useState(spaEV)
+    const [sdEV, setSdEV] = useState(spdEv)
+    const [spEV, setSpEV] = useState(speEV)
 
     return (
         <div className="card-content-container">
 
-            <button className="save-edit-team-button">Save</button>
+            <button className="save-edit-team-button" onClick={() => {updatePokemonFromTeam(name, parseInt(hpEV), parseInt(atEV), parseInt(dfEV), parseInt(saEV), parseInt(sdEV), parseInt(spEV)); changeEditingPokemon()}}>Save</button>
             <button className="edit-team-button" onClick={changeEditingPokemon}>Cancel</button>
             <div className="pokemon-card-header">
                 <span className="pokemon-name">{name}</span>

@@ -118,6 +118,7 @@ export default function Pokemon({ params }) {
             id: pokemon.name,
             num: pokemon.num,
             name: pokemon.name,
+            abilities: pokemon.abilities,
             image: `https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${number}.png`,
             baseStats: pokemon.baseStats,
         });

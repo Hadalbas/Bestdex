@@ -46,6 +46,9 @@ export default function Account() {
     function changeEditingPokemon(pokemon) {
         pokemon && setFocusPokemon(team.find(({ name }) => name === pokemon))
         setEditingPokemon(pokemon)
+        
+        console.log(focusPokemon)
+        loadTeam()
     }
 
     async function handleLogout() {
@@ -139,6 +142,14 @@ export default function Account() {
                             focusPokemon.baseStats?.spa ?? 0,
                             focusPokemon.baseStats?.spd ?? 0,
                             focusPokemon.baseStats?.spe ?? 0
+                        ]}
+                        evs={[                            
+                            focusPokemon.evs?.hp,
+                            focusPokemon.evs?.atk,
+                            focusPokemon.evs?.def,
+                            focusPokemon.evs?.spa,
+                            focusPokemon.evs?.spd,
+                            focusPokemon.evs?.spe,
                         ]}
                         changeEditingPokemon={() => changeEditingPokemon('')} 
                         />
