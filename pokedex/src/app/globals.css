@@ -69,8 +69,17 @@ button:hover {
   border-top: #13175a 3px solid;
   border-radius: 34px 34px 0 0;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 250px;
+}
+
+.credits-footer {
+  color: #FFFFFF80;
+}
+
+.credits-footer strong {
+  color: #fff;
 }
 
 header{

@@ -349,3 +349,16 @@
 .fa-angle-down {
   font-size: 30px;
 }
+
+.team-message {
+margin-top: 12px;
+font-weight: 600;
+}
+
+.team-message.success {
+color: #4ade80;
+}
+
+.team-message.error {
+color: #f87171;
+}
