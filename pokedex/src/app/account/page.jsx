@@ -46,8 +46,7 @@ export default function Account() {
     function changeEditingPokemon(pokemon) {
         pokemon && setFocusPokemon(team.find(({ name }) => name === pokemon))
         setEditingPokemon(pokemon)
-        
-        console.log(focusPokemon)
+
         loadTeam()
     }
 
@@ -95,7 +94,7 @@ export default function Account() {
 
                     <div className="pokemon-team-main-container">
 
-                        <label className="team-name-editor"><input id="TeamNamer" type="text" onChange={(e) => {setTeamName(e.target.value)}} value={teamName}/><div className="pen-container"><i className="fa-solid fa-pen"></i></div></label>
+                        <label className="team-name-editor"><input id="TeamNamer" type="text" onChange={(e) => { setTeamName(e.target.value) }} value={teamName} /><div className="pen-container"><i className="fa-solid fa-pen"></i></div></label>
 
                         <div className="card-container">
                             {team.length > 0 ? team.map((pokemon) => (
@@ -145,7 +144,7 @@ export default function Account() {
                             focusPokemon.baseStats?.spe ?? 0
                         ]}
                         nature={focusPokemon.nature}
-                        evs={[                            
+                        evs={[
                             focusPokemon.evs?.hp,
                             focusPokemon.evs?.atk,
                             focusPokemon.evs?.def,
@@ -153,13 +152,20 @@ export default function Account() {
                             focusPokemon.evs?.spd,
                             focusPokemon.evs?.spe,
                         ]}
-                        changeEditingPokemon={() => changeEditingPokemon('')} 
-                        />
+                        moves={[
+                            focusPokemon.moves.move1,
+                            focusPokemon.moves.move2,
+                            focusPokemon.moves.move3,
+                            focusPokemon.moves.move4
+                        ]}
+
+                        changeEditingPokemon={() => changeEditingPokemon('')}
+                    />
                     : <></>}
 
                 <p>{response}</p>
 
-                    <button className="publish-button" onClick={uploadTeam}>Publish Team</button>
+                <button className="publish-button" onClick={uploadTeam}>Publish Team</button>
 
                 <button className="login-exibir logout" onClick={handleLogout}><i className="fa-solid fa-arrow-right-from-bracket"></i> Logout</button>
             </div>

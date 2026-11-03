@@ -1,13 +1,20 @@
 'use client'
 
+import api from "@/lib/api";
 import { updatePokemonFromTeam } from "@/lib/teamStorage";
 import Image from "next/image";
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
-export default function Editor({ name, image, ability, stats = [], nat, evs = [], changeEditingPokemon }) {
+export default function Editor({ name, image, ability, stats = [], nat, evs = [], moves = [], changeEditingPokemon }) {
+
+    const funName = name.toLowerCase().replace(/-|[.]| /g, "");
+    const [learnset, setLearnset] = useState({})
+
 
     const [hp, at, df, sa, sd, sp] = stats;
     const [hepEV, atkEV, defEV, spaEV, spdEv, speEV] = evs;
+
+    const [mv1, mv2, mv3, mv4] = moves;
 
     const [newAbility, setNewAbility] = useState(ability)
 
@@ -25,6 +32,24 @@ export default function Editor({ name, image, ability, stats = [], nat, evs = []
     const [incSA, setIncSA] = useState(1)
     const [incSD, setIncSD] = useState(1)
     const [incSP, setIncSP] = useState(1)
+
+    const [move1, setMove1] = useState(mv1)
+    const [move2, setMove2] = useState(mv2)
+    const [move3, setMove3] = useState(mv3)
+    const [move4, setMove4] = useState(mv4)
+
+    async function getLearnset() {
+        const { data } = await api.get('/learnsets.json');
+        setLearnset(data[funName].learnset)
+
+        console.log(data[funName].learnset)
+        console.log(learnset)
+        console.log(funName)
+    }
+
+    useEffect(() => {
+        getLearnset()
+    }, [])
 
     function defineNature(e) {
 
@@ -68,7 +93,7 @@ export default function Editor({ name, image, ability, stats = [], nat, evs = []
     return (
         <div className="pokemon-edit-section">
             <div className="edit-button-container">
-                <button className="save-edit-team-button" onClick={() => {updatePokemonFromTeam(name, newAbility, nature, parseInt(hpEV), parseInt(atEV), parseInt(dfEV), parseInt(saEV), parseInt(sdEV), parseInt(spEV)); changeEditingPokemon()}}>Save</button>
+                <button className="save-edit-team-button" onClick={() => {updatePokemonFromTeam(name, newAbility, nature, parseInt(hpEV), parseInt(atEV), parseInt(dfEV), parseInt(saEV), parseInt(sdEV), parseInt(spEV), move1, move2, move3, move4); changeEditingPokemon()}}>Save</button>
                 <button className="edit-team-button" onClick={changeEditingPokemon}>Cancel</button>
             </div>
             <div className="pokemon-edit-container">
@@ -154,6 +179,35 @@ export default function Editor({ name, image, ability, stats = [], nat, evs = []
                         </label>
                     </div>
                 </div>
+
+                <select name="moves" onChange={e => setMove1(e.target.value)} className="dropdown" style={{width: '10em'}}>
+                            {Object.keys(learnset).length > 0
+                                ? Object.keys(learnset).map((move, i) => <option key={i} value={move}>{move}</option>)
+                                : <option key={'0'} value={'0'}>awaiting</option>
+                            }
+                </select>
+
+                <select name="moves" onChange={e => setMove2(e.target.value)} className="dropdown" style={{width: '10em'}}>
+                            {Object.keys(learnset).length > 0
+                                ? Object.keys(learnset).map((move, i) => <option key={i} value={move}>{move}</option>)
+                                : <option key={'0'} value={'0'}>awaiting</option>
+                            }
+                </select>
+
+                <select name="moves" onChange={e => setMove3(e.target.value)} className="dropdown" style={{width: '10em'}}>
+                            {Object.keys(learnset).length > 0
+                                ? Object.keys(learnset).map((move, i) => <option key={i} value={move}>{move}</option>)
+                                : <option key={'0'} value={'0'}>awaiting</option>
+                            }
+                </select>
+
+                <select name="moves" onChange={e => setMove4(e.target.value)} className="dropdown" style={{width: '10em'}}>
+                            {Object.keys(learnset).length > 0
+                                ? Object.keys(learnset).map((move, i) => <option key={i} value={move}>{move}</option>)
+                                : <option key={'0'} value={'0'}>awaiting</option>
+                            }
+                </select>
+
             </div>
         </div>
     )

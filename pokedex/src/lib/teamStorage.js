@@ -35,14 +35,19 @@ export async function saveTeam(userName, teamName) {
                 sd: pokemon.evs.spd,
                 sp: pokemon.evs.spe
             },
-            moves: []
+            moves: {
+                move1: pokemon.moves.move1,
+                move2: pokemon.moves.move2,
+                move3: pokemon.moves.move3,
+                move4: pokemon.moves.move4
+            }
         })
     }
 
     return await createTeam(teamName, userName, "reg-m", pokemons)
 }
 
-export function updatePokemonFromTeam(pokemonName, ability, nature, hpEV, atkEV, defEV, spaEV, spdEV, speEV) {
+export function updatePokemonFromTeam(pokemonName, ability, nature, hpEV, atkEV, defEV, spaEV, spdEV, speEV, move1, move2, move3, move4) {
 
     const team = getTeam();
 
@@ -59,6 +64,11 @@ export function updatePokemonFromTeam(pokemonName, ability, nature, hpEV, atkEV,
     pokemon.evs.spa = parseInt(spaEV) ?? 0
     pokemon.evs.spd = parseInt(spdEV) ?? 0
     pokemon.evs.spe = parseInt(speEV) ?? 0
+
+    pokemon.moves.move1 = move1
+    pokemon.moves.move2 = move2
+    pokemon.moves.move3 = move3
+    pokemon.moves.move4 = move4
 
     let updatedTeam = [...team]
 
@@ -84,13 +94,16 @@ export function updatePokemonFromTeam(pokemonName, ability, nature, hpEV, atkEV,
             spa: parseInt(spaEV) ?? 0,
             spd: parseInt(spdEV) ?? 0,
             spe: parseInt(speEV) ?? 0
+        },
+        moves: {
+            move1: pokemon.moves.move1,
+            move2: pokemon.moves.move2,
+            move3: pokemon.moves.move3,
+            move4: pokemon.moves.move4
         }
     }
 
     localStorage.setItem(TEAM_KEY, JSON.stringify(updatedTeam));
-
-    // console.log(pokemon)
-    // console.log(getTeam())
 }
 
 export function addPokemonToTeam(pokemon) {
@@ -131,6 +144,12 @@ export function addPokemonToTeam(pokemon) {
                 spa: 0,
                 spd: 0,
                 spe: 0
+            },
+            moves: {
+                move1: "Tackle",
+                move2: "Tackle",
+                move3: "Tackle",
+                move4: "Tackle"
             }
         }
     ];
