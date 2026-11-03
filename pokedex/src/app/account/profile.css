@@ -207,9 +207,6 @@
     opacity: 0.95;
 }
 
-.pokemon-slider-stats-list {
-    width: 80%;
-}
 
 .edit-team-button {
     margin-top: 0.5rem;
@@ -314,32 +311,26 @@
 
 .slide-container {
     display: flex;
+    justify-content: space-between;
     flex-wrap: wrap;
-    width: 50%;
+    width: 100%;
 }
 
-.stats-slide-label {
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
-}
-
-.pokemon-edit-container {
-    margin-top: 50px;
-    width: 80%;
-    background-color: #10155e;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
 .team-name-editor {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 30px;
+}
+
+.pokemon-edit-ability h1 {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #ffffffa9;
+    margin: 0;
+    
 }
 
 .pokemon-stats-list-span {
@@ -349,9 +340,84 @@
 
 .pokemon-stats-list {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
     text-align: center;
     flex-wrap: wrap;
     gap: 0 25px;
+}
+
+.edit-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.edit-card-content-container {
+    height: 320px;
+    width: 220px;
+    min-width: 220px;
+    flex-shrink: 0;
+    padding: 1rem;
+    background-color: #090d42;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-size: .9rem;
+    font-weight: 400;
+    color: #ffffffcf;
+    text-align: center;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.pokemon-slide-stats-list {
+    width: 30%;
+}
+
+.stats-slide {
+    width: 192px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pokemon-edit-section {
+    margin: 50px 0 50px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.pokemon-edit-section button {
+    width: 150px;
+}
+
+.pokemon-edit-container {
+    width: 45%;
+    background-color: #10155e;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 1rem 0;
+}
+
+.stats-slide-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ability {
+    background-color: #ffffff14;
+    border-radius: 10px;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.9rem;
+    color: whitesmoke;
+    margin: 10px;
 }
