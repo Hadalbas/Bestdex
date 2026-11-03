@@ -16,7 +16,7 @@
 }
 
 .sidebar-team-container {
-    width: min(1200px, 90%);
+    width: 70%;
     min-height: 700px;
     display: flex;
     justify-content: center;
@@ -57,17 +57,6 @@
     align-items: center;
     padding: clamp(1rem, 2vw, 2rem);
     box-sizing: border-box;
-}
-
-.pfp-mockup {
-    width: clamp(120px, 15vw, 200px);
-    aspect-ratio: 1;
-    border-radius: 50%;
-    background: linear-gradient(0deg, #ebc51e, #ee720d);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: clamp(2rem, 4vw, 4rem);
 }
 
 .stats-mockup {
