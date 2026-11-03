@@ -77,7 +77,16 @@
 }
 
 .abilities h2 {
-  font-weight: 600;
+  color: #ffffffa5;
+  font-weight: 400;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.abilities hr {
+  width: 80%;
+  border: 1px solid white;
+  margin: 5px auto;
 }
 
 .evolution-line {

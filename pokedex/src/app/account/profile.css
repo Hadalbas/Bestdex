@@ -298,14 +298,6 @@
     font-size: 20px;
 }
 
-.slide-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    width: 100%;
-}
-
-
 
 .team-name-editor {
     display: flex;
@@ -325,6 +317,7 @@
 .pokemon-stats-list-span {
     font-weight: 400;
     color: #ffffffcf;
+    white-space: nowrap;
 }
 
 .pokemon-stats-list {
@@ -334,6 +327,10 @@
     text-align: center;
     flex-wrap: wrap;
     gap: 0 25px;
+}
+
+.stats-slide-span {
+    white-space: nowrap;
 }
 
 .edit-button-container {
@@ -364,14 +361,25 @@
 }
 
 .pokemon-slide-stats-list {
-    width: 30%;
+    background-color: rgb(9, 13, 66);
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 220px;
+    height: 320px;
+    display: flex;
+    border-radius: 20px;
+    gap: 20px;
+    padding: 0px 20px;
 }
 
 .stats-slide {
-    width: 192px;
+    width: 170px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    text-align: right;
+    gap: 10px;
 }
 
 .pokemon-edit-section {
@@ -387,13 +395,20 @@
 }
 
 .pokemon-edit-container {
-    width: 45%;
     background-color: #10155e;
     border-radius: 20px;
     display: flex;
     align-items: center;
-    justify-content: space-around;
-    padding: 1rem 0;
+    justify-content: space-between;
+    padding: 1rem;
+    gap: 50px;
+}
+
+.slide-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
 }
 
 .stats-slide-label {
@@ -409,4 +424,36 @@
     font-size: 0.9rem;
     color: whitesmoke;
     margin: 10px;
+}
+
+.stats-slide-span {
+    width: 60px; text-align: right;
+}
+
+.select-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.select-container label {
+    color: #ffffffd9;
+    font-weight: 400;
+    font-size: 1.2rem;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.stats-slide input {
+    width: 100px;
+    height: 5px;
+    appearance: none;
+    background-color: #ffffff14;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
 }

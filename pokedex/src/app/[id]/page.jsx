@@ -197,6 +197,7 @@ export default function Pokemon({ params }) {
 
                     <div className="abilities">
                         <h2>Abilities</h2>
+                        <hr />
                         <h4>Normal: {pokemon?.abilities ? pokemon?.abilities["0"] : "carregando"} {(pokemon?.abilities && pokemon?.abilities["1"]) != undefined && <>{"and " + pokemon?.abilities["1"]}</>}</h4>
 
                         {
@@ -235,7 +236,7 @@ export default function Pokemon({ params }) {
 
                                         <div className="detalhePokemon-data">
                                             <h2>#{prevolution.num}</h2>
-                                            <h2>{pokemon?.prevo}</h2>
+                                            <h2 className="name">{pokemon?.prevo}</h2>
                                         </div>
                                     </Link>
                                 </div>
