@@ -298,14 +298,6 @@
     font-size: 20px;
 }
 
-.slide-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    width: 100%;
-}
-
-
 
 .team-name-editor {
     display: flex;
@@ -325,6 +317,7 @@
 .pokemon-stats-list-span {
     font-weight: 400;
     color: #ffffffcf;
+    white-space: nowrap;
 }
 
 .pokemon-stats-list {
@@ -334,6 +327,10 @@
     text-align: center;
     flex-wrap: wrap;
     gap: 0 25px;
+}
+
+.stats-slide-span {
+    white-space: nowrap;
 }
 
 .edit-button-container {
@@ -364,14 +361,16 @@
 }
 
 .pokemon-slide-stats-list {
-    width: 30%;
+    width: 34%;
 }
 
 .stats-slide {
-    width: 192px;
+    width: 205px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    text-align: right;
+    gap: 10px;
 }
 
 .pokemon-edit-section {
@@ -396,6 +395,13 @@
     padding: 1rem 0;
 }
 
+.slide-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
 .stats-slide-label {
     display: flex;
     justify-content: center;
@@ -409,4 +415,8 @@
     font-size: 0.9rem;
     color: whitesmoke;
     margin: 10px;
+}
+
+.stats-slide-span {
+    width: 100px; text-align: right;
 }
