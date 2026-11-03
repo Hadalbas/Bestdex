@@ -435,3 +435,9 @@ hr {
 .search-input i {
   font-size: 20px;
 }
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

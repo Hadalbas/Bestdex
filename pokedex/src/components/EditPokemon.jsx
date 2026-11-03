@@ -66,33 +66,38 @@ export default function Editor({ name, image, ability, stats = [], nat, evs = []
     }
 
     return (
-        <div className="pokemon-edit-container">
-            <div className="card-content-container">
-            
+        <div className="pokemon-edit-section">
+            <div className="edit-button-container">
                 <button className="save-edit-team-button" onClick={() => {updatePokemonFromTeam(name, newAbility, nature, parseInt(hpEV), parseInt(atEV), parseInt(dfEV), parseInt(saEV), parseInt(sdEV), parseInt(spEV)); changeEditingPokemon()}}>Save</button>
                 <button className="edit-team-button" onClick={changeEditingPokemon}>Cancel</button>
-                <div className="pokemon-card-header">
-                    <span className="pokemon-name">{name}</span>
-                </div>
-            
-                <div className="pokemon-sprite">
-                    <Image src={image} width={90} height={90} alt={name + "_image"} />
-                </div>
-            
-            
-                <div className="pokemon-stats-list">
-                            <span className="pokemon-stats-list-span">HP:  {parseInt(hp) + parseInt(hpEV)}</span>
-                            <span className="pokemon-stats-list-span">ATK: {parseInt((parseInt(at) + parseInt(atEV)) * incAT)}</span>
-                            <span className="pokemon-stats-list-span">DEF: {parseInt((parseInt(df) + parseInt(dfEV)) * incDF)}</span>
-                            <span className="pokemon-stats-list-span">SPA: {parseInt((parseInt(sa) + parseInt(saEV)) * incSA)}</span>
-                            <span className="pokemon-stats-list-span">SPD: {parseInt((parseInt(sd) + parseInt(sdEV)) * incSD)}</span>
-                            <span className="pokemon-stats-list-span">SPE: {parseInt((parseInt(sp) + parseInt(spEV)) * incSP)}</span>
-                </div>
-            
-            
             </div>
+            <div className="pokemon-edit-container">
+                <div className="edit-card-content-container">
+                
+                    <div className="pokemon-card-header">
+                        <span className="pokemon-name">{name}</span>
+                    </div>
+                
+                    <div className="pokemon-sprite">
+                        <Image src={image} width={90} height={90} alt={name + "_image"} />
+                    </div>
+                
+                    <div className="pokemon-edit-ability">
+                        <h1>Abilities: <div className="ability">{ability}</div></h1>
+                    </div>
+                
+                    <div className="pokemon-stats-list">
+                                <span className="pokemon-stats-list-span">HP:  {parseInt(hp) + parseInt(hpEV)}</span>
+                                <span className="pokemon-stats-list-span">ATK: {parseInt((parseInt(at) + parseInt(atEV)) * incAT)}</span>
+                                <span className="pokemon-stats-list-span">DEF: {parseInt((parseInt(df) + parseInt(dfEV)) * incDF)}</span>
+                                <span className="pokemon-stats-list-span">SPA: {parseInt((parseInt(sa) + parseInt(saEV)) * incSA)}</span>
+                                <span className="pokemon-stats-list-span">SPD: {parseInt((parseInt(sd) + parseInt(sdEV)) * incSD)}</span>
+                                <span className="pokemon-stats-list-span">SPE: {parseInt((parseInt(sp) + parseInt(spEV)) * incSP)}</span>
+                    </div>
+                
+                
+                </div>
 
-            <h1>Ability: {ability}</h1>
 
             <div className="select-container">
               <label htmlFor="natures" className="types-text">Select nature: </label>
@@ -126,27 +131,28 @@ export default function Editor({ name, image, ability, stats = [], nat, evs = []
 
               </select>
             </div>
-
-            <div className="pokemon-slide-stats-list">
-                <div className="slide-container">
-                    <label className="stats-slide-label">
-                        <span className="stats-slide">HP:  {hpEV} <input type="range" name="hpEV" min="0" max="32" value={hpEV} onChange={(e) => { if (parseInt(e.target.value) + parseInt(atEV) + parseInt(dfEV) + parseInt(saEV) + parseInt(sdEV) + parseInt(spEV) <= 66 || e.target.value < hpEV) { setHpEV(e.target.value) } else { setHpEV(66 - (parseInt(atEV) + parseInt(dfEV) + parseInt(saEV) + parseInt(sdEV) + parseInt(spEV))) } }} className="ev-slider" /></span>
-                    </label>
-                    <label className="stats-slide-label">
-                        <span className="stats-slide">ATK: {atEV} <input type="range" name="atEV" min="0" max="32" value={atEV} onChange={(e) => { if (parseInt(hpEV) + parseInt(e.target.value) + parseInt(dfEV) + parseInt(saEV) + parseInt(sdEV) + parseInt(spEV) <= 66 || e.target.value < atEV) { setAtEV(e.target.value) } else { setAtEV(66 - (parseInt(hpEV) + parseInt(dfEV) + parseInt(saEV) + parseInt(sdEV) + parseInt(spEV))) } }} className="ev-slider" /></span>
-                    </label>
-                    <label className="stats-slide-label">
-                        <span className="stats-slide">DEF: {dfEV} <input type="range" name="dfEV" min="0" max="32" value={dfEV} onChange={(e) => { if (parseInt(hpEV) + parseInt(atEV) + parseInt(e.target.value) + parseInt(saEV) + parseInt(sdEV) + parseInt(spEV) <= 66 || e.target.value < dfEV) { setDfEV(e.target.value) } else { setDfEV(66 - (parseInt(hpEV) + parseInt(atEV) + parseInt(saEV) + parseInt(sdEV) + parseInt(spEV))) } }} className="ev-slider" /></span>
-                    </label>
-                    <label className="stats-slide-label">
-                        <span className="stats-slide">SPA: {saEV} <input type="range" name="saEV" min="0" max="32" value={saEV} onChange={(e) => { if (parseInt(hpEV) + parseInt(atEV) + parseInt(dfEV) + parseInt(e.target.value) + parseInt(sdEV) + parseInt(spEV) <= 66 || e.target.value < saEV) { setSaEV(e.target.value) } else { setSaEV(66 - (parseInt(hpEV) + parseInt(atEV) + parseInt(dfEV) + parseInt(sdEV) + parseInt(spEV))) } }} className="ev-slider" /></span>
-                    </label>
-                    <label className="stats-slide-label">
-                        <span className="stats-slide">SPD: {sdEV} <input type="range" name="sdEV" min="0" max="32" value={sdEV} onChange={(e) => { if (parseInt(hpEV) + parseInt(atEV) + parseInt(dfEV) + parseInt(saEV) + parseInt(e.target.value) + parseInt(spEV) <= 66 || e.target.value < sdEV) { setSdEV(e.target.value) } else { setSdEV(66 - (parseInt(hpEV) + parseInt(atEV) + parseInt(dfEV) + parseInt(saEV) + parseInt(spEV))) } }} className="ev-slider" /></span>
-                    </label>
-                    <label className="stats-slide-label">
-                        <span className="stats-slide">SPE: {spEV} <input type="range" name="spEV" min="0" max="32" value={spEV} onChange={(e) => { if (parseInt(hpEV) + parseInt(atEV) + parseInt(dfEV) + parseInt(saEV) + parseInt(sdEV) + parseInt(e.target.value) <= 66 || e.target.value < spEV) { setSpEV(e.target.value) } else { setSpEV(66 - (parseInt(hpEV) + parseInt(atEV) + parseInt(dfEV) + parseInt(saEV) + parseInt(sdEV))) } }} className="ev-slider" /></span>
-                    </label>
+            
+                <div className="pokemon-slide-stats-list">
+                    <div className="slide-container">
+                        <label className="stats-slide-label">
+                            <span className="stats-slide"><div className="stats-slide-span">HP:  {hpEV}</div> <input type="range" name="hpEV" min="0" max="32" value={hpEV} onChange={(e) => { if (parseInt(e.target.value) + parseInt(atEV) + parseInt(dfEV) + parseInt(saEV) + parseInt(sdEV) + parseInt(spEV) <= 66 || e.target.value < hpEV) { setHpEV(e.target.value) } else { setHpEV(66 - (parseInt(atEV) + parseInt(dfEV) + parseInt(saEV) + parseInt(sdEV) + parseInt(spEV))) } }} className="ev-slider" /></span>
+                        </label>
+                        <label className="stats-slide-label">
+                            <span className="stats-slide">ATK: {atEV} <input type="range" name="atEV" min="0" max="32" value={atEV} onChange={(e) => { if (parseInt(hpEV) + parseInt(e.target.value) + parseInt(dfEV) + parseInt(saEV) + parseInt(sdEV) + parseInt(spEV) <= 66 || e.target.value < atEV) { setAtEV(e.target.value) } else { setAtEV(66 - (parseInt(hpEV) + parseInt(dfEV) + parseInt(saEV) + parseInt(sdEV) + parseInt(spEV))) } }} className="ev-slider" /></span>
+                        </label>
+                        <label className="stats-slide-label">
+                            <span className="stats-slide">DEF: {dfEV} <input type="range" name="dfEV" min="0" max="32" value={dfEV} onChange={(e) => { if (parseInt(hpEV) + parseInt(atEV) + parseInt(e.target.value) + parseInt(saEV) + parseInt(sdEV) + parseInt(spEV) <= 66 || e.target.value < dfEV) { setDfEV(e.target.value) } else { setDfEV(66 - (parseInt(hpEV) + parseInt(atEV) + parseInt(saEV) + parseInt(sdEV) + parseInt(spEV))) } }} className="ev-slider" /></span>
+                        </label>
+                        <label className="stats-slide-label">
+                            <span className="stats-slide">SPA: {saEV} <input type="range" name="saEV" min="0" max="32" value={saEV} onChange={(e) => { if (parseInt(hpEV) + parseInt(atEV) + parseInt(dfEV) + parseInt(e.target.value) + parseInt(sdEV) + parseInt(spEV) <= 66 || e.target.value < saEV) { setSaEV(e.target.value) } else { setSaEV(66 - (parseInt(hpEV) + parseInt(atEV) + parseInt(dfEV) + parseInt(sdEV) + parseInt(spEV))) } }} className="ev-slider" /></span>
+                        </label>
+                        <label className="stats-slide-label">
+                            <span className="stats-slide">SPD: {sdEV} <input type="range" name="sdEV" min="0" max="32" value={sdEV} onChange={(e) => { if (parseInt(hpEV) + parseInt(atEV) + parseInt(dfEV) + parseInt(saEV) + parseInt(e.target.value) + parseInt(spEV) <= 66 || e.target.value < sdEV) { setSdEV(e.target.value) } else { setSdEV(66 - (parseInt(hpEV) + parseInt(atEV) + parseInt(dfEV) + parseInt(saEV) + parseInt(spEV))) } }} className="ev-slider" /></span>
+                        </label>
+                        <label className="stats-slide-label">
+                            <span className="stats-slide">SPE: {spEV} <input type="range" name="spEV" min="0" max="32" value={spEV} onChange={(e) => { if (parseInt(hpEV) + parseInt(atEV) + parseInt(dfEV) + parseInt(saEV) + parseInt(sdEV) + parseInt(e.target.value) <= 66 || e.target.value < spEV) { setSpEV(e.target.value) } else { setSpEV(66 - (parseInt(hpEV) + parseInt(atEV) + parseInt(dfEV) + parseInt(saEV) + parseInt(sdEV))) } }} className="ev-slider" /></span>
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>

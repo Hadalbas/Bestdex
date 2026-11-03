@@ -40,14 +40,16 @@ export default function Lista({ lista, search, tipo }) {
                 }
             </div>
 
-            {
-                (pokedex.length > depth * elementsPerPage) &&
-                <button className="exibir" onClick={() => setDepth(depth + 1)}><i className="fa-solid fa-caret-down"></i>Mostrar mais</button>
-            }
-            {
-                (depth > 1 && pokedex.length > depth * elementsPerPage) &&
-                <button className="exibir" onClick={() => setDepth(depth - 1)}><i className="fa-solid fa-caret-up"></i>Mostrar menos</button>
-            }
+            <div className="button-container">
+                {
+                    (pokedex.length > depth * elementsPerPage) &&
+                    <button className="exibir" onClick={() => setDepth(depth + 1)}><i className="fa-solid fa-caret-down"></i>Mostrar mais</button>
+                }
+                {
+                    (depth > 1 && pokedex.length > depth * elementsPerPage) &&
+                    <button className="exibir" onClick={() => setDepth(depth - 1)}><i className="fa-solid fa-caret-up"></i>Mostrar menos</button>
+                }
+            </div>
 
         </>
 
