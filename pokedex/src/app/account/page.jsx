@@ -144,6 +144,7 @@ export default function Account() {
                             focusPokemon.baseStats?.spd ?? 0,
                             focusPokemon.baseStats?.spe ?? 0
                         ]}
+                        nature={focusPokemon.nature}
                         evs={[                            
                             focusPokemon.evs?.hp,
                             focusPokemon.evs?.atk,

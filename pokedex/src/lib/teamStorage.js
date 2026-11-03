@@ -23,8 +23,9 @@ export async function saveTeam(userName, teamName) {
             species: pokemon.name,
             nickname: "",
             item: "None",
-            ability: "Intimidate",
+            ability: pokemon.ability,
             gender: "f",
+            nature: pokemon.nature,
             shiny: false,
             stats: {
                 hp: pokemon.evs.hp,
@@ -41,7 +42,7 @@ export async function saveTeam(userName, teamName) {
     return await createTeam(teamName, userName, "reg-m", pokemons)
 }
 
-export function updatePokemonFromTeam(pokemonName, ability, hpEV, atkEV, defEV, spaEV, spdEV, speEV) {
+export function updatePokemonFromTeam(pokemonName, ability, nature, hpEV, atkEV, defEV, spaEV, spdEV, speEV) {
 
     const team = getTeam();
 
@@ -49,6 +50,9 @@ export function updatePokemonFromTeam(pokemonName, ability, hpEV, atkEV, defEV, 
     const position = team.indexOf(pokemon)
 
     pokemon.ability = ability ?? "Intimidate"
+
+    pokemon.nature = nature ?? "Serious"
+
     pokemon.evs.hp = parseInt(hpEV) ?? 0
     pokemon.evs.atk = parseInt(atkEV) ?? 0
     pokemon.evs.def = parseInt(defEV) ?? 0
@@ -72,6 +76,7 @@ export function updatePokemonFromTeam(pokemonName, ability, hpEV, atkEV, defEV, 
             spd: pokemon.baseStats?.spd ?? 0,
             spe: pokemon.baseStats?.spe ?? 0,
         },
+        nature: pokemon.nature,
         evs: {
             hp: parseInt(hpEV) ?? 0,
             atk: parseInt(atkEV) ?? 0,
@@ -118,6 +123,7 @@ export function addPokemonToTeam(pokemon) {
                 spd: pokemon.baseStats?.spd ?? 0,
                 spe: pokemon.baseStats?.spe ?? 0,
             },
+            nature: "Serious",
             evs: {
                 hp: 0,
                 atk: 0,

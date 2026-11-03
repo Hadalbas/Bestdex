@@ -4,13 +4,14 @@ import { updatePokemonFromTeam } from "@/lib/teamStorage";
 import Image from "next/image";
 import { useState } from "react"
 
-export default function Editor({ name, image, ability, stats = [], evs = [], changeEditingPokemon }) {
+export default function Editor({ name, image, ability, stats = [], nat, evs = [], changeEditingPokemon }) {
 
     const [hp, at, df, sa, sd, sp] = stats;
     const [hepEV, atkEV, defEV, spaEV, spdEv, speEV] = evs;
 
     const [newAbility, setNewAbility] = useState(ability)
 
+    const [nature, setNature] = useState(nat);
 
     const [hpEV, setHpEV] = useState(hepEV)
     const [atEV, setAtEV] = useState(atkEV)
@@ -18,11 +19,56 @@ export default function Editor({ name, image, ability, stats = [], evs = [], cha
     const [saEV, setSaEV] = useState(spaEV)
     const [sdEV, setSdEV] = useState(spdEv)
     const [spEV, setSpEV] = useState(speEV)
+    
+    const [incAT, setIncAT] = useState(1)
+    const [incDF, setIncDF] = useState(1)
+    const [incSA, setIncSA] = useState(1)
+    const [incSD, setIncSD] = useState(1)
+    const [incSP, setIncSP] = useState(1)
+
+    function defineNature(e) {
+
+        let nature = e.target.value
+
+        setIncAT(1); setIncDF(1); setIncSA(1); setIncSD(1); setIncSP(1);
+
+        switch(nature){
+            
+            case "Lonely": case "Adamant": case "Naughty": case "Brave":    setIncAT(1.1) 
+            break;
+            case "Bold": case "Impish": case "Lax": case "Relaxed":    setIncDF(1.1) 
+            break;
+            case "Modest": case "Mild": case "Rash": case "Quiet":    setIncSA(1.1) 
+            break;
+            case "Calm": case "Gentle": case "Careful": case "Sassy":    setIncSD(1.1) 
+            break;
+            case "Timid": case "Hasty": case "Jolly": case "Naive":    setIncSP(1.1) 
+            break;
+            
+        }
+
+        switch(nature){
+            
+            case "Bold": case "Modest": case "Calm": case "Timid":    setIncAT(0.9) 
+            break;
+            case "Lonely": case "Mild": case "Gentle": case "Hasty":    setIncDF(0.9) 
+            break;
+            case "Adamant": case "Impish": case "Careful": case "Jolly":    setIncSA(0.9) 
+            break;
+            case "Naughty": case "Lax": case "Rash": case "Naive":    setIncSD(0.9) 
+            break;
+            case "Brave": case "Relaxed": case "Quiet": case "Sassy":    setIncSP(0.9) 
+            break;
+
+        }
+
+        setNature(nature);
+    }
 
     return (
         <div className="pokemon-edit-section">
             <div className="edit-button-container">
-                <button className="save-edit-team-button" onClick={() => {updatePokemonFromTeam(name, newAbility, parseInt(hpEV), parseInt(atEV), parseInt(dfEV), parseInt(saEV), parseInt(sdEV), parseInt(spEV)); changeEditingPokemon()}}>Save</button>
+                <button className="save-edit-team-button" onClick={() => {updatePokemonFromTeam(name, newAbility, nature, parseInt(hpEV), parseInt(atEV), parseInt(dfEV), parseInt(saEV), parseInt(sdEV), parseInt(spEV)); changeEditingPokemon()}}>Save</button>
                 <button className="edit-team-button" onClick={changeEditingPokemon}>Cancel</button>
             </div>
             <div className="pokemon-edit-container">
@@ -42,16 +88,49 @@ export default function Editor({ name, image, ability, stats = [], evs = [], cha
                 
                     <div className="pokemon-stats-list">
                                 <span className="pokemon-stats-list-span">HP:  {parseInt(hp) + parseInt(hpEV)}</span>
-                                <span className="pokemon-stats-list-span">ATK: {parseInt(at) + parseInt(atEV)}</span>
-                                <span className="pokemon-stats-list-span">DEF: {parseInt(df) + parseInt(dfEV)}</span>
-                                <span className="pokemon-stats-list-span">SPA: {parseInt(sa) + parseInt(saEV)}</span>
-                                <span className="pokemon-stats-list-span">SPD: {parseInt(sd) + parseInt(sdEV)}</span>
-                                <span className="pokemon-stats-list-span">SPE: {parseInt(sp) + parseInt(spEV)}</span>
+                                <span className="pokemon-stats-list-span">ATK: {parseInt((parseInt(at) + parseInt(atEV)) * incAT)}</span>
+                                <span className="pokemon-stats-list-span">DEF: {parseInt((parseInt(df) + parseInt(dfEV)) * incDF)}</span>
+                                <span className="pokemon-stats-list-span">SPA: {parseInt((parseInt(sa) + parseInt(saEV)) * incSA)}</span>
+                                <span className="pokemon-stats-list-span">SPD: {parseInt((parseInt(sd) + parseInt(sdEV)) * incSD)}</span>
+                                <span className="pokemon-stats-list-span">SPE: {parseInt((parseInt(sp) + parseInt(spEV)) * incSP)}</span>
                     </div>
                 
                 
                 </div>
 
+
+            <div className="select-container">
+              <label htmlFor="natures" className="types-text">Select nature: </label>
+              <select name="natures" className="dropdown" style={{width: nature ? nature.length * 0.85 + 7 + 'em' : '7em'}} value={nature} onChange={defineNature}>
+                <option value="">Serious</option>
+
+                <option value="Lonely">Lonely | +Atk -Def</option>
+                <option value="Adamant">Adamant | +Atk -SpA</option>
+                <option value="Naughty">Naughty | +Atk -SpD</option>
+                <option value="Brave">Brave | +Atk -Spe</option>
+
+                <option value="Bold">Bold | +Def -Atk</option>
+                <option value="Impish">Impish | +Def -SpA</option>
+                <option value="Lax">Lax | +Def -SpD</option>
+                <option value="Relaxed">Relaxed | +Def -Spe</option>
+                
+                <option value="Modest">Modest | +SpA -Atk</option>
+                <option value="Mild">Mild | +SpA -Def</option>
+                <option value="Rash">Rash | +SpA -SpD</option>
+                <option value="Quiet">Quiet | +SpA -Spe</option>
+                
+                <option value="Calm">Calm | +SpD -Atk</option>
+                <option value="Gentle">Gentle | +SpD -Def</option>
+                <option value="Careful">Careful | +SpD -SpA</option>
+                <option value="Sassy">Sassy | +SpD -Spe</option>
+                
+                <option value="Timid">Timid | +Spe -Atk</option>
+                <option value="Hasty">Hasty | +Spe -Def</option>
+                <option value="Jolly">Jolly | +Spe -SpA</option>
+                <option value="Naive">Naive | +Spe -SpD</option>
+
+              </select>
+            </div>
             
                 <div className="pokemon-slide-stats-list">
                     <div className="slide-container">
