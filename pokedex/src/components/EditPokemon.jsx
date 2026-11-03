@@ -99,40 +99,40 @@ export default function Editor({ name, image, ability, stats = [], nat, evs = []
                 </div>
 
 
-            <div className="select-container">
-              <label htmlFor="natures" className="types-text">Select nature: </label>
-              <select name="natures" className="dropdown" style={{width: nature ? nature.length * 0.85 + 7 + 'em' : '7em'}} value={nature} onChange={defineNature}>
-                <option value="">Serious</option>
-
-                <option value="Lonely">Lonely | +Atk -Def</option>
-                <option value="Adamant">Adamant | +Atk -SpA</option>
-                <option value="Naughty">Naughty | +Atk -SpD</option>
-                <option value="Brave">Brave | +Atk -Spe</option>
-
-                <option value="Bold">Bold | +Def -Atk</option>
-                <option value="Impish">Impish | +Def -SpA</option>
-                <option value="Lax">Lax | +Def -SpD</option>
-                <option value="Relaxed">Relaxed | +Def -Spe</option>
-                
-                <option value="Modest">Modest | +SpA -Atk</option>
-                <option value="Mild">Mild | +SpA -Def</option>
-                <option value="Rash">Rash | +SpA -SpD</option>
-                <option value="Quiet">Quiet | +SpA -Spe</option>
-                
-                <option value="Calm">Calm | +SpD -Atk</option>
-                <option value="Gentle">Gentle | +SpD -Def</option>
-                <option value="Careful">Careful | +SpD -SpA</option>
-                <option value="Sassy">Sassy | +SpD -Spe</option>
-                
-                <option value="Timid">Timid | +Spe -Atk</option>
-                <option value="Hasty">Hasty | +Spe -Def</option>
-                <option value="Jolly">Jolly | +Spe -SpA</option>
-                <option value="Naive">Naive | +Spe -SpD</option>
-
-              </select>
-            </div>
             
                 <div className="pokemon-slide-stats-list">
+                    <div className="select-container">
+                    <label htmlFor="natures" className="types-text">Select nature: </label>
+                    <select name="natures" className="dropdown" style={{width: nature ? nature.length * 0.85 + 7 + 'em' : '7em'}} value={nature} onChange={defineNature}>
+                        <option value="">Serious</option>
+
+                        <option value="Lonely">Lonely | +Atk -Def</option>
+                        <option value="Adamant">Adamant | +Atk -SpA</option>
+                        <option value="Naughty">Naughty | +Atk -SpD</option>
+                        <option value="Brave">Brave | +Atk -Spe</option>
+
+                        <option value="Bold">Bold | +Def -Atk</option>
+                        <option value="Impish">Impish | +Def -SpA</option>
+                        <option value="Lax">Lax | +Def -SpD</option>
+                        <option value="Relaxed">Relaxed | +Def -Spe</option>
+                        
+                        <option value="Modest">Modest | +SpA -Atk</option>
+                        <option value="Mild">Mild | +SpA -Def</option>
+                        <option value="Rash">Rash | +SpA -SpD</option>
+                        <option value="Quiet">Quiet | +SpA -Spe</option>
+                        
+                        <option value="Calm">Calm | +SpD -Atk</option>
+                        <option value="Gentle">Gentle | +SpD -Def</option>
+                        <option value="Careful">Careful | +SpD -SpA</option>
+                        <option value="Sassy">Sassy | +SpD -Spe</option>
+                        
+                        <option value="Timid">Timid | +Spe -Atk</option>
+                        <option value="Hasty">Hasty | +Spe -Def</option>
+                        <option value="Jolly">Jolly | +Spe -SpA</option>
+                        <option value="Naive">Naive | +Spe -SpD</option>
+
+                    </select>
+                    </div>
                     <div className="slide-container">
                         <label className="stats-slide-label">
                             <span className="stats-slide"><div className="stats-slide-span">HP:  {hpEV}</div> <input type="range" name="hpEV" min="0" max="32" value={hpEV} onChange={(e) => { if (parseInt(e.target.value) + parseInt(atEV) + parseInt(dfEV) + parseInt(saEV) + parseInt(sdEV) + parseInt(spEV) <= 66 || e.target.value < hpEV) { setHpEV(e.target.value) } else { setHpEV(66 - (parseInt(atEV) + parseInt(dfEV) + parseInt(saEV) + parseInt(sdEV) + parseInt(spEV))) } }} className="ev-slider" /></span>
