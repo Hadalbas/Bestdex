@@ -42,9 +42,9 @@ export default function Editor({ name, image, ability, stats = [], nat, evs = []
         const { data } = await api.get('/learnsets.json');
         setLearnset(data[funName].learnset)
 
-        console.log(data[funName].learnset)
-        console.log(learnset)
-        console.log(funName)
+        // console.log(data[funName].learnset)
+        // console.log(learnset)
+        // console.log(funName)
     }
 
     useEffect(() => {
@@ -59,28 +59,28 @@ export default function Editor({ name, image, ability, stats = [], nat, evs = []
 
         switch(nature){
             
-            case "Lonely": case "Adamant": case "Naughty": case "Brave":    setIncAT(1.1) 
+            case "Lonely": case "Adamant": case "Naughty": case "Brave": setIncAT(1.1) 
             break;
-            case "Bold": case "Impish": case "Lax": case "Relaxed":    setIncDF(1.1) 
+            case "Bold": case "Impish": case "Lax": case "Relaxed":      setIncDF(1.1) 
             break;
-            case "Modest": case "Mild": case "Rash": case "Quiet":    setIncSA(1.1) 
+            case "Modest": case "Mild": case "Rash": case "Quiet":       setIncSA(1.1) 
             break;
             case "Calm": case "Gentle": case "Careful": case "Sassy":    setIncSD(1.1) 
             break;
-            case "Timid": case "Hasty": case "Jolly": case "Naive":    setIncSP(1.1) 
+            case "Timid": case "Hasty": case "Jolly": case "Naive":      setIncSP(1.1) 
             break;
             
         }
 
         switch(nature){
             
-            case "Bold": case "Modest": case "Calm": case "Timid":    setIncAT(0.9) 
+            case "Bold": case "Modest": case "Calm": case "Timid":       setIncAT(0.9) 
             break;
-            case "Lonely": case "Mild": case "Gentle": case "Hasty":    setIncDF(0.9) 
+            case "Lonely": case "Mild": case "Gentle": case "Hasty":     setIncDF(0.9) 
             break;
-            case "Adamant": case "Impish": case "Careful": case "Jolly":    setIncSA(0.9) 
+            case "Adamant": case "Impish": case "Careful": case "Jolly": setIncSA(0.9) 
             break;
-            case "Naughty": case "Lax": case "Rash": case "Naive":    setIncSD(0.9) 
+            case "Naughty": case "Lax": case "Rash": case "Naive":       setIncSD(0.9) 
             break;
             case "Brave": case "Relaxed": case "Quiet": case "Sassy":    setIncSP(0.9) 
             break;

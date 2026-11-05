@@ -1,6 +1,6 @@
 const { default: axios } = require("axios");
 
-const urlAPI = 'http://localhost:3005'
+const urlAPI = 'https://ads.osorio.ifrs.edu.br/bestdex-api'
 
 const api = axios.create({
     baseURL: 'https://play.pokemonshowdown.com/data',
@@ -23,6 +23,7 @@ export async function getIdTreinador(nome){
 export async function getDataTreinador(id){
     return await axios.get(urlAPI+`/treinadores/${id}`)
 }
+
 
 export async function changeNameTreinador(treinador){
     return await axios.post(urlAPI+'/treinadores', treinador)

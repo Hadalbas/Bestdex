@@ -35,14 +35,16 @@ export async function saveTeam(userName, teamName) {
                 sd: pokemon.evs.spd,
                 sp: pokemon.evs.spe
             },
-            moves: {
-                move1: pokemon.moves.move1,
-                move2: pokemon.moves.move2,
-                move3: pokemon.moves.move3,
-                move4: pokemon.moves.move4
-            }
+            moves: [
+                pokemon.moves.move1,
+                pokemon.moves.move2,
+                pokemon.moves.move3,
+                pokemon.moves.move4
+            ]
         })
     }
+
+    console.log(team)
 
     return await createTeam(teamName, userName, "reg-m", pokemons)
 }
@@ -65,10 +67,10 @@ export function updatePokemonFromTeam(pokemonName, ability, nature, hpEV, atkEV,
     pokemon.evs.spd = parseInt(spdEV) ?? 0
     pokemon.evs.spe = parseInt(speEV) ?? 0
 
-    pokemon.moves.move1 = move1
-    pokemon.moves.move2 = move2
-    pokemon.moves.move3 = move3
-    pokemon.moves.move4 = move4
+    pokemon.moves[0] = move1
+    pokemon.moves[1] = move2
+    pokemon.moves[2] = move3
+    pokemon.moves[3] = move4
 
     let updatedTeam = [...team]
 
@@ -95,12 +97,12 @@ export function updatePokemonFromTeam(pokemonName, ability, nature, hpEV, atkEV,
             spd: parseInt(spdEV) ?? 0,
             spe: parseInt(speEV) ?? 0
         },
-        moves: {
-            move1: pokemon.moves.move1,
-            move2: pokemon.moves.move2,
-            move3: pokemon.moves.move3,
-            move4: pokemon.moves.move4
-        }
+        moves: [
+            pokemon.moves.move1,
+            pokemon.moves.move2,
+            pokemon.moves.move3,
+            pokemon.moves.move4
+        ]
     }
 
     localStorage.setItem(TEAM_KEY, JSON.stringify(updatedTeam));
@@ -145,12 +147,12 @@ export function addPokemonToTeam(pokemon) {
                 spd: 0,
                 spe: 0
             },
-            moves: {
-                move1: "Tackle",
-                move2: "Tackle",
-                move3: "Tackle",
-                move4: "Tackle"
-            }
+            moves: [
+                "Tackle",
+                "Protect",
+                "Growl",
+                "Tail Whip"
+            ]
         }
     ];
 

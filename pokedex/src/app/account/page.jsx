@@ -111,7 +111,7 @@ export default function Account() {
                                         pokemon.baseStats?.spe ?? 0,
                                     ]}
                                     onRemove={() => handleRemovePokemon(pokemon.name)}
-                                    changeEditingPokemon={() => changeEditingPokemon(pokemon.name)}
+                                    changeEditingPokemon={() => {editingPokemon ? changeEditingPokemon('') : changeEditingPokemon(pokemon.name)}}
                                 />
                             )) : <div className="card-content-container empty-team">No Pokémon in your team yet.</div>}
 
