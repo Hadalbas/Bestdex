@@ -290,7 +290,6 @@ hr {
   overflow: hidden;
   display: flex;
   align-items: center;
-  padding: 25px 0px 5px 0px;
 }
 
 .name  {
@@ -356,10 +355,15 @@ hr {
 
 .detalhePokemon a {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.detalhePokemon .number {
+  margin-top: 25px;
 }
 
 .detalhePokemon:hover::before {
