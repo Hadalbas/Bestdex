@@ -180,33 +180,35 @@ export default function Editor({ name, image, ability, stats = [], nat, evs = []
                     </div>
                 </div>
 
-                <select name="moves" onChange={e => setMove1(e.target.value)} className="dropdown" style={{width: '10em'}}>
-                            {Object.keys(learnset).length > 0
-                                ? Object.keys(learnset).map((move, i) => <option key={i} value={move}>{move}</option>)
-                                : <option key={'0'} value={'0'}>awaiting</option>
-                            }
-                </select>
-
-                <select name="moves" onChange={e => setMove2(e.target.value)} className="dropdown" style={{width: '10em'}}>
-                            {Object.keys(learnset).length > 0
-                                ? Object.keys(learnset).map((move, i) => <option key={i} value={move}>{move}</option>)
-                                : <option key={'0'} value={'0'}>awaiting</option>
-                            }
-                </select>
-
-                <select name="moves" onChange={e => setMove3(e.target.value)} className="dropdown" style={{width: '10em'}}>
-                            {Object.keys(learnset).length > 0
-                                ? Object.keys(learnset).map((move, i) => <option key={i} value={move}>{move}</option>)
-                                : <option key={'0'} value={'0'}>awaiting</option>
-                            }
-                </select>
-
-                <select name="moves" onChange={e => setMove4(e.target.value)} className="dropdown" style={{width: '10em'}}>
-                            {Object.keys(learnset).length > 0
-                                ? Object.keys(learnset).map((move, i) => <option key={i} value={move}>{move}</option>)
-                                : <option key={'0'} value={'0'}>awaiting</option>
-                            }
-                </select>
+                <div className="edit-pokemon-moves">
+                    <select name="moves" onChange={e => setMove1(e.target.value)} className="dropdown" style={{width: '10em'}}>
+                                {Object.keys(learnset).length > 0
+                                    ? Object.keys(learnset).map((move, i) => <option key={i} value={move}>{move}</option>)
+                                    : <option key={'0'} value={'0'}>awaiting</option>
+                                }
+                    </select>
+                    
+                    <select name="moves" onChange={e => setMove2(e.target.value)} className="dropdown" style={{width: '10em'}}>
+                                {Object.keys(learnset).length > 0
+                                    ? Object.keys(learnset).map((move, i) => <option key={i} value={move}>{move}</option>)
+                                    : <option key={'0'} value={'0'}>awaiting</option>
+                                }
+                    </select>
+                    
+                    <select name="moves" onChange={e => setMove3(e.target.value)} className="dropdown" style={{width: '10em'}}>
+                                {Object.keys(learnset).length > 0
+                                    ? Object.keys(learnset).map((move, i) => <option key={i} value={move}>{move}</option>)
+                                    : <option key={'0'} value={'0'}>awaiting</option>
+                                }
+                    </select>
+                    
+                    <select name="moves" onChange={e => setMove4(e.target.value)} className="dropdown" style={{width: '10em'}}>
+                                {Object.keys(learnset).length > 0
+                                    ? Object.keys(learnset).map((move, i) => <option key={i} value={move}>{move}</option>)
+                                    : <option key={'0'} value={'0'}>awaiting</option>
+                                }
+                    </select>
+                </div>
 
             </div>
         </div>
