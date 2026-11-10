@@ -135,6 +135,7 @@ export default function Account() {
                         name={focusPokemon.name}
                         image={focusPokemon.image}
                         ability={focusPokemon.ability}
+                        nature={focusPokemon.nature}
                         stats={[
                             focusPokemon.baseStats?.hp ?? 0,
                             focusPokemon.baseStats?.atk ?? 0,
@@ -143,7 +144,6 @@ export default function Account() {
                             focusPokemon.baseStats?.spd ?? 0,
                             focusPokemon.baseStats?.spe ?? 0
                         ]}
-                        nature={focusPokemon.nature}
                         evs={[
                             focusPokemon.evs?.hp,
                             focusPokemon.evs?.atk,
@@ -153,10 +153,10 @@ export default function Account() {
                             focusPokemon.evs?.spe,
                         ]}
                         moves={[
-                            focusPokemon.moves.move1,
-                            focusPokemon.moves.move2,
-                            focusPokemon.moves.move3,
-                            focusPokemon.moves.move4
+                            focusPokemon.moves[0],
+                            focusPokemon.moves[1],
+                            focusPokemon.moves[2],
+                            focusPokemon.moves[3],
                         ]}
 
                         changeEditingPokemon={() => changeEditingPokemon('')}

@@ -23,10 +23,10 @@ export async function saveTeam(userName, teamName) {
             species: pokemon.name,
             nickname: "",
             item: "None",
-            ability: pokemon.ability,
             gender: "f",
-            nature: pokemon.nature,
             shiny: false,
+            ability: pokemon.ability,
+            nature: pokemon.nature,
             stats: {
                 hp: pokemon.evs.hp,
                 at: pokemon.evs.atk,
@@ -36,10 +36,10 @@ export async function saveTeam(userName, teamName) {
                 sp: pokemon.evs.spe
             },
             moves: [
-                pokemon.moves.move1,
-                pokemon.moves.move2,
-                pokemon.moves.move3,
-                pokemon.moves.move4
+                pokemon.moves[0],
+                pokemon.moves[1],
+                pokemon.moves[2],
+                pokemon.moves[3]
             ]
         })
     }
@@ -60,7 +60,7 @@ export function updatePokemonFromTeam(pokemonName, ability, nature, hpEV, atkEV,
 
     pokemon.nature = nature ?? "Serious"
 
-    pokemon.evs.hp = parseInt(hpEV) ?? 0
+    pokemon.evs.hp  = parseInt(hpEV)  ?? 0
     pokemon.evs.atk = parseInt(atkEV) ?? 0
     pokemon.evs.def = parseInt(defEV) ?? 0
     pokemon.evs.spa = parseInt(spaEV) ?? 0
@@ -75,22 +75,22 @@ export function updatePokemonFromTeam(pokemonName, ability, nature, hpEV, atkEV,
     let updatedTeam = [...team]
 
     updatedTeam[position] = {
+        name: pokemon.name,
         id: pokemon.id ?? pokemon.num ?? pokemon.name,
         num: pokemon.num ?? pokemon.id ?? 0,
         ability: pokemon.ability,
-        name: pokemon.name,
+        nature: pokemon.nature,
         image: pokemon.image ?? '',
         baseStats: {
-            hp: pokemon.baseStats?.hp ?? 0,
+            hp:  pokemon.baseStats?.hp  ?? 0,
             atk: pokemon.baseStats?.atk ?? 0,
             def: pokemon.baseStats?.def ?? 0,
             spa: pokemon.baseStats?.spa ?? 0,
             spd: pokemon.baseStats?.spd ?? 0,
             spe: pokemon.baseStats?.spe ?? 0,
         },
-        nature: pokemon.nature,
         evs: {
-            hp: parseInt(hpEV) ?? 0,
+            hp:  parseInt(hpEV)  ?? 0,
             atk: parseInt(atkEV) ?? 0,
             def: parseInt(defEV) ?? 0,
             spa: parseInt(spaEV) ?? 0,
@@ -98,10 +98,10 @@ export function updatePokemonFromTeam(pokemonName, ability, nature, hpEV, atkEV,
             spe: parseInt(speEV) ?? 0
         },
         moves: [
-            pokemon.moves.move1,
-            pokemon.moves.move2,
-            pokemon.moves.move3,
-            pokemon.moves.move4
+            move1,
+            move2,
+            move3,
+            move4
         ]
     }
 
@@ -127,20 +127,20 @@ export function addPokemonToTeam(pokemon) {
             id: pokemon.id ?? pokemon.num ?? pokemon.name,
             num: pokemon.num ?? pokemon.id ?? 0,
             ability: pokemon?.abilities[0],
+            nature: "Serious",
             gender: 'f',
             name: pokemon.name,
             image: pokemon.image ?? '',
             baseStats: {
-                hp: pokemon.baseStats?.hp ?? 0,
+                hp:  pokemon.baseStats?.hp  ?? 0,
                 atk: pokemon.baseStats?.atk ?? 0,
                 def: pokemon.baseStats?.def ?? 0,
                 spa: pokemon.baseStats?.spa ?? 0,
                 spd: pokemon.baseStats?.spd ?? 0,
                 spe: pokemon.baseStats?.spe ?? 0,
             },
-            nature: "Serious",
             evs: {
-                hp: 0,
+                hp:  0,
                 atk: 0,
                 def: 0,
                 spa: 0,
