@@ -126,7 +126,7 @@ export default function Editor({ name, image, ability, stats = [], nat, evs = []
 
             
                 <div className="pokemon-slide-stats-list">
-                    <div className="select-container">
+                    <div className="select-container-profile">
                     <label htmlFor="natures" className="types-text">Select nature: </label>
                     <select name="natures" className="dropdown" style={{width: nature ? nature.length * 0.85 + 7 + 'em' : '7em'}} value={nature} onChange={defineNature}>
                         <option value="">Serious</option>
