@@ -142,7 +142,7 @@ export default function Pokemon({ params }) {
                 <Header />
                 {(pokemon?.formeOrder || pokemon?.baseSpecies) && pokemon?.name != "Unown"
                     ?
-                    <div className="select-container">
+                    <div className="select-container-pokemon">
                         <label htmlFor="Formes" className="types-text">Select form: </label>
 
                         <select name="Formes" defaultValue={pokemon.name} onChange={handleFormeChange} className="dropdown" style={{width: pokemon.name ? pokemon.name.length * 0.75 + 2.5 + 'em' : '5em'}}>

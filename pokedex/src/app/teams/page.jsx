@@ -4,13 +4,15 @@ import { getTeams } from "@/lib/api"
 import Footer from "@/components/Footer";
 import Header from "@/components/Header(READ)";
 import { useEffect, useState } from "react"
+import "./teams.css"
+import "./../globals.css"
 
 export default function Teams() {
 
     const [teams, setTeams] = useState([])
 
     async function showTeams() {
-        const {data} = await getTeams()
+        const { data } = await getTeams()
 
         setTeams(data)
 
@@ -22,17 +24,35 @@ export default function Teams() {
     }, [])
 
     return (
-        <div className="main-page">
+        <div className="teams-page">
             <Header />
-            <div className="profile-main">
-                <h1>Teams uploaded to this site:</h1>
 
-                {teams?.length > 0
-                    ? teams.map((team, i) => <div key={i}> <p>{team.nome}</p> <p>By: {team.criador}</p> <br /></div>)
-                    : <li>Loading...</li>
-                }
+            <main className="teams-main">
+                <section className="teams-content">
+                    <div className="teams-header">
+                        <h1>Teams uploaded to this site:</h1>
+                    </div>
 
-            </div>
+                    <div className="community-teams-container">
+                        {teams?.length > 0 ? (
+                            teams.map((team, i) => (
+                                <article key={i} className="community-team-cards">
+                                    <div className="team-card-header">
+                                        <div className="team-creator">
+                                            <p className="team-name">{team.nome}</p>
+                                            <p className="team-creator">By: {team.criador}</p>
+                                        </div>
+                                    </div>
+                                    <div className="user-team"></div>
+                                </article>
+                            ))
+                        ) : (
+                            <p>Loading...</p>
+                        )}
+                    </div>
+                </section>
+            </main>
+
             <Footer />
         </div>
     )

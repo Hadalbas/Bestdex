@@ -1,0 +1,83 @@
+.teams-page {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #080B38;
+    color: #DBDEFF;
+}
+
+.teams-main {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 2rem 1rem 4rem;
+}
+
+.teams-content {
+    width: min(1100px, 100%);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+
+.teams-header {
+    width: 100%;
+    text-align: center;
+}
+
+.teams-header h1 {
+    margin: 0;
+    color: white;
+}
+
+.community-teams-container {
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+}
+
+.community-team-cards {
+    width: min(450px, 100%);
+    min-height: 225px;
+    background: linear-gradient(180deg, #24296B 0%, #555A9E 100%);
+    border: 1px solid rgba(219, 222, 255, 0.2);
+    border-radius: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1.5rem;
+    box-sizing: border-box;
+}
+
+.team-card-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.team-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #DBDEFF;
+    margin: 0;
+}
+
+.team-creator {
+    font-size: 1rem;
+    opacity: 0.9;
+    color: #DBDEFF;
+    margin: 0;
+}
+
+.user-team {
+    width: 100%;
+    height: 100px;
+    border-radius: 12px;
+    background: rgba(155, 158, 209, 0.18);
+}
