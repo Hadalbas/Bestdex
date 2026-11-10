@@ -5,9 +5,7 @@ import { updatePokemonFromTeam } from "@/lib/teamStorage";
 import Image from "next/image";
 import { useEffect, useState } from "react"
 
-export default function Editor({ name, image, ability, nat, stats = [], evs = [], moves = [], changeEditingPokemon }) {
-
-    console.log("Move1: " + moves[0] + "\n Nature: " + nat + "\nAbility: " + ability)
+export default function Editor({ name, image, ability, nature, stats = [], evs = [], moves = [], changeEditingPokemon }) {
 
     const funName = name.toLowerCase().replace(/-|[.]| /g, "");
     const [learnset, setLearnset] = useState({})
@@ -20,7 +18,7 @@ export default function Editor({ name, image, ability, nat, stats = [], evs = []
 
     const [newAbility, setNewAbility] = useState(ability)
 
-    const [nature, setNature] = useState(nat);
+    const [newNature, setNewNature] = useState(nature);
 
     const [hpEV, setHpEV] = useState(hepEV)
     const [atEV, setAtEV] = useState(atkEV)
@@ -40,7 +38,7 @@ export default function Editor({ name, image, ability, nat, stats = [], evs = []
     const [move3, setMove3] = useState(mv3)
     const [move4, setMove4] = useState(mv4)
 
-    console.log("Move1: " + move1 + "\n Nature: " + nature)
+    console.log("Nature: " + newNature)
 
     async function getLearnset() {
         const { data } = await api.get('/learnsets.json');
@@ -91,13 +89,13 @@ export default function Editor({ name, image, ability, nat, stats = [], evs = []
 
         }
 
-        setNature(nature);
+        setNewNature(nature);
     }
 
     return (
         <div className="pokemon-edit-section">
             <div className="edit-button-container">
-                <button className="save-edit-team-button" onClick={() => {updatePokemonFromTeam(name, newAbility, nature, parseInt(hpEV), parseInt(atEV), parseInt(dfEV), parseInt(saEV), parseInt(sdEV), parseInt(spEV), move1, move2, move3, move4); changeEditingPokemon()}}>Save</button>
+                <button className="save-edit-team-button" onClick={() => {updatePokemonFromTeam(name, newAbility, newNature, parseInt(hpEV), parseInt(atEV), parseInt(dfEV), parseInt(saEV), parseInt(sdEV), parseInt(spEV), move1, move2, move3, move4); changeEditingPokemon()}}>Save</button>
                 <button className="edit-team-button" onClick={changeEditingPokemon}>Cancel</button>
             </div>
             <div className="pokemon-edit-container">
@@ -132,7 +130,7 @@ export default function Editor({ name, image, ability, nat, stats = [], evs = []
                 <div className="pokemon-slide-stats-list">
                     <div className="select-container">
                     <label htmlFor="natures" className="types-text">Select nature: </label>
-                    <select name="natures" className="dropdown" style={{width: nature ? nature.length * 0.85 + 7 + 'em' : '7em'}} defaultValue={nat} value={nature} onChange={defineNature}>
+                    <select name="natures" className="dropdown" style={{width: newNature ? nature.length * 0.85 + 7 + 'em' : '7em'}} value={newNature} onChange={defineNature}>
                         <option value="">Serious</option>
 
                         <option value="Lonely">Lonely | +Atk -Def</option>
