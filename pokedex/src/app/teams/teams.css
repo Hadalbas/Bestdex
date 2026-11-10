@@ -1,19 +1,25 @@
 .teams-page {
     width: 100%;
+    max-width: 100%;
     min-height: 100vh;
     background-color: #080B38;
     color: #DBDEFF;
+    overflow-x: hidden;
 }
 
 .teams-main {
     width: 100%;
+    max-width: 100%;
     display: flex;
     justify-content: center;
     padding: 2rem 1rem 4rem;
+    box-sizing: border-box;
+    margin-top: 50px;
 }
 
 .teams-content {
-    width: min(1100px, 100%);
+    width: 100%;
+    max-width: 100%;
     display: flex;
     flex-direction: column;
     gap: 2rem;
@@ -32,6 +38,7 @@
 
 .community-teams-container {
     width: 100%;
+    max-width: 100%;
     display: flex;
     align-items: stretch;
     justify-content: center;
@@ -40,10 +47,9 @@
 }
 
 .community-team-cards {
-    width: min(450px, 100%);
-    min-height: 225px;
+    width: min(400px, 100%);
+    min-height: 200px;
     background: linear-gradient(180deg, #24296B 0%, #555A9E 100%);
-    border: 1px solid rgba(219, 222, 255, 0.2);
     border-radius: 18px;
     display: flex;
     flex-direction: column;
