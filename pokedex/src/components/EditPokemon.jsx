@@ -4,12 +4,16 @@ import api from "@/lib/api";
 import { updatePokemonFromTeam } from "@/lib/teamStorage";
 import Image from "next/image";
 import { useEffect, useState } from "react"
+//import BattleItems from "https://play.pokemonshowdown.com/data/items.js"
 
 export default function Editor({ name, image, ability, nature, stats = [], evs = [], moves = [], changeEditingPokemon }) {
+
+    // console.log(BattleItems)
 
     const funName = name.toLowerCase().replace(/-|[.]| /g, "");
     const [learnset, setLearnset] = useState({})
     const [possibleAbilities, setPossibleAbilities] = useState({})
+    const [items, setItems] = useState({})
 
     const [hp, at, df, sa, sd, sp] = stats;
     const [hepEV, atkEV, defEV, spaEV, spdEv, speEV] = evs;
@@ -39,12 +43,16 @@ export default function Editor({ name, image, ability, nature, stats = [], evs =
     const [move4, setMove4] = useState(mv4)
 
 
-    async function getAbility() {
+    async function getAbilities() {
         const { data } = await api.get('/pokedex.json');
         setPossibleAbilities(data[funName]?.abilities);
-        console.log(possibleAbilities["0"])
-        console.log(possibleAbilities["H"])
-        console.log(possibleAbilities)
+    }
+
+    async function getItems() {
+        const { data } = await api.get('/items.js');
+        console.log(data)
+        console.log(data.exports)
+        console.log(data.abilityshield)
     }
 
     async function getLearnset() {
@@ -54,7 +62,8 @@ export default function Editor({ name, image, ability, nature, stats = [], evs =
 
     useEffect(() => {
         getLearnset()
-        getAbility()
+        getAbilities()
+        getItems()
     }, [])
 
     function defineNature(e) {
@@ -145,7 +154,7 @@ export default function Editor({ name, image, ability, nature, stats = [], evs =
                 <div className="pokemon-slide-stats-list">
                     <div className="select-container-profile">
                         <label htmlFor="natures" className="types-text">Select nature: </label>
-                        <select name="natures" className="dropdown" style={{ width: newNature ? nature.length * 0.85 + 7 + 'em' : '7em' }} value={newNature} onChange={defineNature}>
+                        <select id="natures" className="dropdown" style={{ width: newNature ? nature.length * 0.85 + 7 + 'em' : '7em' }} value={newNature} onChange={defineNature}>
                             <option value="">Serious</option>
 
                             <option value="Lonely">Lonely | +Atk -Def</option>
