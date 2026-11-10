@@ -127,8 +127,6 @@ button:hover {
   align-items: center;
   justify-content: space-between;
   padding: 0 250px;
-  position: fixed;
-  bottom: 0;
 }
 
 .credits-footer {
