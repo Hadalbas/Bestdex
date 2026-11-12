@@ -6,6 +6,7 @@ import Header from "@/components/Header(READ)";
 import { useEffect, useState } from "react"
 import "./teams.css"
 import "./../globals.css"
+import DisplayTeamsPokemon from "@/components/DisplayTeamsPokemon";
 
 export default function Teams() {
 
@@ -33,7 +34,12 @@ export default function Teams() {
                         <h1>Teams uploaded to this site:</h1>
                     </div>
 
+
                     <div className="community-teams-container">
+
+
+
+
                         {teams?.length > 0 ? (
                             teams.map((team, i) => (
                                 <article key={i} className="community-team-cards">
@@ -41,6 +47,25 @@ export default function Teams() {
                                         <div className="team-creator">
                                             <p className="team-name">{team.nome}</p>
                                             <p className="team-creator">By: {team.criador}</p>
+                                            <div className="card-container">
+                                                <div className="pokemon-team-main-container">
+                                                    {team.pokemons.map((pokemon, i) => (
+                                                        <DisplayTeamsPokemon
+                                                            key={parseInt(i) * 1000 + '' + i}
+                                                            name={pokemon.species}
+                                                            stats={[
+                                                                pokemon.stats?.hp ?? 0,
+                                                                pokemon.stats?.at ?? 0,
+                                                                pokemon.stats?.df ?? 0,
+                                                                pokemon.stats?.sa ?? 0,
+                                                                pokemon.stats?.sd ?? 0,
+                                                                pokemon.stats?.se ?? 0,
+                                                            ]}
+                                                        />
+                                                    ))
+                                                    }
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div className="user-team"></div>
@@ -54,6 +79,6 @@ export default function Teams() {
             </main>
 
             <Footer />
-        </div>
+        </div >
     )
 }

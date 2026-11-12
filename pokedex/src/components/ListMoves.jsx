@@ -35,7 +35,7 @@ export default function Moves({ learnset, typesNumbers }) {
                                         <Image src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/types/generation-ix/scarlet-violet/${typesNumbers[moves[move].type]}.png`} width={100} height={20} alt={moves[move].type}></Image>
                                         <Image src={`/pokemon-icons-main/icons/${moves[move].category}IC_Masters.png`} width={39} height={20} alt={moves[move].type}></Image>
                                     </div>
-                                    <h5 className="learnset-h5" key={move}>Effect: {moves[move].shortDesc} <p></p> Power: {moves[move]?.basePower} Accuracy: {moves[move]?.accuracy === true ? "---" : moves[move]?.accuracy + '%'} PP: {moves[move]?.pp}</h5>
+                                    <h5 className="learnset-h5" key={move}><p></p> Power: {moves[move]?.basePower} Accuracy: {moves[move]?.accuracy === true ? "---" : moves[move]?.accuracy + '%'} PP: {moves[move]?.pp}</h5>
                                 </div>)
                         }
                     </div>

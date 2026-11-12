@@ -49,10 +49,10 @@ export default function Editor({ name, image, ability, nature, stats = [], evs =
     }
 
     async function getItems() {
-        const { data } = await api.get('/items.js');
-        console.log(data)
-        console.log(data.exports)
-        console.log(data.abilityshield)
+        // const { data } = await api.get('/items.js');
+        // console.log(data)
+        // console.log(data.exports)
+        // console.log(data.abilityshield)
     }
 
     async function getLearnset() {

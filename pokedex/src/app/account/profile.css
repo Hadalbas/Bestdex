@@ -94,6 +94,11 @@
     margin: 0;
 }
 
+.response{
+    color: greenyellow;
+    font-weight: bold;
+}
+
 .welcome {
     font-size: clamp(1.8rem, 2vw, 2.8rem);
     font-weight: 600;
@@ -302,16 +307,26 @@
     color: rgba(255, 255, 255, 0.26);
 }
 
-.publish-button {
+.publish-button{
     color: #111;
-    cursor: pointer;
-    background: linear-gradient(135deg, #ffdb2d, #ff7a18);
     border: none;
     border-radius: 999px;
     padding: .9rem 1.8rem;
     font-size: 1rem;
     font-weight: 700;
     transition: transform .2s, filter .2s;
+}
+.publish-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  filter: brightness(1.2);
+}
+.publish-button:enabled {
+    cursor: pointer;
+    background: linear-gradient(135deg, #ffdb2d, #ff7a18);
+}
+.publish-button:disabled{
+    background-color: "grey";
+    cursor: not-allowed;
 }
 
 .pokemon-edit-section {

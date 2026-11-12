@@ -30,9 +30,9 @@ export default function Home() {
         <section className="banner">
           <div className="banner-container">
             <div className="banner-text">
-              <h1>Welcome to your Deck Creator and Pokedex!</h1>
+              <h1>Welcome to your Team Creator and Pokedex!</h1>
               <hr />
-              <h3>Discover and collect all your favorite Pokémon <br /> and create the ultimate deck! <br /> Trade with other trainers and improve your strategy!</h3>
+              <h3>Discover Pokémon and add them to your team<br />Compare your teams to other and improve your strategy!</h3>
             </div>
             <Image src="/c/3.svg" height={500} width={500} alt="pikachu image"/>
           </div>
