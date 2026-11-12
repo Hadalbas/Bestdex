@@ -19,11 +19,9 @@ export default function DisplayTeamsPokemon({ name, stats = [] }) {
 
     }
 
-
     useEffect(() => {
         getPokemon()
     }, [])
-
 
     return (
         <div className="card-content-container">

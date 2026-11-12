@@ -31,14 +31,11 @@ export default function Teams() {
             <main className="teams-main">
                 <section className="teams-content">
                     <div className="teams-header">
-                        <h1>Teams uploaded to this site:</h1>
+                        <h1>Teams uploaded to Bestdex:</h1>
                     </div>
 
 
                     <div className="community-teams-container">
-
-
-
 
                         {teams?.length > 0 ? (
                             teams.map((team, i) => (
@@ -46,6 +43,7 @@ export default function Teams() {
                                     <div className="team-card-header">
                                         <div className="team-creator">
                                             <p className="team-name">{team.nome}</p>
+                                            <p className="team-name">{team.acessos} accesses</p>
                                             <p className="team-creator">By: {team.criador}</p>
                                             <div className="card-container">
                                                 <div className="pokemon-team-main-container">
