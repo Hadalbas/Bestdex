@@ -50,7 +50,7 @@ export default function Teams() {
                                                     {team.pokemons.map((pokemon, i) => (
                                                         <DisplayTeamsPokemon
                                                             key={parseInt(i) * 1000 + '' + i}
-                                                            name={pokemon.species}
+                                                            nome={pokemon.species}
                                                             stats={[
                                                                 pokemon.stats?.hp ?? 0,
                                                                 pokemon.stats?.at ?? 0,

@@ -4,11 +4,13 @@ import api from "@/lib/api";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-export default function DisplayTeamsPokemon({ name, stats = [] }) {
+export default function DisplayTeamsPokemon({ nome, stats = [] }) {
 
     const [hp, atk, def, spa, spd, spe] = stats;
 
+    const [name, setName] = useState(nome.replace(/-|[.]| /g, '').toLowerCase())
     const [pokemon, setPokemon] = useState({});
+    const [baseForme, setBaseForme] = useState({});
     const [number, setNumber] = useState("132")
 
     async function getPokemon() {
@@ -16,7 +18,9 @@ export default function DisplayTeamsPokemon({ name, stats = [] }) {
         const { data } = await api.get('/pokedex.json');
         setPokemon(data[name]);
         setNumber(data[name].num.toString().padStart(3, "0"))
-
+        if (data[name]?.baseSpecies != undefined) {
+            setBaseForme(data[data[name]?.baseSpecies.toLowerCase().replace(/-|[.]| /g, "")]);
+        }
     }
 
     useEffect(() => {
@@ -31,7 +35,7 @@ export default function DisplayTeamsPokemon({ name, stats = [] }) {
                 </div>
 
                 <div className="pokemon-sprite">
-                <Image src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${number}.png`} width={70} height={70} alt={name + "_image"} />
+                    <Image src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${number}${(pokemon?.baseSpecies && pokemon.num != 25 && pokemon.num != 744 && pokemon.num != 133) ? `_f${baseForme.formeOrder.indexOf(pokemon.name) + 1}` : ""}.png`} width={70} height={70} alt={name + "_image"} />
 
                 </div>
 
