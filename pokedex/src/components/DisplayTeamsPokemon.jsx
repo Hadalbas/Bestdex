@@ -4,7 +4,12 @@ import api from "@/lib/api";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-export default function DisplayTeamsPokemon({ name, stats = [] }) {
+export default function DisplayTeamsPokemon({
+    name,
+    stats = [],
+    showHeader = true,
+    showStats = true,
+}) {
 
     const [hp, atk, def, spa, spd, spe] = stats;
 
@@ -26,23 +31,27 @@ export default function DisplayTeamsPokemon({ name, stats = [] }) {
     return (
         <div className="card-content-container">
             <div className="card-content">
-                <div className="pokemon-card-header">
-                    <span className="pokemon-name">{name}</span>
-                </div>
+                {showHeader && (
+                    <div className="pokemon-card-header">
+                        <span className="pokemon-name">{name}</span>
+                    </div>
+                )}
 
                 <div className="pokemon-sprite">
-                <Image src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${number}.png`} width={70} height={70} alt={name + "_image"} />
+                    <Image src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${number}.png`} width={70} height={70} alt={name + "_image"} />
 
                 </div>
 
-                <div className="pokemon-stats-list">
-                    <span>HP:  <strong>{hp}</strong></span>
-                    <span>ATK: <strong>{atk}</strong></span>
-                    <span>DEF: <strong>{def}</strong></span>
-                    <span>SPA: <strong>{spa}</strong></span>
-                    <span>SPD: <strong>{spd}</strong></span>
-                    <span>SPE: <strong>{spe}</strong></span>
-                </div>
+                {showStats && (
+                    <div className="pokemon-stats-list">
+                        <span>HP:  <strong>{hp}</strong></span>
+                        <span>ATK: <strong>{atk}</strong></span>
+                        <span>DEF: <strong>{def}</strong></span>
+                        <span>SPA: <strong>{spa}</strong></span>
+                        <span>SPD: <strong>{spd}</strong></span>
+                        <span>SPE: <strong>{spe}</strong></span>
+                    </div>
+                )}
 
             </div>
         </div>
