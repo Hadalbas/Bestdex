@@ -14,7 +14,6 @@ export default function DisplayTeamsPokemon({ nome, stats = [], showHeader = tru
     const [number, setNumber] = useState("132")
 
     async function getPokemon() {
-        console.log(name)
         const { data } = await api.get('/pokedex.json');
         setPokemon(data[name]);
         setNumber(data[name].num.toString().padStart(3, "0"))
@@ -38,7 +37,6 @@ export default function DisplayTeamsPokemon({ nome, stats = [], showHeader = tru
 
                 <div className="pokemon-sprite">
                     <Image src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${number}${(pokemon?.baseSpecies && pokemon.num != 25 && pokemon.num != 744 && pokemon.num != 133) ? `_f${baseForme.formeOrder.indexOf(pokemon.name) + 1}` : ""}.png`} width={70} height={70} alt={name + "_image"} />
-
                 </div>
 
                 {showStats && (
