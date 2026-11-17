@@ -94,7 +94,7 @@
     margin: 0;
 }
 
-.response{
+.response {
     color: greenyellow;
     font-weight: bold;
 }
@@ -181,10 +181,12 @@
     box-sizing: border-box;
 }
 
-.profile-main .card-content-container {
+.profile-main .card-content-container,
+.profile-main .edit-card-content-container {
     flex: 1 1 180px;
-    width: 100%;
+    width: 220px;
     max-width: 220px;
+    min-width: 0;
     height: 320px;
     padding: 1rem;
     background-color: #24296B;
@@ -193,7 +195,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    font-size: .9rem;
+    font-size: 0.9rem;
     font-weight: 400;
     color: #dbdeff;
     text-align: center;
@@ -217,7 +219,9 @@
     justify-content: space-between;
     align-items: center;
     gap: 0.5rem;
-    font-size: 0.9rem;
+    font-size: larger;
+    font-weight: 600;
+    letter-spacing: 1px;
 }
 
 .profile-main .pokemon-name,
@@ -251,15 +255,9 @@
     opacity: 0.95;
 }
 
-.profile-main .pokemon-stats-list-span,
-.pokemon-edit-section .pokemon-stats-list-span {
-    font-weight: 400;
-    color: #ffffffcf;
-    white-space: nowrap;
-}
-
 .profile-main .pokemon-stats-list,
-.pokemon-edit-section .pokemon-stats-list {
+.pokemon-edit-section .pokemon-stats-list,
+.pokemon-stats-list {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -268,55 +266,11 @@
     gap: 0 25px;
 }
 
-.stats-slide {
-    width: 170px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: right;
-    gap: 10px;
-}
-
-.pokemon-edit-section button {
-    width: 150px;
-}
-
-.pokemon-edit-container {
-    background-color: #555A9E;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
-    gap: 50px;
-}
-
-.slide-container {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    width: 100%;
-}
-
-.stats-slide-label {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.ability {
-    background-color: #ffffff14;
-    border-radius: 10px;
-    padding: 0.2rem 0.5rem;
-    font-size: 0.9rem;
-    color: whitesmoke;
-    margin: 10px;
-}
-
-.profile-main .stats-slide-span,
-.pokemon-edit-section .stats-slide-span {
-    width: 60px;
-    text-align: right;
+.profile-main .pokemon-stats-list-span,
+.pokemon-edit-section .pokemon-stats-list-span,
+.pokemon-stats-list-span {
+    font-weight: 400;
+    color: #ffffffcf;
     white-space: nowrap;
 }
 
@@ -328,64 +282,35 @@
     gap: 1rem;
 }
 
-.profile-main .edit-card-content-container,
-.pokemon-edit-section .edit-card-content-container {
-    flex: 1 1 180px;
-    width: 100%;
-    max-width: 220px;
-    min-width: 0;
-    height: 320px;
-    padding: 1rem;
-    background-color: #24296B;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    font-size: .9rem;
-    font-weight: 400;
-    color: #ffffffcf;
-    text-align: center;
-    box-sizing: border-box;
-}
-
 .profile-main .edit-team-button,
-.pokemon-edit-section .edit-team-button {
-    margin-top: 0.5rem;
-    width: 100%;
-    border: none;
-    border-radius: 8px;
-    background: rgba(200, 200, 200, 0.38);
-    color: white;
-    padding: 0.5rem 0.75rem;
-    font-weight: 600;
-    cursor: pointer;
-}
-
+.pokemon-edit-section .edit-team-button,
 .profile-main .save-edit-team-button,
-.pokemon-edit-section .save-edit-team-button {
-    margin-top: 0.5rem;
-    width: 100%;
-    border: none;
-    border-radius: 8px;
-    background: rgba(100, 230, 100, 0.48);
-    color: white;
-    padding: 0.5rem 0.75rem;
-    font-weight: 600;
-    cursor: pointer;
-}
-
+.pokemon-edit-section .save-edit-team-button,
 .profile-main .remove-team-button,
 .pokemon-edit-section .remove-team-button {
     margin-top: 0.5rem;
     width: 100%;
     border: none;
     border-radius: 8px;
-    background: rgba(255, 0, 0, 0.18);
     color: white;
     padding: 0.5rem 0.75rem;
     font-weight: 600;
     cursor: pointer;
+}
+
+.profile-main .edit-team-button,
+.pokemon-edit-section .edit-team-button {
+    background: rgba(200, 200, 200, 0.38);
+}
+
+.profile-main .save-edit-team-button,
+.pokemon-edit-section .save-edit-team-button {
+    background: rgba(100, 230, 100, 0.48);
+}
+
+.profile-main .remove-team-button,
+.pokemon-edit-section .remove-team-button {
+    background: rgba(255, 0, 0, 0.18);
 }
 
 .add-pokemon {
@@ -414,7 +339,7 @@
     color: rgba(255, 255, 255, 0.26);
 }
 
-.publish-button{
+.publish-button {
     color: #111;
     border: none;
     border-radius: 999px;
@@ -422,16 +347,20 @@
     font-size: 1rem;
     font-weight: 700;
     transition: transform .2s, filter .2s;
+    margin-bottom: 50px;
 }
+
 .publish-button:hover:not(:disabled) {
-  transform: translateY(-2px);
-  filter: brightness(1.2);
+    transform: translateY(-2px);
+    filter: brightness(1.2);
 }
+
 .publish-button:enabled {
     cursor: pointer;
     background: linear-gradient(135deg, #ffdb2d, #ff7a18);
 }
-.publish-button:disabled{
+
+.publish-button:disabled {
     background-color: "grey";
     cursor: not-allowed;
 }
@@ -451,28 +380,13 @@
     margin: 0;
 }
 
-.pokemon-stats-list-span {
-    font-weight: 400;
-    color: #ffffffcf;
-    white-space: nowrap;
-}
-
-.pokemon-stats-list {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: center;
-    flex-wrap: wrap;
-    gap: 0 25px;
-}
-
-.stats-slide {
-    width: 170px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-align: right;
-    gap: 10px;
+.ability {
+    background-color: #ffffff14;
+    border-radius: 10px;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.9rem;
+    color: whitesmoke;
+    margin: 10px;
 }
 
 .pokemon-edit-section button {
@@ -489,9 +403,26 @@
     gap: 50px;
 }
 
-.slide-container {
+.profile-main .stats-slide-span,
+.pokemon-edit-section .stats-slide-span,
+.stats-slide-span {
+    width: 90px;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.stats-slide {
+    width: 170px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    text-align: right;
+    gap: 10px;
+}
+
+.slide-container {
+    display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     width: 100%;
 }
@@ -502,16 +433,42 @@
     align-items: center;
 }
 
-.ability {
-    background-color: #ffffff14;
-    border-radius: 10px;
-    padding: 0.2rem 0.5rem;
-    font-size: 0.9rem;
-    color: whitesmoke;
-    margin: 10px;
+.pokemon-slide-stats-list {
+    width: 220px;
+    height: 320px;
+    background-color: #24296b;
+    border-radius: 20px;
+    padding: 2rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.stats-slide-span {
-    width: 60px;
-    text-align: right;
+.edit-pokemon-moves {
+    width: 220px;
+    height: 320px;
+    background-color: #24296b;
+    border-radius: 20px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.select-container-profile select {
+    width: 80%
+}
+
+.ev-slider {
+    width: 100%;
+}
+
+.select-container-profile .types-text {
+    margin: 0;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
