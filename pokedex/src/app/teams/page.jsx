@@ -46,30 +46,30 @@ export default function Teams() {
                                             <p className="team-interactions">{team.acessos} accesses</p>
                                             <p className="team-creator">By: {team.criador}</p>
                                             <div className="card-container">
-                                                
+
                                             </div>
                                         </div>
                                     </div>
                                     <div className="user-team">
                                         <div className="pokemon-team-main-container">
-                                                    {team.pokemons.map((pokemon, i) => (
-                                                        <DisplayTeamsPokemon
-                                                            key={parseInt(i) * 1000 + '' + i}
-                                                            nome={pokemon.species}
-                                                            stats={[
-                                                                pokemon.stats?.hp ?? 0,
-                                                                pokemon.stats?.at ?? 0,
-                                                                pokemon.stats?.df ?? 0,
-                                                                pokemon.stats?.sa ?? 0,
-                                                                pokemon.stats?.sd ?? 0,
-                                                                pokemon.stats?.se ?? 0,
-                                                            ]}
-                                                            showHeader={false}
-                                                            showStats={false}
-                                                        />
-                                                    ))
-                                                    }
-                                                </div>
+                                            {team.pokemons.map((pokemon, i) => (
+                                                <DisplayTeamsPokemon
+                                                    key={parseInt(i) * 1000 + '' + i}
+                                                    nome={pokemon.species}
+                                                    stats={[
+                                                        pokemon.stats?.hp ?? 0,
+                                                        pokemon.stats?.at ?? 0,
+                                                        pokemon.stats?.df ?? 0,
+                                                        pokemon.stats?.sa ?? 0,
+                                                        pokemon.stats?.sd ?? 0,
+                                                        pokemon.stats?.se ?? 0,
+                                                    ]}
+                                                    showHeader={false}
+                                                    showStats={false}
+                                                />
+                                            ))
+                                            }
+                                        </div>
                                     </div>
                                 </article>
                             ))

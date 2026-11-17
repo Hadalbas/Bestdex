@@ -4,16 +4,11 @@ import api from "@/lib/api";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-export default function DisplayTeamsPokemon({
-    nome,
-    stats = [],
-    showHeader = true,
-    showStats = true,
-}) {
+export default function DisplayTeamsPokemon({ nome, stats = [], showHeader = true, showStats = true }) {
 
     const [hp, atk, def, spa, spd, spe] = stats;
 
-    const [name, setName] = useState(nome.replace(/-|[.]| /g, '').toLowerCase())
+    const name = nome.replace(/-|[.]| /g, '').toLowerCase()
     const [pokemon, setPokemon] = useState({});
     const [baseForme, setBaseForme] = useState({});
     const [number, setNumber] = useState("132")
@@ -24,7 +19,7 @@ export default function DisplayTeamsPokemon({
         setPokemon(data[name]);
         setNumber(data[name].num.toString().padStart(3, "0"))
         if (data[name]?.baseSpecies != undefined) {
-            setBaseForme(data[data[name]?.baseSpecies.toLowerCase().replace(/-|[.]| /g, "")]);
+            setBaseForme(data[data[name]?.baseSpecies.toLowerCase().replace(/-|[.]| /g, '')]);
         }
     }
 
