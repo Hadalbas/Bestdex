@@ -124,7 +124,7 @@
     transition: all 0.3s ease-in-out;
 }
 
-.pokemon-team-main-container {
+.profile-main .pokemon-team-main-container {
     flex: 1 1 50%;
     min-width: 0;
     background-color: #24296b;
@@ -169,7 +169,7 @@
     font-size: 20px;
 }
 
-.card-container {
+.profile-main .card-container {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -181,7 +181,7 @@
     box-sizing: border-box;
 }
 
-.card-content-container {
+.profile-main .card-content-container {
     flex: 1 1 180px;
     width: 100%;
     max-width: 220px;
@@ -200,7 +200,8 @@
     box-sizing: border-box;
 }
 
-.card-content {
+.profile-main .card-content,
+.pokemon-edit-section .card-content {
     width: 100%;
     height: 100%;
     display: flex;
@@ -209,7 +210,8 @@
     align-items: center;
 }
 
-.pokemon-card-header {
+.profile-main .pokemon-card-header,
+.pokemon-edit-section .pokemon-card-header {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -218,20 +220,23 @@
     font-size: 0.9rem;
 }
 
-.pokemon-name {
+.profile-main .pokemon-name,
+.pokemon-edit-section .pokemon-name {
     font-size: 1.1rem;
     font-weight: 700;
     margin: 0 auto;
 }
 
-.pokemon-badge {
+.profile-main .pokemon-badge,
+.pokemon-edit-section .pokemon-badge {
     background-color: rgba(255, 255, 255, 0.15);
     border-radius: 999px;
     padding: 0.3rem 0.55rem;
     font-size: 0.7rem;
 }
 
-.pokemon-sprite {
+.profile-main .pokemon-sprite,
+.pokemon-edit-section .pokemon-sprite {
     width: 72px;
     height: 72px;
     display: flex;
@@ -240,12 +245,112 @@
     font-size: 2rem;
 }
 
-.pokemon-stats {
+.profile-main .pokemon-stats,
+.pokemon-edit-section .pokemon-stats {
     font-size: 0.85rem;
     opacity: 0.95;
 }
 
-.edit-team-button {
+.profile-main .pokemon-stats-list-span,
+.pokemon-edit-section .pokemon-stats-list-span {
+    font-weight: 400;
+    color: #ffffffcf;
+    white-space: nowrap;
+}
+
+.profile-main .pokemon-stats-list,
+.pokemon-edit-section .pokemon-stats-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+    gap: 0 25px;
+}
+
+.stats-slide {
+    width: 170px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: right;
+    gap: 10px;
+}
+
+.pokemon-edit-section button {
+    width: 150px;
+}
+
+.pokemon-edit-container {
+    background-color: #555A9E;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    gap: 50px;
+}
+
+.slide-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.stats-slide-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.ability {
+    background-color: #ffffff14;
+    border-radius: 10px;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.9rem;
+    color: whitesmoke;
+    margin: 10px;
+}
+
+.profile-main .stats-slide-span,
+.pokemon-edit-section .stats-slide-span {
+    width: 60px;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.profile-main .edit-button-container,
+.pokemon-edit-section .edit-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.profile-main .edit-card-content-container,
+.pokemon-edit-section .edit-card-content-container {
+    flex: 1 1 180px;
+    width: 100%;
+    max-width: 220px;
+    min-width: 0;
+    height: 320px;
+    padding: 1rem;
+    background-color: #24296B;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-size: .9rem;
+    font-weight: 400;
+    color: #ffffffcf;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.profile-main .edit-team-button,
+.pokemon-edit-section .edit-team-button {
     margin-top: 0.5rem;
     width: 100%;
     border: none;
@@ -257,7 +362,8 @@
     cursor: pointer;
 }
 
-.save-edit-team-button {
+.profile-main .save-edit-team-button,
+.pokemon-edit-section .save-edit-team-button {
     margin-top: 0.5rem;
     width: 100%;
     border: none;
@@ -269,7 +375,8 @@
     cursor: pointer;
 }
 
-.remove-team-button {
+.profile-main .remove-team-button,
+.pokemon-edit-section .remove-team-button {
     margin-top: 0.5rem;
     width: 100%;
     border: none;
@@ -359,50 +466,6 @@
     gap: 0 25px;
 }
 
-.stats-slide-span {
-    white-space: nowrap;
-}
-
-.edit-button-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-}
-
-.edit-card-content-container {
-    flex: 1 1 180px;
-    width: 100%;
-    max-width: 220px;
-    min-width: 0;
-    height: 320px;
-    padding: 1rem;
-    background-color: #24296B;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    font-size: .9rem;
-    font-weight: 400;
-    color: #ffffffcf;
-    text-align: center;
-    box-sizing: border-box;
-}
-
-.pokemon-slide-stats-list {
-    background-color: #24296B;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    width: 220px;
-    height: 320px;
-    display: flex;
-    border-radius: 20px;
-    gap: 20px;
-    padding: 16px;
-}
-
 .stats-slide {
     width: 170px;
     display: flex;
@@ -451,46 +514,4 @@
 .stats-slide-span {
     width: 60px;
     text-align: right;
-}
-
-.select-container-profile {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-}
-
-.select-container-profile label {
-    color: #ffffffd9;
-    font-weight: 400;
-    font-size: 1.2rem;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.stats-slide input {
-    width: 100px;
-    height: 5px;
-    appearance: none;
-    background-color: #ffffff14;
-    border-radius: 5px;
-    outline: none;
-    cursor: pointer;
-}
-
-.edit-pokemon-moves {
-    background-color: #24296B;
-    height: 320px;
-    width: 220px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-evenly;
-    gap: 10px;
-    border-radius: 20px;
-    padding: 16px;
 }

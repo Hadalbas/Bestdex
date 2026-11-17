@@ -43,10 +43,15 @@ export default function Teams() {
                                     <div className="team-card-header">
                                         <div className="team-creator">
                                             <p className="team-name">{team.nome}</p>
-                                            <p className="team-name">{team.acessos} accesses</p>
+                                            <p className="team-interactions">{team.acessos} accesses</p>
                                             <p className="team-creator">By: {team.criador}</p>
                                             <div className="card-container">
-                                                <div className="pokemon-team-main-container">
+                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="user-team">
+                                        <div className="pokemon-team-main-container">
                                                     {team.pokemons.map((pokemon, i) => (
                                                         <DisplayTeamsPokemon
                                                             key={parseInt(i) * 1000 + '' + i}
@@ -59,14 +64,13 @@ export default function Teams() {
                                                                 pokemon.stats?.sd ?? 0,
                                                                 pokemon.stats?.se ?? 0,
                                                             ]}
+                                                            showHeader={false}
+                                                            showStats={false}
                                                         />
                                                     ))
                                                     }
                                                 </div>
-                                            </div>
-                                        </div>
                                     </div>
-                                    <div className="user-team"></div>
                                 </article>
                             ))
                         ) : (
