@@ -4,7 +4,7 @@ import api from "@/lib/api";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
-export default function ShowTeamPokemon({ nome, stats = [] }) {
+export default function ShowTeamPokemon({ nome, stats = [], nature, moves = [], ability }) {
 
     const [hp, atk, def, spa, spd, spe] = stats;
 
@@ -31,7 +31,9 @@ export default function ShowTeamPokemon({ nome, stats = [] }) {
         <div className="card-content-container">
             <div className="card-content">
                 <div className="pokemon-card-header">
-                    <span className="pokemon-name">{name}</span>
+                    <h1 className="pokemon-name">{pokemon.name}</h1>
+                    <h2 className="pokemon-name">Ability: {ability}</h2>
+                    <h2 className="pokemon-name">{nature ? "Nature: " + nature : ''}</h2>
                 </div>
 
                 <div className="pokemon-sprite">
@@ -39,7 +41,7 @@ export default function ShowTeamPokemon({ nome, stats = [] }) {
                 </div>
 
                 <div className="stats-container">
-                        <h2>EVs</h2>
+                        <h2>EVs:</h2>
                         <div className="stats">
                             <div className="stat-row">
                                 <label htmlFor="hp" className="stat-label">Health: {hp}</label>

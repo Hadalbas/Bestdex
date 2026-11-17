@@ -63,7 +63,7 @@ export default function Teams() {
                                                         pokemon.stats?.df ?? 0,
                                                         pokemon.stats?.sa ?? 0,
                                                         pokemon.stats?.sd ?? 0,
-                                                        pokemon.stats?.se ?? 0,
+                                                        pokemon.stats?.sp ?? 0,
                                                     ]}
                                                     showHeader={false}
                                                     showStats={false}

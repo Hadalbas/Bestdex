@@ -7,6 +7,7 @@ import Header from "@/components/Header(READ)"
 import Footer from "@/components/Footer"
 import { getTeams } from "@/lib/api"
 import ShowTeamPokemon from "@/components/ShowTeamPokemon"
+import Link from "next/link"
 
 export default function ShowTeam({ params }) {
 
@@ -38,15 +39,20 @@ export default function ShowTeam({ params }) {
                     nome={pokemon.species}
                     stats={[
                         pokemon.stats?.hp ?? 0,
-                        pokemon.stats?.atk ?? 0,
-                        pokemon.stats?.def ?? 0,
-                        pokemon.stats?.spa ?? 0,
-                        pokemon.stats?.spd ?? 0,
-                        pokemon.stats?.spe ?? 0,
+                        pokemon.stats?.at ?? 0,
+                        pokemon.stats?.df ?? 0,
+                        pokemon.stats?.sa ?? 0,
+                        pokemon.stats?.sd ?? 0,
+                        pokemon.stats?.sp ?? 0,
                     ]}
+                    ability={pokemon.ability}
+                    moves={pokemon.moves}
+                    nature={pokemon.nature}
                 />
             )))
                 : <p>Loading Team...</p>}
+
+            <Link href="/teams"><button className="exibir">Back</button></Link>
 
 
             <Footer />
