@@ -154,7 +154,7 @@ export default function Editor({ name, image, ability, nature, stats = [], evs =
                 <div className="pokemon-slide-stats-list">
                     <div className="select-container-profile">
                         <label htmlFor="natures" className="types-text">Select nature: </label>
-                        <select id="natures" className="dropdown" style={{ width: newNature ? nature.length * 0.85 + 7 + 'em' : '7em' }} value={newNature} onChange={defineNature}>
+                        <select id="natures" className="dropdown" value={newNature} onChange={defineNature}>
                             <option value="">Serious</option>
 
                             <option value="Lonely">Lonely | +Atk -Def</option>
@@ -207,6 +207,7 @@ export default function Editor({ name, image, ability, nature, stats = [], evs =
                 </div>
 
                 <div className="edit-pokemon-moves">
+                    <div className="edit-pokemon-moves-header" style={{ width: '100%', textAlign: 'center', fontWeight: '600', fontSize: 'larger'}}>Moves</div>
                     <select value={move1} name="moves" onChange={e => setMove1(e.target.value)} className="dropdown" style={{ width: '10em' }}>
                         {Object.keys(learnset).length > 0
                             ? Object.keys(learnset).map((move, i) => <option key={i} value={move}>{move}</option>)

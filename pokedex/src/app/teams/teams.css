@@ -47,7 +47,7 @@
 }
 
 .community-team-cards {
-    width: min(500px, 100%);
+    width: min(550px, 100%);
     min-height: 200px;
     background: linear-gradient(180deg, #24296B 0%, #555A9E 100%);
     border-radius: 18px;
@@ -97,7 +97,7 @@
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-around;
     align-items: center;
 }
 
