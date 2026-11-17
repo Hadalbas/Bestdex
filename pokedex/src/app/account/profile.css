@@ -350,19 +350,9 @@
     margin-bottom: 50px;
 }
 
-.publish-button:hover:not(:disabled) {
-    transform: translateY(-2px);
-    filter: brightness(1.2);
-}
-
-.publish-button:enabled {
+.publish-button {
     cursor: pointer;
     background: linear-gradient(135deg, #ffdb2d, #ff7a18);
-}
-
-.publish-button:disabled {
-    background-color: "grey";
-    cursor: not-allowed;
 }
 
 .pokemon-edit-section {

@@ -44,8 +44,10 @@ export default function Teams() {
                                     <div className="team-card-header">
                                         <div className="team-creator">
                                             <p className="team-name">{team.nome}</p>
-                                            <p className="team-interactions">{team.acessos} accesses</p>
-                                            <p className="team-creator">By: {team.criador}</p>
+                                            <section>
+                                                <p className="team-interactions" style={{margin: 0}}>{team.acessos} accesses</p>
+                                                <p className="team-user">By: {team.criador}</p>
+                                            </section>
                                             <div className="card-container">
 
                                             </div>
