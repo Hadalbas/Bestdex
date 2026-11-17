@@ -7,6 +7,7 @@ import { useEffect, useState } from "react"
 import "./teams.css"
 import "./../globals.css"
 import DisplayTeamsPokemon from "@/components/DisplayTeamsPokemon";
+import Link from "next/link";
 
 export default function Teams() {
 
@@ -71,6 +72,7 @@ export default function Teams() {
                                             }
                                         </div>
                                     </div>
+                                    <Link className="btn btn-primary" href={'/teams/'+i} role="button">Show Team</Link>
                                 </article>
                             ))
                         ) : (
