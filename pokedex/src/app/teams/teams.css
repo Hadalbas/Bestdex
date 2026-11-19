@@ -12,23 +12,27 @@
     max-width: 100%;
     display: flex;
     justify-content: center;
-    padding: 2rem 1rem 4rem;
+    align-items: center;
     box-sizing: border-box;
-    margin-top: 50px;
+    margin-top: 127px;
 }
 
 .teams-content {
     width: 100%;
-    max-width: 100%;
     display: flex;
     flex-direction: column;
+    margin: auto;
     gap: 2rem;
     align-items: center;
+    justify-content: center;
 }
 
 .teams-header {
-    width: 100%;
     text-align: center;
+}
+
+.teams-header h1 {
+    font-weight: 700;
 }
 
 .teams-header h1 {
@@ -37,13 +41,16 @@
 }
 
 .community-teams-container {
-    width: 100%;
-    max-width: 100%;
-    display: flex;
-    align-items: stretch;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 1.25rem;
+  display: grid;
+  /* This creates columns of 550px, but fits as many as possible */
+  grid-template-columns: repeat(auto-fit, 550px); 
+  gap: 1.25rem;
+  
+  /* This centers the entire grid block inside the parent */
+  justify-content: center; 
+  
+  width: 100%;
+  margin: 0 auto 100px;
 }
 
 .community-team-cards {
@@ -125,11 +132,12 @@
     justify-content: flex-start;
 }
 
-.team-creator section {
+.team-accesses {
     width: 100%;
     display: flex;
     justify-content: space-between;
     padding: 0 10px;
+    margin: 0;
 }
 
 .btn-primary {

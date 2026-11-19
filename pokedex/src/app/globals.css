@@ -68,6 +68,7 @@ header{
   border-bottom: rgb(203, 221, 255) 3px solid;
   border-radius: 0 0 34px 34px;
   z-index: 1000;
+  position: fixed;
 }
 
 .header-title {
@@ -175,6 +176,7 @@ hr {
 
 .banner {
   width: 100%;
+  margin-top: 49px;
 }
 
 .banner-container {
@@ -188,7 +190,6 @@ hr {
   align-items: center;
   z-index: 1;
   position: static;
-  margin-top: -30px;
 }
 
 .banner-text {
