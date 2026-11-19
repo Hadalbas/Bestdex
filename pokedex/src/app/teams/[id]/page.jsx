@@ -31,13 +31,13 @@ export default function ShowTeam({ params }) {
             <div className="main-page">
                 <Header />
 
-            
+
                 <section>
                     <div className="team-section-header">
                         <h1>{team.nome}</h1>
                         <h2>Created by: {team.criador}</h2>
                     </div>
-                    
+
                     <div className="user-team-details">
                         {team?.pokemons?.length > 0 ? (team.pokemons.map((pokemon, i) => (
                             <ShowTeamPokemon
@@ -52,17 +52,20 @@ export default function ShowTeam({ params }) {
                                     pokemon.stats?.sp ?? 0,
                                 ]}
                                 ability={pokemon.ability}
-                                moves={pokemon.moves}
+                                moves={[pokemon.moves[0],
+                                        pokemon.moves[1],
+                                        pokemon.moves[2],
+                                        pokemon.moves[3],]}
                                 nature={pokemon.nature}
                             />
                         )))
                             : <p>Loading Team...</p>}
                     </div>
                 </section>
-                
+
                 <Link href="/teams"><button className="exibir">Back</button></Link>
-                
-                
+
+
                 <Footer />
             </div>
         </div >
