@@ -3,7 +3,7 @@
 import "./teamDetail.css"
 import "../../globals.css"
 import { use, useEffect, useState } from "react"
-import Header from "@/components/Header(READ)"
+import Header from "@/components/Header"
 import Footer from "@/components/Footer"
 import { getTeam } from "@/lib/api"
 import ShowTeamPokemon from "@/components/ShowTeamPokemon"

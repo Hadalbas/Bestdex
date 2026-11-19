@@ -42,13 +42,9 @@
 
 .community-teams-container {
   display: grid;
-  /* This creates columns of 550px, but fits as many as possible */
-  grid-template-columns: repeat(auto-fit, 550px); 
+  grid-template-columns: repeat(auto-fit, 550px);
   gap: 1.25rem;
-  
-  /* This centers the entire grid block inside the parent */
-  justify-content: center; 
-  
+  justify-content: center;
   width: 100%;
   margin: 0 auto 100px;
 }

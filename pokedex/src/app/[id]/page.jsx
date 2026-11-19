@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 import { useState, useEffect, use } from "react"
 import { addPokemonToTeam, isPokemonInTeam, getTeam, MAX_TEAM_SIZE } from "@/lib/teamStorage";
 import "./evolution.css"
-import Header from "@/components/Header(READ)";
+import Header from "@/components/Header";
 
 export default function Pokemon({ params }) {
 
