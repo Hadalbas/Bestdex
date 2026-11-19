@@ -28,43 +28,42 @@ export default function ShowTeamPokemon({ nome, stats = [], nature, moves = [], 
     }, [])
 
     return (
-        <div className="card-content-container">
-            <div className="card-content">
-                <div className="pokemon-card-header">
+        <div className="team-card-content-container">
+            <div className="team-card-content">
+                <div className="team-pokemon-card-header">
                     <h1 className="pokemon-name">{pokemon.name}</h1>
-                    <h2 className="pokemon-name">Ability: {ability}</h2>
-                    <h2 className="pokemon-name">{nature ? "Nature: " + nature : ''}</h2>
+                    <h2 className="pokemon-ability">Ability: {ability}</h2>
+                    <h2 className="pokemon-nature">{nature ? "Nature: " + nature : ''}</h2>
                 </div>
 
-                <div className="pokemon-sprite">
+                <div className="team-pokemon-sprite">
                     <Image src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${number}${(pokemon?.baseSpecies && pokemon.num != 744 && pokemon.num != 133) ? `_f${baseForme.formeOrder.indexOf(pokemon.name) + 1}` : ''}.png`} width={250} height={250} alt={name + "_image"} />
                 </div>
 
                 <div className="stats-container">
-                        <h2>EVs:</h2>
                         <div className="stats">
                             <div className="stat-row">
-                                <label htmlFor="hp" className="stat-label">Health: {hp}</label>
+                                <label htmlFor="hp" className="stat-label">HP: {hp}</label>
                                 <meter id="hp" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(hp / 32).toString()} className="stat-meter" />
                             </div>
                             <div className="stat-row">
-                                <label htmlFor="atk" className="stat-label">Attack: {atk}</label>
+                                <label htmlFor="atk" className="stat-label">ATK: {atk}</label>
                                 <meter id="atk" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(atk / 32).toString()} className="stat-meter" />
                             </div>
                             <div className="stat-row">
-                                <label htmlFor="def" className="stat-label">Defense: {def}</label>
+                                <label htmlFor="def" className="stat-label">DEF: {def}</label>
                                 <meter id="def" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(def / 32).toString()} className="stat-meter" />
                             </div>
                             <div className="stat-row">
-                                <label htmlFor="spa" className="stat-label">Special Attack: {spa}</label>
+                                <label htmlFor="spa" className="stat-label">SPA: {spa}</label>
                                 <meter id="spa" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(spa / 32).toString()} className="stat-meter" />
                             </div>
                             <div className="stat-row">
-                                <label htmlFor="spd" className="stat-label">Special Defense: {spd}</label>
+                                <label htmlFor="spd" className="stat-label">SPD: {spd}</label>
                                 <meter id="spd" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(spd / 32).toString()} className="stat-meter" />
                             </div>
                             <div className="stat-row">
-                                <label htmlFor="spe" className="stat-label">Speed: {spe}</label>
+                                <label htmlFor="spe" className="stat-label">SPE: {spe}</label>
                                 <meter id="spe" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(spe / 32).toString()} className="stat-meter" />
                             </div>
                         </div>

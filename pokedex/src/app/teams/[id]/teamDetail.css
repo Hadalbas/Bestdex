@@ -1,0 +1,85 @@
+.user-team-details {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-bottom: 100px;
+    margin-top: 100px;
+}
+
+.team-pokemon-card-header {
+    font-size: small;
+}
+
+section {
+    margin-top: 50px;
+}
+
+.team-section-header h1 {
+    font-weight: 900;
+}
+
+.team-section-header h2 {
+    font-weight: 300;
+}
+
+.team-pokemon-sprite img {
+    width: 150px;
+    height: 150px;
+}
+
+.stats-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stats {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-row {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.stat-row label {
+    min-width: 65px;
+    text-align: right;
+    margin-right: 5px;
+}
+
+.stat-row meter {
+    width: 100%;
+}
+
+.team-card-content {
+    min-width: 190px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.pokemon-name {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #DBDEFF;
+    margin: 0;
+    text-align: center;
+}
+
+.pokemon-ability {
+    font-size: 1rem;
+    opacity: 0.9;
+    color: #DBDEFF;
+    margin: 0;
+    text-align: center;
+}
