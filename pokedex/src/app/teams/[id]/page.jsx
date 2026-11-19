@@ -5,7 +5,7 @@ import "../../globals.css"
 import { use, useEffect, useState } from "react"
 import Header from "@/components/Header(READ)"
 import Footer from "@/components/Footer"
-import { getTeams } from "@/lib/api"
+import { getTeam } from "@/lib/api"
 import ShowTeamPokemon from "@/components/ShowTeamPokemon"
 import Link from "next/link"
 
@@ -15,15 +15,15 @@ export default function ShowTeam({ params }) {
 
     const [team, setTeam] = useState([])
 
-    async function getTeam() {
-        const { data } = await getTeams()
-        setTeam(data[id])
+    async function findTeam() {
+        const { data } = await getTeam(id)
+        setTeam(data)
 
-        console.log(data[id])
+        console.log(data)
     }
 
     useEffect(() => {
-        getTeam()
+        findTeam()
     }, [])
 
     return (

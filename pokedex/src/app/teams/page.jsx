@@ -45,7 +45,7 @@ export default function Teams() {
                                         <div className="team-creator">
                                             <p className="team-name">{team.nome}</p>
                                             <section>
-                                                <p className="team-interactions" style={{margin: 0}}>{team.acessos} accesses</p>
+                                                <p className="team-interactions" style={{margin: 0}}>{team.acessos/2} accesses</p>
                                                 <p className="team-user">By: {team.criador}</p>
                                             </section>
                                             <div className="card-container">
@@ -74,7 +74,7 @@ export default function Teams() {
                                             }
                                         </div>
                                     </div>
-                                    <Link className="btn btn-primary" href={'/teams/'+i} role="button">Show Team</Link>
+                                    <Link className="btn btn-primary" href={'/teams/'+team._id} role="button">Show Team</Link>
                                 </article>
                             ))
                         ) : (
