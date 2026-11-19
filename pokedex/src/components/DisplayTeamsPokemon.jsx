@@ -36,7 +36,7 @@ export default function DisplayTeamsPokemon({ nome, stats = [], showHeader = tru
                 )}
 
                 <div className="pokemon-sprite">
-                    <Image title={name} src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${number}${(pokemon?.baseSpecies) ? `_f${baseForme.formeOrder.indexOf(pokemon.name) + 1}` : ""}.png`} width={70} height={70} alt={name + "_image"} />
+                    <Image src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${number}${(pokemon?.baseSpecies) ? `_f${baseForme.formeOrder.indexOf(pokemon.name) + 1}` : ""}.png`} width={70} height={70} alt={name + "_image"} />
                 </div>
 
                 {showStats && (

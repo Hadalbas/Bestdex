@@ -68,11 +68,11 @@ export default function Editor({ name, image, ability, nature, stats = [], evs =
 
     function defineNature(e) {
 
-        let nature = e.target.value
+        let nat = e.target.value
 
         setIncAT(1); setIncDF(1); setIncSA(1); setIncSD(1); setIncSP(1);
 
-        switch (nature) {
+        switch (nat) {
 
             case "Lonely": case "Adamant": case "Naughty": case "Brave": setIncAT(1.1)
                 break;
@@ -89,7 +89,7 @@ export default function Editor({ name, image, ability, nature, stats = [], evs =
 
         }
 
-        switch (nature) {
+        switch (nat) {
 
             case "Bold": case "Modest": case "Calm": case "Timid": setIncAT(0.9)
                 break;
@@ -106,7 +106,7 @@ export default function Editor({ name, image, ability, nature, stats = [], evs =
 
         }
 
-        setNewNature(nature);
+        setNewNature(nat);
     }
 
     return (
