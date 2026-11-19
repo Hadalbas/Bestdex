@@ -102,7 +102,7 @@ export default function Pokemon({ params }) {
     const router = useRouter();
 
     function handleFormeChange(e) {
-        router.push(`/${e.target.value.replace(/ /, "")}`)
+        router.push(`/${e.target.value.replace(/ |-|:/, "")}`)
     }
 
     function handleAddToTeam() {
@@ -210,7 +210,7 @@ export default function Pokemon({ params }) {
                     <button
                         className="add-team-button"
                         onClick={handleAddToTeam}
-                        disabled={isInTeam}
+                        disabled={isInTeam || pokemon?.baseForme}
                     >
                         {isInTeam ? 'In Team' : 'Add to Team'}
                     </button>

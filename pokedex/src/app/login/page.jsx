@@ -85,7 +85,7 @@ export default function Login() {
                                 ? <p className='loginfail'>{loginFail}</p>
                                 : <div>
                                     <input value={nome} onChange={e => { setNome(e.target.value) }} onKeyUp={handleKeyUp} type="text" id="nome" placeholder="Username" />
-                                    <input value={senha} onChange={e => { setSenha(e.target.value) }} onKeyUp={handleKeyUp} type="text" id="senha" placeholder="Password" />
+                                    <input value={senha} onChange={e => { setSenha(e.target.value) }} onKeyUp={handleKeyUp} type="password" id="senha" placeholder="Password" />
                                 </div>
                         }
                         
