@@ -40,31 +40,31 @@ export default function ShowTeamPokemon({ nome, stats = [], nature, moves = [], 
                     <Image src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${number}${(pokemon?.baseSpecies && pokemon.num != 744 && pokemon.num != 133) ? `_f${baseForme.formeOrder.indexOf(pokemon.name) + 1}` : ''}.png`} width={250} height={250} alt={name + "_image"} />
                 </div>
 
-                <div className="stats-container">
-                        <div className="stats">
-                            <div className="stat-row">
+                <div className="team-stats-container">
+                        <div className="team-stats">
+                            <div className="team-stat-row">
                                 <label htmlFor="hp" className="stat-label">HP: {hp}</label>
-                                <meter id="hp" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(hp / 32).toString()} className="stat-meter" />
+                                <meter id="hp" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(hp / 32).toString()} className="team-stat-meter" />
                             </div>
-                            <div className="stat-row">
+                            <div className="team-stat-row">
                                 <label htmlFor="atk" className="stat-label">ATK: {atk}</label>
-                                <meter id="atk" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(atk / 32).toString()} className="stat-meter" />
+                                <meter id="atk" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(atk / 32).toString()} className="team-stat-meter" />
                             </div>
-                            <div className="stat-row">
+                            <div className="team-stat-row">
                                 <label htmlFor="def" className="stat-label">DEF: {def}</label>
-                                <meter id="def" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(def / 32).toString()} className="stat-meter" />
+                                <meter id="def" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(def / 32).toString()} className="team-stat-meter" />
                             </div>
-                            <div className="stat-row">
+                            <div className="team-stat-row">
                                 <label htmlFor="spa" className="stat-label">SPA: {spa}</label>
-                                <meter id="spa" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(spa / 32).toString()} className="stat-meter" />
+                                <meter id="spa" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(spa / 32).toString()} className="team-stat-meter" />
                             </div>
-                            <div className="stat-row">
+                            <div className="team-stat-row">
                                 <label htmlFor="spd" className="stat-label">SPD: {spd}</label>
-                                <meter id="spd" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(spd / 32).toString()} className="stat-meter" />
+                                <meter id="spd" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(spd / 32).toString()} className="team-stat-meter" />
                             </div>
-                            <div className="stat-row">
+                            <div className="team-stat-row">
                                 <label htmlFor="spe" className="stat-label">SPE: {spe}</label>
-                                <meter id="spe" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(spe / 32).toString()} className="stat-meter" />
+                                <meter id="spe" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(spe / 32).toString()} className="team-stat-meter" />
                             </div>
                         </div>
                     </div>

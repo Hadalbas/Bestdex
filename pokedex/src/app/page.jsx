@@ -1,7 +1,7 @@
 'use client'
 
 import Footer from "@/components/Footer";
-import Header from "@/components/Header(READ)";
+import Header from "@/components/Header";
 import Lista from "@/components/Lista";
 import api from "@/lib/api";
 import Image from "next/image";

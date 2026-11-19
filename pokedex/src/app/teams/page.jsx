@@ -2,7 +2,7 @@
 
 import { getTeams } from "@/lib/api"
 import Footer from "@/components/Footer";
-import Header from "@/components/Header(READ)";
+import Header from "@/components/Header";
 import { useEffect, useState } from "react"
 import "./teams.css"
 import "./../globals.css"
@@ -55,7 +55,7 @@ export default function Teams() {
                                     <div className="team-card-header">
                                         <div className="team-creator">
                                             <p className="team-name">{team.nome}</p>
-                                            <section>
+                                            <section className="team-accesses">
                                                 <p className="team-interactions" style={{margin: 0}}>{team.acessos/2} accesses</p>
                                                 <p className="team-user">By: {team.criador}</p>
                                             </section>
