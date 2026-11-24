@@ -1,11 +1,11 @@
 .user-team-details {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 220px); 
-  gap: 1.25rem;
-  justify-content: center; 
-  align-items: center;
-  width: 100%;
-  margin: 50px auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 220px);
+    gap: 1.25rem;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 50px auto;
 }
 
 .team-pokemon-card-header {
@@ -31,8 +31,16 @@ section {
 }
 
 .team-pokemon-moves {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: space-between;
+    justify-items: center;
+    align-items: center;
+}
+
+.team-pokemon-moves p {
+    width: fit-content;
 }
 
 .team-stats-container {
@@ -101,4 +109,8 @@ section {
 .pokemon-nature {
     font-size: medium;
     color: #dbdeffdc;
+}
+
+.team-card-content hr {
+    margin: 10px auto;
 }

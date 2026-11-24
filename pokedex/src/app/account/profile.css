@@ -23,6 +23,7 @@
     align-items: stretch;
     gap: 2rem;
     flex-wrap: wrap;
+    margin-bottom: 50px;
 }
 
 .sidebar {
@@ -108,7 +109,7 @@
 }
 
 .logout {
-    margin-top: 2rem;
+    margin-top: 50px;
 }
 
 .login-exibir {
@@ -170,14 +171,14 @@
 }
 
 .profile-main .card-container {
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
+    width: fit-content;
+    display: grid;
+    grid-template-columns: auto auto auto;
     justify-content: center;
     gap: 1rem;
     background-color: #555A9E;
-    border-radius: 10px;
-    padding: clamp(1rem, 2vw, 2rem);
+    border-radius: 40px;
+    padding: 20px;
     box-sizing: border-box;
 }
 
@@ -190,7 +191,7 @@
     height: 320px;
     padding: 1rem;
     background-color: #24296B;
-    border-radius: 10px;
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -355,7 +356,6 @@
     font-size: 1rem;
     font-weight: 700;
     transition: transform .2s, filter .2s;
-    margin-bottom: 50px;
 }
 
 .publish-button:enabled {
@@ -397,7 +397,7 @@
 }
 
 .pokemon-edit-container {
-    background-color: #555A9E;
+    background: linear-gradient(145deg, #6973bd, #484e91);
     border-radius: 20px;
     display: flex;
     align-items: center;
@@ -446,6 +446,12 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+}
+
+.pokemon-slide-stats-list,
+.edit-pokemon-moves, .card-content-container, .edit-card-content-container {
+    background: linear-gradient(145deg, #3039a0, #24296b);
+    border: 1px solid rgba(197, 202, 255, 0.14);
 }
 
 .edit-pokemon-moves {

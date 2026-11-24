@@ -27,7 +27,18 @@ body {
   flex-direction: column;
 }
 
-h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
+h6,
+.h6,
+h5,
+.h5,
+h4,
+.h4,
+h3,
+.h3,
+h2,
+.h2,
+h1,
+.h1 {
   margin: 0;
 }
 
@@ -42,7 +53,7 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   --border: #4A5BC2;
   --btn-bg: #1B214F;
   --btn-text: #EDF1FF;
-  --card-shadow: 0 6px 18px rgba(2,6,23,0.6);
+  --card-shadow: 0 6px 18px rgba(2, 6, 23, 0.6);
   --text-on-dark: #EDF1FF;
   --text-on-light: #111217;
 }
@@ -60,7 +71,7 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   justify-content: center;
 }
 
-header{
+header {
   position: sticky;
   top: 0px;
   height: 78px;
@@ -90,7 +101,7 @@ nav {
   align-items: center;
 }
 
-ul{
+ul {
   width: 35%;
   display: flex;
   justify-content: space-between;
@@ -115,7 +126,7 @@ body.hide-header .pokemon-stats-page {
 
 
 
-.clickable{
+.clickable {
   cursor: pointer;
 }
 
@@ -255,7 +266,7 @@ hr {
   font-size: larger;
 }
 
-.stat{
+.stat {
   background-color: red;
 }
 
@@ -278,6 +289,7 @@ hr {
   font-size: larger;
   color: white;
 }
+
 .search:focus {
   border: 1px solid var(--panel-soft);
   outline: none;
@@ -309,7 +321,7 @@ hr {
   align-items: center;
 }
 
-.name  {
+.name {
   font-size: 1.5rem;
   font-weight: 600;
   color: #ffffff;
