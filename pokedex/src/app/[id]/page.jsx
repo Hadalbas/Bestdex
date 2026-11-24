@@ -210,7 +210,7 @@ export default function Pokemon({ params }) {
                     <button
                         className="add-team-button"
                         onClick={handleAddToTeam}
-                        disabled={isInTeam || pokemon?.baseForme}
+                        disabled={isInTeam ||  pokemon?.forme}
                     >
                         {isInTeam ? 'In Team' : 'Add to Team'}
                     </button>

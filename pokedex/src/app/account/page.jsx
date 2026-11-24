@@ -1,6 +1,6 @@
 'use client'
 
-import { getDataTreinador, logoutTreinador } from "@/lib/api";
+import { getDataTreinador, getTeamsByTrainer, logoutTreinador } from "@/lib/api";
 import { useEffect, useState } from "react";
 import './profile.css'
 import Footer from "@/components/Footer";
@@ -16,33 +16,31 @@ export default function Account() {
     const [userName, setUserName] = useState('')
     const [teamName, setTeamName] = useState('New Team')
     const [team, setTeam] = useState([])
+    const [numberTeams, setNumberTeams] = useState(0)
     const [editingPokemon, setEditingPokemon] = useState('')
     const [focusPokemon, setFocusPokemon] = useState({})
 
     const [response, setResponse] = useState('')
     const [warning, setWarning] = useState('')
 
-    const trainerStats = [
-        { label: 'Battles', value: 0 },
-        { label: 'Victories', value: 0 },
-        { label: 'Defeats', value: 0 }
-    ]
-
     async function findUser() {
         const data = await getDataTreinador(document.cookie.substring(6))
         setUserName(data.data.nome)
+
+        const teams = await getTeamsByTrainer(data.data.nome)
+        setNumberTeams(teams.data.length)
     }
 
     function loadTeam() {
         setTeam(getTeam())
     }
     async function uploadTeam() {
-            const response = await saveTeam(userName, teamName)
-            setResponse(response.data.message)
-            setWarning('')
-            for (var pokemon of team) {
-                handleRemovePokemon(pokemon.name)
-            }
+        const response = await saveTeam(userName, teamName)
+        setResponse(response.data.message)
+        setWarning('')
+        for (var pokemon of team) {
+            handleRemovePokemon(pokemon.name)
+        }
         // setResponse(saveTeam(userName, teamName).data?.message)
     }
     function handleRemovePokemon(nameToRemove) {
@@ -86,16 +84,11 @@ export default function Account() {
                             <h1 className="welcome">Welcome,<br />{userName || 'Trainer'}</h1>
                         </div>
 
-                        <div className="stats-mockup">
-                            {trainerStats.map((stat) => (
-                                <AccountStatCard key={stat.label} label={stat.label} value={stat.value} />
-                            ))}
-                        </div>
+                        <AccountStatCard label="Number of Teams Published:" value={numberTeams} />
+
 
                         <div className="profile-summary">
-                            <p>Region: Kanto</p>
-                            <p>Team: {team.length} Pokémon</p>
-                            <p>Rank: Rookie</p>
+                            <p>Current team: {team.length}/6 Pokémon</p>
                         </div>
                     </aside>
 
@@ -173,9 +166,9 @@ export default function Account() {
                 <p className="response">{response}</p>
 
                 <p className="warning">{warning}</p>
-                
+
                 <button type="button" title={team.length == 0 ? "Add Pokemon to your team!" : "Publish your team for others to see"} className="publish-button" disabled={team.length == 0} onClick={uploadTeam}>Publish Team</button>
-            
+
                 <button className="login-exibir logout" onClick={handleLogout}><i className="fa-solid fa-arrow-right-from-bracket"></i> Logout</button>
             </div>
             <Footer />
