@@ -113,14 +113,7 @@ body.hide-header .pokemon-stats-page {
   margin-top: 0;
 }
 
-button {
-  cursor: pointer;
-  transition: 0.3s;
-}
 
-button:hover {
-  background-color: darkgray;
-}
 
 .clickable{
   cursor: pointer;
@@ -216,6 +209,11 @@ hr {
   border-radius: 15px;
   padding: 5px 10px;
   margin: 20px 10px 30px 10px;
+  transition: 0.3s;
+}
+
+.exibir:hover {
+  transform: scale(1.05);
 }
 
 .search-section {
