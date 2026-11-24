@@ -88,7 +88,7 @@ export default function Account() {
 
 
                         <div className="profile-summary">
-                            <p>Current team: {team.length}/6 Pokémon</p>
+                            <p>Current team: {team.length}/6 Pokémons</p>
                         </div>
                     </aside>
 
