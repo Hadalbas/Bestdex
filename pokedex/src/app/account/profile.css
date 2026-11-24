@@ -26,7 +26,7 @@
 }
 
 .sidebar {
-    height: 500px;
+    height: fit-content;
     min-width: 280px;
     background-color: #24296b;
     border-radius: 20px;
@@ -35,7 +35,7 @@
     justify-content: space-between;
     align-items: center;
     gap: 1.5rem;
-    padding: 2rem 1.25rem;
+    padding: 1.25rem;
     box-sizing: border-box;
 }
 
@@ -57,7 +57,7 @@
 .stat-card {
     min-height: 110px;
     border-radius: 10px;
-    background-color: #ffffff25;
+    background-color: #fffff025;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -119,20 +119,20 @@
     outline: none;
     font-size: 1rem;
     background-color: #ff0000;
-    color: #fff;
+    color: #fffff0;
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
 }
 
 .profile-main .pokemon-team-main-container {
     flex: 1 1 50%;
-    min-width: 0;
+    width: fit-content;
     background-color: #24296b;
     border-radius: 20px;
     justify-content: center;
     align-items: center;
     padding: clamp(1rem, 2vw, 2rem);
     box-sizing: border-box;
+    height: fit-content;
 }
 
 .team-name-editor {
@@ -469,4 +469,29 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.teams-published {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #fffff025;
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    min-height: 110px;
+    display: flex;
+    padding: .75rem;
+}
+
+.teams-published p {
+    color: #fff;
+    margin: 0;
+    font-size: clamp(.8rem, 1.2vw, 1.1rem);
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.teams-published span {
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
+    font-weight: 700;
 }

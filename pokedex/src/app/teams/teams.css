@@ -110,7 +110,7 @@
     width: 80px;
     height: 80px;
     transform: scale(0.8);
-    background-color: #5d8ea662;
+    background: radial-gradient(farthest-side, #fdfdff60, #00000000);
     border-radius: 10px;
     display: flex;
     justify-content: center;

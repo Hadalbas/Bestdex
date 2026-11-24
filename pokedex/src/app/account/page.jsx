@@ -91,7 +91,11 @@ export default function Account() {
                                 <AccountStatCard key={stat.label} label={stat.label} value={stat.value} />
                             ))}
                         </div>
-
+                        <div className="teams-published">
+                            <p>Teams Published<br/><span>0</span>
+                                
+                            </p>
+                        </div>
                         <div className="profile-summary">
                             <p>Region: Kanto</p>
                             <p>Team: {team.length} Pokémon</p>
