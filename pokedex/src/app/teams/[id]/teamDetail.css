@@ -30,6 +30,11 @@ section {
     height: 150px;
 }
 
+.team-pokemon-moves {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
 .team-stats-container {
     width: 100%;
     display: flex;

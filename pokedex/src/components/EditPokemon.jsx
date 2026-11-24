@@ -4,16 +4,13 @@ import api from "@/lib/api";
 import { updatePokemonFromTeam } from "@/lib/teamStorage";
 import Image from "next/image";
 import { useEffect, useState } from "react"
-//import BattleItems from "https://play.pokemonshowdown.com/data/items.js"
 
 export default function Editor({ name, image, ability, nature, stats = [], evs = [], moves = [], changeEditingPokemon }) {
 
-    // console.log(BattleItems)
 
     const funName = name.toLowerCase().replace(/-|[.]| /g, "");
     const [learnset, setLearnset] = useState({})
     const [possibleAbilities, setPossibleAbilities] = useState({})
-    const [items, setItems] = useState({})
 
     const [hp, at, df, sa, sd, sp] = stats;
     const [hepEV, atkEV, defEV, spaEV, spdEv, speEV] = evs;
@@ -48,13 +45,6 @@ export default function Editor({ name, image, ability, nature, stats = [], evs =
         setPossibleAbilities(data[funName]?.abilities);
     }
 
-    async function getItems() {
-        // const { data } = await api.get('/items.js');
-        // console.log(data)
-        // console.log(data.exports)
-        // console.log(data.abilityshield)
-    }
-
     async function getLearnset() {
         const { data } = await api.get('/learnsets.json');
         setLearnset(data[funName].learnset)
@@ -63,7 +53,6 @@ export default function Editor({ name, image, ability, nature, stats = [], evs =
     useEffect(() => {
         getLearnset()
         getAbilities()
-        getItems()
     }, [])
 
     function defineNature(e) {
