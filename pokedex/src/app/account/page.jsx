@@ -103,12 +103,12 @@ export default function Account() {
                                     name={pokemon.name}
                                     image={pokemon.image}
                                     stats={[
-                                        pokemon.baseStats?.hp ?? 0,
-                                        pokemon.baseStats?.atk ?? 0,
-                                        pokemon.baseStats?.def ?? 0,
-                                        pokemon.baseStats?.spa ?? 0,
-                                        pokemon.baseStats?.spd ?? 0,
-                                        pokemon.baseStats?.spe ?? 0,
+                                        pokemon.baseStats?.hp + pokemon.evs.hp ?? 0,
+                                        pokemon.baseStats?.atk + pokemon.evs.atk ?? 0,
+                                        pokemon.baseStats?.def + pokemon.evs.def ?? 0,
+                                        pokemon.baseStats?.spa + pokemon.evs.spa ?? 0,
+                                        pokemon.baseStats?.spd + pokemon.evs.spd ?? 0,
+                                        pokemon.baseStats?.spe + pokemon.evs.spe ?? 0,
                                     ]}
                                     onRemove={() => handleRemovePokemon(pokemon.name)}
                                     changeEditingPokemon={() => { editingPokemon ? changeEditingPokemon('') : changeEditingPokemon(pokemon.name) }}
