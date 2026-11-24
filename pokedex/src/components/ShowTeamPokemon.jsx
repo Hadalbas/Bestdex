@@ -38,7 +38,7 @@ export default function ShowTeamPokemon({ nome, stats = [], ability , moves = []
                 </div>
 
                 <div className="team-pokemon-sprite">
-                    <Image src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${number}${(pokemon?.baseSpecies && pokemon.num != 744 && pokemon.num != 133) ? `_f${baseForme.formeOrder.indexOf(pokemon.name) + 1}` : ''}.png`} width={250} height={250} alt={name + "_image"} />
+                    <Image src={`https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/${number}${(pokemon?.baseSpecies && pokemon.num != 744 && pokemon.num != 133) ? `_f${baseForme.formeOrder.indexOf(pokemon.name) + 1}` : ''}.png`} width={250} height={250} alt={name + "_image"} loading="eager"/>
                 </div>
 
                 <div className="stats-container">
@@ -69,6 +69,8 @@ export default function ShowTeamPokemon({ nome, stats = [], ability , moves = []
                             </div>
                         </div>
                     </div>
+
+                    <hr />
 
                     <div className="team-pokemon-moves">
                         {moves.map((move, i) =>
