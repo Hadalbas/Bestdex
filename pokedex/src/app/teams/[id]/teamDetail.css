@@ -43,7 +43,7 @@ section {
     width: fit-content;
 }
 
-.team-stats-container {
+/* .team-stats-container {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -73,7 +73,7 @@ section {
 
 .stat-row meter {
     width: 100%;
-}
+} */
 
 .team-card-content {
     min-width: 190px;
@@ -81,6 +81,77 @@ section {
     flex-direction: column;
     align-items: center;
     gap: 10px;
+}
+
+.stats-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: justify;
+}
+
+.stat-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.stat-label {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  float: left;
+}
+
+.stat-meter {
+  width: 100%;
+  height: 10px;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  accent-color: #4CAF50;
+  border-radius: 50px;
+  overflow: hidden;
+  border: none;
+  box-shadow: none;
+  background: rgba(255,255,255,0.1);
+}
+
+.stat-meter::-webkit-meter-bar {
+  height: 30px;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.1);
+  border: none;
+}
+
+.stat-meter::-webkit-meter-optimum-value {
+  background: #4CAF50;
+  border-radius: 4px;
+}
+
+.stat-meter::-webkit-meter-suboptimum-value {
+  background: #ff9800;
+  border-radius: 4px;
+}
+
+.stat-meter::-webkit-meter-even-less-good-value {
+  background: #f44336;
+  border-radius: 4px;
+}
+
+.pokemon-stats-header hr {
+  margin: 5px 0;
+  width: 80%;
+  border: 1px solid white;
 }
 
 .pokemon-name {
