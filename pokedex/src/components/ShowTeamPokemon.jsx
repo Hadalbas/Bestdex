@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 export default function ShowTeamPokemon({ nome, stats = [], ability , moves = [], nature}) {
 
     const [hp, atk, def, spa, spd, spe] = stats;
-    const [move1, move2, move3, move4] = moves;
+    // const [move1, move2, move3, move4] = moves;
 
     const name = nome.replace(/-|[.]| /g, '').toLowerCase()
     const [pokemon, setPokemon] = useState({});
@@ -44,27 +44,27 @@ export default function ShowTeamPokemon({ nome, stats = [], ability , moves = []
                 <div className="stats-container">
                         <div className="stats">
                             <div className="stat-row">
-                                <label htmlFor="hp" className="stat-label">HP: {hp}</label>
+                                <label htmlFor="hp" className="stat-label">HP: {pokemon.baseStats ? pokemon?.baseStats.hp + hp : hp}</label>
                                 <meter id="hp" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(hp / 32).toString()} className="stat-meter" />
                             </div>
                             <div className="stat-row">
-                                <label htmlFor="atk" className="stat-label">ATK: {atk}</label>
+                                <label htmlFor="atk" className="stat-label">ATK: {pokemon.baseStats ? pokemon?.baseStats.atk + atk : atk}</label>
                                 <meter id="atk" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(atk / 32).toString()} className="stat-meter" />
                             </div>
                             <div className="stat-row">
-                                <label htmlFor="def" className="stat-label">DEF: {def}</label>
+                                <label htmlFor="def" className="stat-label">DEF: {pokemon.baseStats ? pokemon?.baseStats.def + def : def}</label>
                                 <meter id="def" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(def / 32).toString()} className="stat-meter" />
                             </div>
                             <div className="stat-row">
-                                <label htmlFor="spa" className="stat-label">SPA: {spa}</label>
+                                <label htmlFor="spa" className="stat-label">SPA: {pokemon.baseStats ? pokemon?.baseStats.spa + spa : spa}</label>
                                 <meter id="spa" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(spa / 32).toString()} className="stat-meter" />
                             </div>
                             <div className="stat-row">
-                                <label htmlFor="spd" className="stat-label">SPD: {spd}</label>
+                                <label htmlFor="spd" className="stat-label">SPD: {pokemon.baseStats ? pokemon?.baseStats.spd + spd : spd}</label>
                                 <meter id="spd" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(spd / 32).toString()} className="stat-meter" />
                             </div>
                             <div className="stat-row">
-                                <label htmlFor="spe" className="stat-label">SPE: {spe}</label>
+                                <label htmlFor="spe" className="stat-label">SPE: {pokemon.baseStats ? pokemon?.baseStats.spe + spe : spe}</label>
                                 <meter id="spe" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(spe / 32).toString()} className="stat-meter" />
                             </div>
                         </div>
