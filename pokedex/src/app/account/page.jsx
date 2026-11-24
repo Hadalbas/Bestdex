@@ -178,27 +178,8 @@ export default function Account() {
 
                 <p className="warning">{warning}</p>
                 
-                <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" className="publish-button" disabled={team.length == 0} onClick={uploadTeam}>Publish Team</button>
-
-                <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div className="modal-dialog">
-                            <div className="modal-content">
-                                <div className="modal-header">
-                                    <h5 className="modal-title" id="exampleModalLabel">Team Uploaded</h5>
-                                    <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div className="modal-body">
-                                    Your team can now be seen publicly by others
-                                </div>
-                                <div className="modal-footer">
-                                    <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" className="btn btn-primary">Show team</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <button type="button" title={team.length == 0 ? "Add Pokemon to your team!" : "Publish your team for others to see"} className="publish-button" disabled={team.length == 0} onClick={uploadTeam}>Publish Team</button>
             
-
                 <button className="login-exibir logout" onClick={handleLogout}><i className="fa-solid fa-arrow-right-from-bracket"></i> Logout</button>
             </div>
             <Footer />

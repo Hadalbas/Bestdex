@@ -358,9 +358,14 @@
     margin-bottom: 50px;
 }
 
-.publish-button {
+.publish-button:enabled {
     cursor: pointer;
     background: linear-gradient(135deg, #ffdb2d, #ff7a18);
+}
+
+.publish-button:disabled {
+    cursor: not-allowed;
+    background-color: grey;
 }
 
 .pokemon-edit-section {

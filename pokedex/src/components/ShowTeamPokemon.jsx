@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 export default function ShowTeamPokemon({ nome, stats = [], ability , moves = [], nature}) {
 
     const [hp, atk, def, spa, spd, spe] = stats;
+    const [move1, move2, move3, move4] = moves;
 
     const name = nome.replace(/-|[.]| /g, '').toLowerCase()
     const [pokemon, setPokemon] = useState({});
@@ -67,6 +68,12 @@ export default function ShowTeamPokemon({ nome, stats = [], ability , moves = []
                                 <meter id="spe" min={0} max={1} low={0.2} high={0.39} optimum={1} value={(spe / 32).toString()} className="team-stat-meter" />
                             </div>
                         </div>
+                    </div>
+
+                    <div className="team-pokemon-moves">
+                        {moves.map((move, i) =>
+                            <p key={i}>{move}</p>
+                        )}
                     </div>
 
             </div>
