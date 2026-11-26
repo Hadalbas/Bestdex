@@ -60,6 +60,7 @@ export default function Teams() {
 
                         {teams?.length > 0 ? (
                             teams.filter((team) => search ? team.criador.toLowerCase().includes(search.trim().toLowerCase()) || team.nome.toLowerCase().includes(search.trim().toLowerCase()) || checkTeamForPokemon(team.pokemons) : true).map((team, i) => (
+                                team.pokemons.length == 6 &&(
                                 <article key={i} className="community-team-cards">
                                     <div className="team-card-header">
                                         <div className="team-creator">
@@ -95,7 +96,7 @@ export default function Teams() {
                                         </div>
                                     </div>
                                     <Link className="btn btn-primary" href={'/teams/' + team._id} role="button">Show Team</Link>
-                                </article>
+                                </article>)
                             ))
                         ) : (
                             <p>Loading...</p>
