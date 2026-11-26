@@ -43,38 +43,6 @@ section {
     width: fit-content;
 }
 
-/* .team-stats-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.team-stats {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.team-stat-row {
-    width: 80%;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.stat-row label {
-    min-width: 65px;
-    text-align: right;
-    margin-right: 5px;
-}
-
-.stat-row meter {
-    width: 100%;
-} */
-
 .team-card-content {
     min-width: 190px;
     display: flex;

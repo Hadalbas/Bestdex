@@ -448,7 +448,9 @@
 }
 
 .pokemon-slide-stats-list,
-.edit-pokemon-moves, .card-content-container, .edit-card-content-container {
+.edit-pokemon-moves,
+.card-content-container,
+.edit-card-content-container {
     background: linear-gradient(145deg, #3039a0, #24296b);
     border: 1px solid rgba(197, 202, 255, 0.14);
 }

@@ -12,7 +12,7 @@ export default function Home() {
   const [search, setSearch] = useState('');
   const [tipo, setTipo] = useState('');
   const [pokemon, setPokemon] = useState({});
-  
+
   async function getPokedex() {
     const { data } = await api.get('/pokedex.json');
     setPokemon(data);
@@ -25,7 +25,7 @@ export default function Home() {
   return (
     <>
       <div key="home-page" className="main-page">
-        
+
         <Header />
         <section className="banner">
           <div className="banner-container">
@@ -34,7 +34,7 @@ export default function Home() {
               <hr />
               <h3>Discover Pokémon and add them to your team<br />Compare your teams to other and improve your strategy!</h3>
             </div>
-            <Image src="/c/3.svg" height={500} width={500} alt="pikachu image"/>
+            <Image src="/c/3.svg" height={500} width={500} alt="pikachu image" />
           </div>
         </section>
 
@@ -42,12 +42,12 @@ export default function Home() {
           <div className="search-container">
             <div className="search-filter">
               <h2>Search Here:</h2>
-              <input className="search" type="text" onChange={(e)=>setSearch(e.target.value)} value={search} placeholder="Search..."/>
+              <input className="search" type="text" onChange={(e) => setSearch(e.target.value)} value={search} placeholder="Search..." />
             </div>
-            
+
             <div className="select-container">
               <label htmlFor="tipos" className="types-text">Select types: </label>
-              <select name="tipos" className="dropdown" style={{width: tipo ? tipo.length * 0.85 + 2.5 + 'em' : '5em'}} value={tipo} onChange={e => setTipo(e.target.value)}>
+              <select name="tipos" className="dropdown" style={{ width: tipo ? tipo.length * 0.85 + 2.5 + 'em' : '5em' }} value={tipo} onChange={e => setTipo(e.target.value)}>
                 <option value="">All</option>
                 <option value="Fire">Fire</option>
                 <option value="Grass">Grass</option>
@@ -71,8 +71,8 @@ export default function Home() {
             </div>
           </div>
         </section>
-        
-        <Lista lista={pokemon} search={search} tipo={tipo}/>
+
+        <Lista lista={pokemon} search={search} tipo={tipo} />
 
         <Footer />
       </div>

@@ -47,6 +47,7 @@
     flex-direction: column;
     justify-content: center;
     gap: 12px;
+    -webkit-backdrop-filter: blur(6px);
     backdrop-filter: blur(6px);
     box-shadow: -50px 0 100px rgba(0, 0, 0, 0.5);
 }
