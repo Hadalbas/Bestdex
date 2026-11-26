@@ -8,7 +8,7 @@
     flex-direction: column;
     align-items: center;
     margin-top: 127px;
-    min-height: 100vh;
+    min-height: fit-content;
     width: 100%;
     text-align: center;
     padding: 0 1rem 2rem;
@@ -17,7 +17,7 @@
 
 .sidebar-team-container {
     width: 65%;
-    min-height: 700px;
+    min-height: fit-content;
     display: flex;
     justify-content: center;
     align-items: stretch;
@@ -109,7 +109,7 @@
 }
 
 .logout {
-    margin-top: 50px;
+    margin: 50px 0 50px 0;
 }
 
 .login-exibir {
@@ -125,7 +125,6 @@
 }
 
 .profile-main .pokemon-team-main-container {
-    flex: 1 1 50%;
     width: fit-content;
     background-color: #24296b;
     border-radius: 20px;
@@ -369,7 +368,7 @@
 }
 
 .pokemon-edit-section {
-    margin: 50px 0 50px 0;
+    margin: 0 0 50px 0;
     display: flex;
     flex-direction: column;
     align-items: center;

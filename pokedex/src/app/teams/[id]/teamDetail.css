@@ -100,7 +100,7 @@ section {
     align-items: center;
 }
 
-.stat-row {
+.user-team-details .stat-row {
     display: flex;
     gap: 8px;
     align-items: center;
