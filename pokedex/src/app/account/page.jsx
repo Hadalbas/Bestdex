@@ -167,7 +167,7 @@ export default function Account() {
 
                 <p className="warning">{warning}</p>
 
-                <button type="button" title={team.length == 0 ? "Add Pokemon to your team!" : "Publish your team for others to see"} className="publish-button" disabled={team.length == 0} onClick={uploadTeam}>Publish Team</button>
+                <button type="button" title={team.length < 6 ? "Add more Pokemon to your team!" : "Publish your team for others to see"} className="publish-button" disabled={team.length < 6} onClick={uploadTeam}>Publish Team</button>
 
                 <button className="login-exibir logout" onClick={handleLogout}><i className="fa-solid fa-arrow-right-from-bracket"></i> Logout</button>
             </div>

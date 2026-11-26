@@ -291,11 +291,20 @@
     margin-top: 0.5rem;
     width: 100%;
     border: none;
+    transition: 0.2s;
     border-radius: 8px;
     color: white;
     padding: 0.5rem 0.75rem;
     font-weight: 600;
     cursor: pointer;
+}
+.profile-main:hover .edit-team-button:hover,
+.pokemon-edit-section:hover .edit-team-button:hover,
+.profile-main:hover .save-edit-team-button:hover,
+.pokemon-edit-section:hover .save-edit-team-button:hover,
+.profile-main:hover .remove-team-button:hover,
+.pokemon-edit-section:hover .remove-team-button:hover {
+    filter: brightness(0.8);
 }
 
 .profile-main .edit-team-button,
